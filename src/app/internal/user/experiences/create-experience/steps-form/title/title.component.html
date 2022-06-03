@@ -1,0 +1,88 @@
+<form #titleForm="ngForm" (ngSubmit)="titleForm.form.valid && next(17)">
+  <div class="main-container-area">
+    <div class="left-wrapper">
+      <div class="inner-width-wrapper">
+        <div class="heading">Give your experience a title</div>
+        <p>Make it short, descriptive and exciting.</p>
+        <!-- ----add-title-------------- -->
+        <div class="title-filed mt-5">
+          <div class="small-heading-1">
+            What is the title of your experience?
+          </div>
+          <input
+            type="text"
+            placeholder="John Doe’s Birdwatcher"
+            name="Name"
+            #Name="ngModel"
+            (keyup)="transformTitle()"
+            [(ngModel)]="experienceData.experiencePage.title"
+            required maxlength="40"
+          />
+          <div
+            class="error-block"
+            *ngIf="
+              Name.invalid &&
+              (Name.dirty || Name.touched || titleForm.submitted)
+            "
+          >
+            <div class="required-text" *ngIf="Name.errors?.required">
+              <p class="error text-danger">Title is required</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="right-wrapper">
+      <div class="small-heading">Tips</div>
+      <div class="do-main">
+        <div class="small-heading">Do</div>
+        <ul class="say-yes">
+          <li>
+            Reinforce that your experience is hosted online and internet access
+            is required
+          </li>
+          <li>
+            Give people specifics and a detailed itinerary so they know what to
+            expect
+          </li>
+          <li>
+            Tell guests what they need to bring and do to prepare and
+            participate
+          </li>
+          <li>
+            Include links to your other experiences and invite guests to read
+            the reviews
+          </li>
+        </ul>
+      </div>
+      <div class="do-main">
+        <div class="small-heading">DON’T</div>
+        <ul class="say-no">
+          <li>
+            Include the word “online” or variations of that word in your title –
+            Twiwfy will automatically label your experience with “online” in
+            multiple places
+          </li>
+        </ul>
+      </div>
+
+      <div class="example-main">
+        <div class="small-heading">Example</div>
+        <div class="img-div-main">
+          <img src="../../../../../../../assets/images/coffee.png" />
+          <span class="img-over"
+            >Coffee Masterclass <br />with National Judge</span
+          >
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <!-- <mat-progress-bar mode="determinate" value="75"></mat-progress-bar>
+  <div class="next-back-row-main">
+    <div class="left-text">08 items to submit</div>
+    <div class="button-row">
+      <button class="btn-back" (click)="next(15)" matRipple>Back</button>
+      <button class="btn-next" type="submit" matRipple>Next</button>
+    </div>
+  </div> -->
+</form>

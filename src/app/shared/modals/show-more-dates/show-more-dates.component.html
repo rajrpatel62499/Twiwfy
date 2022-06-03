@@ -1,0 +1,174 @@
+<button class="close-btn" (click)="onNoClick()"><img src="../../../../assets/images/close-icon.svg" alt="close" title="close"/></button>
+
+<div class="main-dates-area">
+    <div class="left-col-main-dates">
+        <div class="form-field-label">Select Dates</div>
+
+        <!-- ------dropdown-row-main---------------- -->
+        <div class="second-row-date-picker">
+            <div class="left-date-picker" bsDaterangepicker>
+                Add Dates
+            </div>
+            <div class="right-date-picker">
+                <div class="btn-group" dropdown>
+                    <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                            aria-controls="dropdown-animated">
+                            Guests <span class="caret"></span>
+                    </button>
+                    <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu"
+                        role="menu" aria-labelledby="button-animated">
+                        <li role="menuitem">
+                          <a class="dropdown-item" href="#">
+                            <div class="small-text">Adults</div>
+                            <div class="increasing-numbers">
+                                <div class="minus-icon">-</div>
+                                <div class="number-main">1</div>
+                                <div class="minus-icon">+</div>
+
+                            </div>
+
+                          </a>
+                        </li>
+                      <li role="menuitem">
+                        <a class="dropdown-item" href="#">
+                            <div class="small-text">Children<span>Ages 2-12</span> </div>
+                            <div class="increasing-numbers">
+                                <div class="minus-icon">-</div>
+                                <div class="number-main">1</div>
+                                <div class="minus-icon">+</div>
+
+                            </div>
+                        </a>
+                      </li>
+                      <li role="menuitem">
+                        <a class="dropdown-item" href="#">
+                            <div class="small-text">Infants<span>Under 2</span> </div>
+                            <div class="increasing-numbers">
+                                <div class="minus-icon">-</div>
+                                <div class="number-main">1</div>
+                                <div class="minus-icon">+</div>
+
+                            </div>
+                        </a>
+                      </li>
+                      <li role="menuitem" class="save-btn">
+                        <a class="dropdown-item" href="#">
+                            Save
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+
+            </div>
+        </div>
+
+        <!-- ----------Show-only-private-group-availablity----------------- -->
+        <div class="show-available-main">
+            <div class="heading-row-inner">
+                <div class="left-col-heading form-field-label">Show only private group availability</div>
+                <div class="right-col-heading">
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                      </label>
+                </div>
+            </div>
+            <p>Kat & Alan can host private groups of any size, up to 100 guests. Private group rates start at ₹9,496.</p>
+
+
+        </div>
+        <p>Contact Kat & Alan for dates and times not listed, or if you want to book for a larger group.</p>
+
+        <div class="button-main">
+            <button (click)="requestDates()" class="btn">Request availability</button>
+        </div>
+
+
+    </div>
+    <div class="right-col-main-hosted">
+        <div class="form-field-label">Thu, 21 Jan</div>
+
+        <!-- --------Sold-out------------------- -->
+        <div class="sold-out-main">
+                <div class="left-col-sold-main">
+                    <span class="time-title">1:30 AM - 3:00 AM (IST)</span>
+                    <div class="price-title-main">₹4,541 <span>/person</span></div>
+                    <span class="hosted-in-english">Hosted in English</span>
+                </div>
+                <div class="right-col-sold-main">
+                    <div class="sold-out-btn">Sold out</div>
+                </div>
+        </div>
+
+        <!-- -----------choose-main--------------------- -->
+        <div class="choose-event-main">
+                <div class="above-content-area">
+                    <div class="left-col-sold-main">
+                        <span class="time-title">1:30 AM - 3:00 AM (IST)</span>
+                        <div class="price-title-main">₹4,541 <span>/group</span></div>
+                        <div class="book-private-group">Book for a private group</div>
+                        <div class="comman-group-sub-title">Private groups only</div>
+                        <div class="comman-group-sub-title">Hosted in English</div>
+                    </div>
+                    <div class="right-col-sold-main">
+                        <div class="choose-btn" (click)="routeLink()"[routerLink]="['/confirm-and-pay']">Choose</div>
+                    </div>
+                </div>
+                <div class="below-contant-area">
+                    <div class="share-btn">
+                        <img src="../../../../assets/images/shared.svg" alt="shared" title="shared">
+                        Share
+                    </div>    
+
+                </div>
+        </div>
+
+        <div class="form-field-label">Thu, 21 Jan</div>
+
+        <div class="choose-event-main">
+            <div class="above-content-area">
+                <div class="left-col-sold-main">
+                    <span class="time-title">1:30 AM - 3:00 AM (IST)</span>
+                    <div class="price-title-main">₹4,541 <span>/group</span></div>
+                    <div class="book-private-group">Book for a private group</div>
+                    <div class="comman-group-sub-title">Private groups only</div>
+                    <div class="comman-group-sub-title">Hosted in English</div>
+                </div>
+                <div class="right-col-sold-main">
+                    <div class="choose-btn">Choose</div>
+                </div>
+            </div>
+            <div class="below-contant-area">
+                <div class="share-btn">
+                    <img src="../../../../assets/images/shared.svg" alt="shared" title="shared">
+                    Share
+                </div>    
+
+            </div>
+        </div>
+        <div class="choose-event-main">
+            <div class="above-content-area">
+                <div class="left-col-sold-main">
+                    <span class="time-title">1:30 AM - 3:00 AM (IST)</span>
+                    <div class="price-title-main">₹4,541 <span>/group</span></div>
+                    <div class="book-private-group">Book for a private group</div>
+                    <div class="comman-group-sub-title">Private groups only</div>
+                    <div class="comman-group-sub-title">Hosted in English</div>
+                </div>
+                <div class="right-col-sold-main">
+                    <div class="choose-btn">Choose</div>
+                </div>
+            </div>
+            <div class="below-contant-area">
+                <div class="share-btn">
+                    <img src="../../../../assets/images/shared.svg" alt="shared" title="shared">
+                    Share
+                </div>    
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div> 

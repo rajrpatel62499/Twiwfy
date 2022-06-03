@@ -1,0 +1,96 @@
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    @mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    // ----------------------------For Orientation-----------------------//
+    @mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+    @content;
+    }
+    }
+    
+    @mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+    @content;
+    }
+    }    
+// ------------END of Media Screen Mixing--------------//
+
+.heading-row {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    @include max-mq(1200){
+        padding: 15px 20px;
+    }
+    @include max-mq(767){
+        padding: 10px;
+    }
+    button.close-btn {
+        margin-bottom: 0px;
+        margin-right: 10px;
+        outline: none !important;
+        @include max-mq(767){
+            line-height: 0;
+            margin-right: 5px;    
+        }
+        img{
+            @include max-mq(767){
+                width: 12px;
+            }
+        }
+    }
+    .heading {
+        font-size: 20px;
+        text-decoration: none;
+        margin-bottom: 0;
+        @include max-mq(1300){
+            font-size: 16px;
+        }
+        @include max-mq(767){
+            font-size: 16px;
+        }
+    }
+}
+
+.content-area {
+    padding: 0px 30px;
+    padding-bottom: 30px;
+    overflow: auto;
+    @include max-mq(767){
+        height: 260px;
+    }
+    @include max-mq(567){
+        height: auto;
+    }
+}
+
+.links-main {
+    margin-bottom: 15px;
+    font-size: 14px;
+    cursor: pointer;
+    &:last-child{
+        margin-bottom: 0px;
+    }
+    img{
+        width: 18px;
+        height: 18px;
+        object-fit: scale-down;
+        margin-right: 15px;
+    }
+}

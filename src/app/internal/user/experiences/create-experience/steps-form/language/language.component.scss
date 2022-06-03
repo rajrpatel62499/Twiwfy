@@ -1,0 +1,349 @@
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    @mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    // ----------------------------For Orientation-----------------------//
+    @mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+    @content;
+    }
+    }
+    
+    @mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+    @content;
+    }
+    }    
+// ------------END of Media Screen Mixing--------------//
+
+.main-container-area {
+    display: flex;
+    margin-bottom:40px;
+    overflow-y: auto;
+    @include max-mq(991){
+        margin-bottom: 40px;
+    }
+    @include max-mq(567){
+        flex-direction: column;
+    }
+    .left-wrapper {
+        width: 80%;
+        @include max-mq(1660){
+            width: 70%;
+        }
+        @include max-mq(567){
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        .inner-width-wrapper {
+            width: 600px;
+            margin: auto;
+            @include max-mq(1660){
+                width: 420px;
+            }
+            @include max-mq(1100){
+                width: 100%;
+                padding-right: 50px;
+            }
+            @include max-mq(567){
+                padding-right: 0px;
+            }
+            p{
+                font-size: 16px;
+                line-height: 26px;
+                color: #8c8c8c;
+                @include max-mq(1660){
+                    font-size: 14px;
+                    line-height: 24px;
+                }
+                @include max-mq(1100){
+                    font-size: 12px;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+    .right-wrapper {
+        width: 20%;
+        background: #F9F9F9;
+        border-radius: 5px;
+        padding: 20px 10px;
+        @include max-mq(1660){
+            width: 30%;
+        }
+        @include max-mq(567){
+            width: 100%;
+        }
+    }
+}
+
+
+.heading {
+    font-size: 22px;
+    line-height: normal;
+    text-decoration: none;
+    @include max-mq(1600){
+        font-size: 22px;
+    }
+    @include max-mq(1400){
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+    @include max-mq(1100){
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    @include max-mq(567){
+        font-size: 16px;
+        margin-bottom: 13px;
+    }
+}
+p{
+    font-size: 16px;
+    line-height: 26px;
+    color: #9C9C9C;
+    @include max-mq(1400){
+        font-size: 13px;
+        line-height: 24px;
+    }
+    @include max-mq(567){
+        font-size: 12px;
+        line-height: 21px;
+    }
+}   
+
+
+
+
+.language-adding-main {
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    .inner-gird-lan {
+        border-top: 1px solid #d1d1d1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 17px 20px;
+        @include max-mq(1100){
+            padding: 10px 15px;
+        }
+        &:first-child{
+            border: none;
+        }
+        .in-lan-left {
+            font-size: 15px;
+            line-height: 16px;
+            color: #8C8C8C;
+            @include max-mq(1100){
+                font-size: 12px;
+                line-height: 15px
+            }
+        }
+        .delete{
+            cursor: pointer;
+        }
+        .add-lan-head {
+            color: #001534;
+        }
+        .add {
+            background: #F1F1F1;
+            border: 1px solid #D1D1D1;
+            padding: 7px;
+            border-radius: 100%;
+            cursor: pointer;
+            width: 33px;
+            @include max-mq(1100){
+                width: 28px;
+                padding: 5px;
+            }
+        }
+    }
+}
+
+
+.small-heading {
+    margin-bottom: 20px;
+    font-size: 20px;
+    line-height: 25px;
+    font-weight: 500;
+    @include max-mq(1100){
+        font-size: 16px;
+        margin-bottom: 15px;
+        line-height: 18px;
+    }
+}
+
+ul.custom-ul {
+    background: #FFFFFF;
+    border: 1px solid #F1F1F1;
+    box-sizing: border-box;
+    box-shadow: 0px 6px 2px rgb(0 0 0 / 4%);
+    border-radius: 8px;
+    padding: 30px 0px;
+    @include max-mq(1100){
+        padding: 20px 0px;
+    }
+    li{
+        position: relative;
+        font-size: 14px;
+        line-height: 20px;
+        color: #8C8C8C;
+        padding-left: 30px;
+        padding-right: 11px;
+        margin-bottom: 20px;
+        @include max-mq(1100){
+            font-size: 12px;
+            line-height: 18px;
+            margin-bottom: 10px;
+            padding-left: 24px;
+        }
+        &::before{
+            position: absolute;
+            content: "";
+            background: #000;
+            width: 8px;
+            height: 8px;
+            left: 10px;
+            top: 6px;
+            border-radius: 100%;
+            @include max-mq(1100){
+                width: 5px;
+                height: 5px;
+            }
+        }
+    }
+}
+
+
+// --------------Language-host-css----------------//
+.lan-heading {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    @include max-mq(991){
+        margin-bottom: 40px;
+    }
+    @include max-mq(991){
+        margin-bottom: 35px;
+    }
+    @include max-mq(567){
+        margin-bottom: 20px;
+        font-size: 12px;
+    }
+    img {
+        margin-right: 20px;
+        cursor: pointer;
+        @include max-mq(567){
+            width: 9px;
+            margin-right: 15px;
+        }
+    }
+}
+
+.language-grid-main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    margin-bottom: 20px;
+    @include max-mq(1660){
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @include max-mq(991){
+        grid-template-columns: repeat(1, 1fr);
+        margin-bottom: 50px;
+    }
+    @include max-mq(567){
+        grid-template-columns: repeat(1, 1fr);
+        grid-row-gap: 10px;
+    }
+
+    .inner-grid-main {
+        border: 1px solid #C4C4C4;
+        box-shadow: 0px 3px 6px rgb(0 0 0 / 16%);
+        border-radius: 5px;
+        padding: 20px 35px;
+        display: flex;
+        align-items: center;
+        @include max-mq(991){
+            padding: 14px 20px;
+        }
+        @include max-mq(567){
+            padding: 8px 20px;
+        }
+    }
+}
+
+
+.language-accordian{
+    .dropdown{
+        .btn {
+            width: 100% !important;
+            text-align: left !important;
+            box-shadow: 0px 6px 3px rgb(0 0 0 / 16%) !important;
+            background: #fff !important;
+            border-radius: 5px;
+            border: none !important;
+            padding: 16px 30px !important;
+            color: #001534 !important;
+            &::after{
+                display: none !important;
+            }
+            &::before{
+                position: absolute;
+                content: '';
+                background: url(../../../../../../../assets/images/blue-arrow.svg) no-repeat;
+                background-size: 15px;
+                width: 20px;
+                height: 20px;
+                right: 20px;
+                top: 0;
+                bottom: 0;
+                background-position: center;
+                margin: auto;
+                filter: brightness(0);
+                transform: rotateX(180deg);
+            } 
+
+        }
+        .dropdown-menu {
+            max-width: 100% !important;
+            width: 100% !important;
+            box-shadow: 0px 6px 3px rgb(0 0 0 / 16%);
+            .dropdown-item {
+                font-size: 14px;
+                padding: 10px 30px;
+            }
+        }
+    }
+
+    .required-text {
+        margin-top: 10px;
+
+        .text-danger {
+            font-weight: 400;
+            font-size  : 15px;
+        }
+    }
+}
+
+
+.language-accordian{
+    @include max-mq(1100){
+        margin-top: 30px;
+        margin-bottom: 40px;
+    }
+}

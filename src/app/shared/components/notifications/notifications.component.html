@@ -1,0 +1,48 @@
+<div class="comman-margin-top saved-main">
+    <div class="comman-container">
+        <div class="heading-row">
+            <div class="heading">Saved</div>
+            <div class="right-btn-main">
+                <button class="btn">Clear All</button>
+            </div>
+        </div>
+        <!-- ------------------Notifications-area--------------------------- -->
+        <div class="notications-main">
+            <div class="new-title">Today</div>
+
+            <div class="new-notifications-area-main" *ngFor="let newnotification of Newnotifications">
+                <div class="img-main">
+                    <img src="../../../../assets/images/new-notification.svg" alt="Notification" title="Notification">
+                </div>
+                <div class="center-col">
+                    <div class="notification-title">Lorem Ipsum is simply dummy text </div>
+                    <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                </div>
+                <div class="time-main">1 hr</div>
+
+            </div>
+
+        </div>
+
+        <div class="notications-main">
+            <div class="new-title">Yesterday</div>
+
+            <div class="new-notifications-area-main" *ngFor="let oldnotification of Oldnotifications">
+                <div class="img-main">
+                    <img src="../../../../assets/images/old-notifications.svg" alt="Notification" title="Notification">
+                </div>
+                <div class="center-col">
+                    <div class="notification-title">Lorem Ipsum is simply dummy text </div>
+                    <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                </div>
+                <div class="time-main">22/01/2021</div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+

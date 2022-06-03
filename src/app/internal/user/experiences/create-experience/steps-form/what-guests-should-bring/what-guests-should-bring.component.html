@@ -1,0 +1,72 @@
+<form #guestsForm="ngForm" (ngSubmit)="guestsForm.form.valid && next(16)">
+    <div class="main-container-area">
+        <div class="left-wrapper">
+            <div class="inner-width-wrapper">
+                <div class="heading">What guests should bring</div>
+                <p>If guests need anything in order to enjoy your experience, this is the place to tell them. Cooking
+                    experience hosts should be sure to include a complete list of ingredients here instead of planning
+                    to send it to guests later. We can’t accept submissions that don’t have a complete and specific
+                    list.</p>
+                <p>This list will be emailed to guests when they book your experience to help them prepare.</p>
+                <p>Be as detailed as possible and add each item individually.</p>
+                <!-- ----add-title-------------- -->
+               
+                <div class="add-title" *ngFor="let i of experienceData.experiencePage.itemsToBring;let in = index">
+                    <span class="txt">{{i}} </span>
+                    <span class="del" (click)="deleteItems(in)"><img
+                            src="../../../../../../../assets/images/delete-icon.svg"></span>
+                </div>
+                 <div class="add-title">
+                    <input
+                    appInputRestriction="noSpecialChars"
+                     id="addItem" (keyup.enter)="addItems(false)" 
+                    placeholder="Add Item Name" [(ngModel)]="item" name="item" maxlength="40"/>
+                </div>
+                <div >
+                    <small *ngIf="experienceData?.experiencePage?.itemsToBring?.length == 0 && isNextButtonClicked" class="text-danger">Please add atleast 1 Item.</small>
+                </div>
+                
+                <div  class="add-title" (click)="addItems(true)">
+                    <span class="txt-add">Add {{ experienceData.experiencePage.itemsToBring.length ==0 ? '': 'Another' }} Item </span>
+                    <span class="add-icon"><img src="../../../../../../../assets/images/black-add.svg"></span>
+                </div>
+            </div>
+
+        </div>
+        <!-- <div class="right-wrapper">
+            <div class="small-heading">Tips</div>
+            <div class="do-main">
+                <div class="small-heading">Do</div>
+                <ul class="say-yes">
+                    <li>Reinforce that your experience is hosted online and internet access is required</li>
+                    <li>Give people specifics and a detailed itinerary so they know what to expect</li>
+                    <li>Tell guests what they need to bring and do to prepare and participate</li>
+                    <li>Include links to your other experiences and invite guests to read the reviews</li>
+                </ul>
+            </div>
+            <div class="do-main">
+                <div class="small-heading">DON’T</div>
+                <ul class="say-no">
+                    <li>Ask guests to get supplies that are expensive or hard to find</li>
+                    <li>Offer a loose, unorganised itinerary with vague information</li>
+                    <li>Plan generic activities people are already doing on their own</li>
+                </ul>
+            </div>
+
+        </div> -->
+
+
+    </div>
+    <!-- <mat-progress-bar mode="determinate" value="70"></mat-progress-bar>
+    <div class="next-back-row-main">
+        <div class="left-text">
+            09 items to submit
+        </div>
+        <div class="button-row">
+            <button class="btn-back" (click)="next(14)" matRipple>Back</button>
+            <button class="btn-next" type="submit" matRipple>Next</button>
+
+        </div>
+
+    </div> -->
+</form>

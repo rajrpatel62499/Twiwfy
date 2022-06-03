@@ -1,0 +1,166 @@
+<form #aboutYou="ngForm" (ngSubmit)="next(14)">
+  <div class="main-container-area">
+    <div class="left-wrapper">
+      <div class="inner-width-wrapper">
+        <div class="heading">About you</div>
+
+        <!-- ------------------Describe-experience---------------------- -->
+        <div class="question-head">Your Full Name</div>
+        <p>
+          Guests want to know who’s hosting them. This must be your actual name,
+          not the name of a business. Only your first name will appear on your
+          page If you have co-hosts, you'll be able to add them later.
+        </p>
+
+        <div class="question-head">{{userProfile?.fullName}}</div>
+        <!-- <button type="button" class="update-name-btn" matRipple>Update Name</button> -->
+
+        <div class="question-head">Your Profile Photo</div>
+        <p>
+          It’s important that guests can see your face. No company logos,
+          favourite pets, blank images, etc. We can’t accept photos that don’t
+          show the real you.
+        </p>
+        <ng-container *ngIf="isProfileLoading; else showProfilePic">
+          <div style="position: relative;left: -16rem;">
+            <ngx-skeleton-loader  appearance="circle" [theme]="{ width: '70px', height: '70px' }"></ngx-skeleton-loader>
+          </div>
+        </ng-container>
+
+        <ng-template #showProfilePic>
+          
+          <ng-container *ngIf="userProfile?.profilePic; else showAvtar">
+            <div class="img-profile">
+              <img [src]="userProfile.profilePic" alt="My Profile Pic" title="My Profile Pic" />
+            </div>
+          </ng-container>
+  
+          <ng-template #showAvtar>
+            <ngx-avatar size="60" bgColor="#14649c" [name]="userProfile?.fullName ? userProfile?.fullName: 'N' "></ngx-avatar>
+          </ng-template>
+        </ng-template>
+        
+
+        
+        
+
+        <input (change)=" onFileSelect($event.target.files[0])" accept=".png, .jpg, .jpeg" hidden #profilePic
+          type="file" name="" id="">
+        <button type="button" class="update-name-btn" matRipple [disabled]="loader" (click)="profilePic.click();">
+          <i class="fa " [ngClass]="{ 'fa-spinner fa-spin mr-1' : loader}"></i>
+          Update Photo
+        </button>
+        <div class="question-head">Your Story</div>
+        <p>
+          What makes you uniquely qualified to host this experience? Tell guests
+          why you’re passionate and knowledgeable about the subject matter.
+        </p>
+        <div class="text-area-main">
+          <textarea minlength="150" maxlength="850" class="text-area-filed"
+            (ngModelChange)="isNextButtonClicked = false" [(ngModel)]="experienceData.experiencePage.yourStory"
+            name="yourstory" #yourstory="ngModel"
+            placeholder="Have you been doing this for years? Did you grow up in Ahmedabad? Don’t be afraid to brag!"
+            required></textarea>
+          <div class="error-block"
+            *ngIf="yourstory.invalid && (yourstory.dirty || yourstory.touched || aboutYou.submitted)">
+            <div class="required-text">
+              <p *ngIf="yourstory.errors.required" class="text-danger">Your story is required.</p>
+              <p *ngIf="yourstory.errors.minlength && isNextButtonClicked" class="text-danger">
+                {{yourstory.errors.minlength.requiredLength}} characters needed</p>
+            </div>
+          </div>
+
+          <p *ngIf="!isNextButtonClicked && !yourstory.errors?.required" class="">
+            {{experienceData.experiencePage.yourStory?.length}}/850</p>
+        </div>
+
+        <!-- <div class="main-expert-mind mb-4">
+          <div class="left-col-wrapper">
+            <img src="../../../../../../../assets/images/energy.svg" alt="Energy" title="Energy" />
+          </div>
+          <div class="right-col-wrapper">
+            <p>
+              <span>Keep in mind:</span> Make sure you have a clearly defined
+              itinerary. We can’t accept “open-ended” plans where guests are
+              asked to pick from a list of activities.
+            </p>
+          </div>
+        </div> -->
+        <div class="question-head mb-2">
+          Which of the following best describes you and your experience?
+        </div>
+        <div class="radio-group-custom">
+          <input type="radio" id="id1" [(ngModel)]="this.experienceData.experiencePage.hostType" name="hostType"
+            #hostType="ngModel" ngModel value="Myself" required />
+          <label for="id1">I’m hosting by myself</label>
+        </div>
+        <div class="radio-group-custom">
+          <input type="radio" id="id2" [(ngModel)]="this.experienceData.experiencePage.hostType" name="hostType"
+            #hostType="ngModel" ngModel required value="Team" />
+          <label for="id2">I have a team that helps me host</label>
+        </div>
+
+        <div class="error-block" *ngIf="
+            hostType.invalid &&
+              (hostType.dirty || hostType.touched || aboutYou.submitted)
+            ">
+          <div class="required-text" *ngIf="hostType.errors.required">
+            <p class="error text-danger">Please select any one.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="right-wrapper">
+      <div class="small-heading">Tips</div>
+      <div class="do-main">
+        <div class="small-heading">Do</div>
+        <ul class="say-yes">
+          <li>
+            Reinforce that your experience is hosted online and internet access
+            is required
+          </li>
+          <li>
+            Give people specifics and a detailed itinerary so they know what to
+            expect
+          </li>
+          <li>
+            Tell guests what they need to bring and do to prepare and
+            participate
+          </li>
+          <li>
+            Include links to your other experiences and invite guests to read
+            the reviews
+          </li>
+        </ul>
+      </div>
+      <div class="do-main">
+        <div class="small-heading">DON’T</div>
+        <ul class="say-no">
+          <li>Ask guests to get supplies that are expensive or hard to find</li>
+          <li>Offer a loose, unorganised itinerary with vague information</li>
+          <li>Plan generic activities people are already doing on their own</li>
+        </ul>
+      </div>
+
+      <div class="small-slider-main">
+        <div class="small-heading">Example</div>
+        <p>
+          Witness the fun of foraging for mushrooms with none of the mess!
+          Follow along from the comfort of your couch, as my trusty pig, Pork
+          Chop, sniffs and snorts her way to the nearest truffles. First, you’ll
+          see her pen, where she hangs out and snores when she’s not on the
+          hunt. Then, we’ll follow her through my private property as she looks
+          for the aromatic delicacy.
+        </p>
+      </div>
+    </div> -->
+  </div>
+  <!-- <mat-progress-bar mode="determinate" value="60"></mat-progress-bar>
+  <div class="next-back-row-main">
+    <div class="left-text">11 items to submit</div>
+    <div class="button-row">
+      <button class="btn-back" (click)="next(12)" matRipple>Back</button>
+      <button class="btn-next" type="submit"  matRipple>Next</button>
+    </div>
+  </div> -->
+</form>

@@ -1,0 +1,558 @@
+<div class="comman-margin-top">
+    <!-- -----------------all-online-experiences----------------- -->
+    <div class="first-row-view view-all-container">
+            <div class="left-col-heading">
+                All Online Experiences
+            </div>
+            <div class="right-col-box"> 
+                    <a class="inner-links-for-share" href="#"> <img  src="../../../../assets/images/heart.svg" alt="heart" title="heart"/></a>
+                    <a class="inner-links-for-share" (click)="shareThis()"> <img  src="../../../../assets/images/shared.svg" alt="share" title="share"/></a>
+                    <a class="inner-links-for-share view-all-photos"  matRipple>View all photos</a>
+
+            </div>
+
+    </div>
+    <!-- ------------------------------banner-grid-main-area------------------------------------ -->
+    <div class="view-all-container">
+            <div class="view-experience-grid-main">
+                    <div class="inner-grid-main disply-none first-col">
+                        <img src="../../../../assets/images/tabla-img.png" alt="pic" title="pic" />
+                    </div>
+                    <div class="inner-grid-main">
+                        <img src="../../../../assets/images/tabla-img.png" alt="pic" title="pic" />
+                    </div>
+                    <div class="inner-grid-main disply-none">
+                        <img src="../../../../assets/images/tabla-img.png" alt="pic" title="pic" />
+                    </div>
+                    <div class="inner-grid-main disply-none">
+                        <img src="../../../../assets/images/tabla-img.png" alt="pic" title="pic" />
+                    </div>
+                    <div class="inner-grid-main disply-none">
+                        <img src="../../../../assets/images/tabla-img.png" alt="pic" title="pic" />
+                    </div>
+                    <div class="inner-grid-main disply-none  first-col last-col">
+                        <img src="../../../../assets/images/tabla-img.png" alt="pic" title="pic" />
+                    </div>
+            </div>
+            <!-- -----------------------------Side-bar-row-main--------------------------- -->
+            <div class="side-bar-content-main">
+                    <!-- ------------left-col------------------- -->
+                    <div class="left-col-main">
+                        <!-- --------------heading-area------------------ -->
+                            <div class="first-heading-combine-main">
+                                    <div class="span-heading">
+                                        <img src="../../../../assets/images/tv-wifi-main.svg" alt="tv" title="tv">
+                                        <span class="online-exp">{{experience?.yourIdea?.type|titlecase}} Experience</span>
+                                    </div>
+                                    <div class="heading">
+                                        <!-- Sangria and Secrets with Drag Queens -->
+                                        {{experience?.experiencePage?.title}}
+                                    </div>
+                                    <div class="third-head-row">
+                                        <div class="country-name">{{experience?.yourIdea?.location}}</div>
+                                        <div class="rating-view">
+                                                <img src="../../../../assets/images/favorite.svg" alt="favorite" title="favorite">
+                                                <span class="rated-num">5.0 (47)</span>
+                                        </div>
+                                        <div class="part-of">
+                                            Part of  <span class="underline-twify">TWIWFY {{experience?.yourIdea?.type|titlecase}} Experiences</span>     
+                                        </div>
+                                    </div>
+
+                            </div>
+                        <!------------------------online-experince-hosted-----------------------------  -->
+                            <div class="online-experience-hosted">
+                                    <div class="pic-row-main">
+                                        <img src="../../../../assets/images/hosted-pic.png" alt="Hosted" title="hosted" class="Hoster-pic"> 
+                                        <span class="name-host">{{experience?.yourIdea?.type|titlecase}} experience hosted by {{experience?.addedBy?.fullName}}</span>
+                                    </div>
+                                    <!-- ------facilites-grids----------- -->
+                                    <div class="grid-main-features">
+                                            <div class="inner-grid-main">
+                                                    <img src="../../../../assets/images/clock-main.svg" alt="clock" title="clock">
+                                                    <span>{{experience?.settings?.duration}}</span>
+                                            </div> 
+                                            <div class="inner-grid-main">
+                                                <img src="../../../../assets/images/peoples-main.svg" alt="people" title="people">
+                                                <span>Up to {{experience?.settings?.maxGroupSize}}</span>
+                                            </div> 
+                                            <div class="inner-grid-main">
+                                                <img src="../../../../assets/images/join-tablets.svg" alt="tablets" title="tablets">
+                                                <span>Join from your {{ itemsText}}</span>
+                                            </div> 
+                                            <div class="inner-grid-main">
+                                                <img src="../../../../assets/images/chats.svg" alt="chats" title="chats">
+                                                <span>Hosted in {{ experience?.basicInformation?.language }}</span>
+                                            </div> 
+                                    </div>
+                            </div>
+                        <!-- -----------------------------------What-will-do--------------------------------------------------- -->
+                            <div class="what-will-do-main">
+                                <span class="heading-1">What you'll do</span>
+                                <!-- <p>Welcome to the nº1 Online Experience in the World! Grab your favorite device, go to your Couch, or Kitchen, and get ready for the most amazing interactive Livestream ever created!</p>
+                                <p>We are @DragTaste and we're here to bring extra happiness and unique sangria to your Life :)</p>
+                                <p>This is so much more than a live cocktail class. Fabulous Drag Queens will teach you how to make the 
+                                    most authentic, fresh, and delicious Portuguese sangria, ALL from scratch, step by step!</p>
+                                <p>We will not only share this traditional secret recipe, but we’ll also be serving up our unique live performances on stage! It’ll be a cabaret-style digital cocktail class you’ll never forget.</p>
+                                <p>Get ready for fireworks, smoke effects, lights, and AMAZING costumes that we created, especially for you!</p>
+                                <p>It's time for you to Dance, Laugh, and Cheers. Embrace these times with positivity and relax with us!</p>
+                                <p>Once we finish the Sangria we’ll hang out, toast to life, talk about Lisbon, drag culture, answer your questions, and more! At the end of the experience, you’ll make friends from all over the world—without ever leaving your own house!</p>
+                                <p>This Experience is not only for someone alone at home, but also great for team-building to reconnect with your colleagues while working from home, for birthday parties, bachelorettes, and even to connect with your family and friends, even if in different homes or countries!</p> -->
+                                <p>{{experience?.experiencePage?.experienceDescription}}</p>
+                            </div>
+                         <!-- -----------------------------------How to participate--------------------------------------------------- -->    
+                         <div class="how-to-participate">
+                                <div class="heading-1">How to participate</div>
+                                <div class="grid-box-row">
+                                    <div class="inner-grid-sys">
+                                        <div class="img-icon-row">
+                                            <img src="../../../../assets/images/join-video.svg" alt="join" title="Video">
+                                            <span>Join a video call</span>
+                                        </div>
+                                        <p>Use Zoom to participate on your desktop or mobile device. After you book, you’ll receive an email with a link and details on how to join.</p>
+                                        <a href="#" title="show-more">Show more</a>
+                                    </div>
+                                    <div class="inner-grid-sys">
+                                        <div class="img-icon-row">
+                                            <img src="../../../../assets/images/peoples-main.svg" alt="join" title="Video">
+                                            <span>Book for a private group</span>
+                                        </div>
+                                        <p>Pedro can host private groups of any size, up to 900 guests. Private group rates start at ₹93,062.</p>
+                                    </div>
+
+                                </div>
+                         </div>
+
+                    </div>
+                    
+
+                    <!-- -------------right-col-------------------- -->
+                    <div class="right-col-main">
+                        <div class="main-box-right-details">
+                            <span class="small-heading">Price Starting From</span>
+                            <!-- ---------------first-row-main---------------- -->
+                            <div class="first-row-price">
+                                <div class="left-price-main"><span>₹{{experience?.settings?.individualRate ? experience?.settings?.individualRate : 0}}/</span>person</div>
+                                <div class="right-button">
+                                    <button (click)="priceStatus()" class="btn-price">Show all prices</button>
+                                    <!-- -----Price-break-down------------- -->
+                                    <div *ngIf="price" class="price-break-down-main">
+                                            <div class="heading-row-main">
+                                                <button (click)="priceClose()" ><img src="../../../../assets/images/close-icon.svg" alt="close" title="close"></button>
+                                                <div class="small-heading">Price Breakdown</div>
+                                            </div>
+                                            <div class="content-area-main">
+                                                <div class="individual-price">
+                                                    <div class="left-price-col">
+                                                            <span class="small-heading-1">Individual prices</span>
+                                                            <span class="sub-title-heading">Each guest</span>
+                                                    </div>
+                                                    <div class="right-pric-col">
+                                                        <div class="from-price">From ₹2,747</div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="individual-price">
+                                                    <div class="left-price-col">
+                                                            <span class="small-heading-1">Private group</span>
+                                                            <span class="sub-title-heading">Up to 900 guests</span>
+                                                            <p>Final price will be determined by the number of guests.</p>
+                                                    </div>
+                                                    <div class="right-pric-col">
+                                                        <div class="from-price">From ₹2,747</div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="group-disscounts-main">
+                                                    <span class="group-disscount-heading">Group discounts</span>
+                                                    <div class="main-groups">
+                                                        <span class="left-groups">50–98 guests</span>
+                                                        <span class="right-groups">7% off</span>
+                                                    </div>
+                                                    <div class="main-groups">
+                                                        <span class="left-groups">50–98 guests</span>
+                                                        <span class="right-groups">7% off</span>
+                                                    </div>
+                                                    <p>Guest count does not include infants. Discounts may not apply to private group bookings.</p>
+
+                                                </div>
+
+
+                                            </div>    
+
+                                    </div>
+                                
+                                </div>
+                            </div>
+                            <!-- --------Second-row-main--------------- -->
+                            <div class="second-row-date-picker">
+                                    <div class="left-date-picker" bsDaterangepicker>
+                                        Add Dates
+                                    </div>
+                                    <div class="right-date-picker">
+                                        <div class="btn-group" dropdown>
+                                            <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                                                    aria-controls="dropdown-animated">
+                                                    Guests <span class="caret"></span>
+                                            </button>
+                                            <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu"
+                                                role="menu" aria-labelledby="button-animated">
+                                                <li role="menuitem">
+                                                  <a class="dropdown-item" href="#">
+                                                    <div class="small-text">Adults</div>
+                                                    <div class="increasing-numbers">
+                                                        <div class="minus-icon">-</div>
+                                                        <div class="number-main">1</div>
+                                                        <div class="minus-icon">+</div>
+
+                                                    </div>
+
+                                                  </a>
+                                                </li>
+                                              <li role="menuitem">
+                                                <a class="dropdown-item" href="#">
+                                                    <div class="small-text">Children<span>Ages 2-12</span> </div>
+                                                    <div class="increasing-numbers">
+                                                        <div class="minus-icon">-</div>
+                                                        <div class="number-main">1</div>
+                                                        <div class="minus-icon">+</div>
+
+                                                    </div>
+                                                </a>
+                                              </li>
+                                              <li role="menuitem">
+                                                <a class="dropdown-item" href="#">
+                                                    <div class="small-text">Infants<span>Under 2</span> </div>
+                                                    <div class="increasing-numbers">
+                                                        <div class="minus-icon">-</div>
+                                                        <div class="number-main">1</div>
+                                                        <div class="minus-icon">+</div>
+
+                                                    </div>
+                                                </a>
+                                              </li>
+                                              <li role="menuitem" class="save-btn">
+                                                <a class="dropdown-item" href="#">
+                                                    Save
+                                                </a>
+                                              </li>
+                                            </ul>
+                                          </div>
+
+                                    </div>
+
+                            </div>
+
+                            <!-- ---------Third-row-main--------------- -->
+                            <div class="third-row-main-choose-sold">
+                                <div class="inner-row-main">
+                                    <div class="left-inner-day">
+                                        <span class="title-main">Wed, 20 Jan</span>
+                                        <span class="time-main">1:30 AM - 3:00 AM (IST)</span>
+                                        <span class="guest-title">Join 4 other guests</span>
+
+                                    </div>
+                                    <div class="right-inner-day">
+                                        <span class="right-pricing">₹4,541/person</span>
+                                        <span class="Choose-btn">Choose</span>
+                                    </div>
+                                </div>
+                                <div class="inner-row-main">
+                                    <div class="left-inner-day">
+                                        <span class="title-main">Wed, 20 Jan</span>
+                                        <span class="time-main">1:30 AM - 3:00 AM (IST)</span>
+                                        <span class="guest-title">Join 4 other guests</span>
+
+                                    </div>
+                                    <div class="right-inner-day">
+                                        <span class="right-pricing">₹4,541/person</span>
+                                        <span class="Choose-btn">Choose</span>
+                                    </div>
+                                </div>
+                                <div class="inner-row-main">
+                                    <div class="left-inner-day">
+                                        <span class="title-main">Wed, 20 Jan</span>
+                                        <span class="time-main">1:30 AM - 3:00 AM (IST)</span>
+                                        <span class="guest-title">Join 4 other guests</span>
+
+                                    </div>
+                                    <div class="right-inner-day">
+                                        <span class="right-pricing">₹4,541/person</span>
+                                        <span class="Sold-out">Sold out</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ----------------Fourth-row-main------------------ -->
+                            <div class="fourth-row-main-btn">
+                                <button (click)="shomoreDates()" class="btn">Show more dates</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+            </div>
+            <!-- ---------------Full-content-area----------------------- -->    
+            <!-- --------what-to-bring----- -->
+            <div class="what-to-bring">
+                <div class="heading-1">What to bring</div>
+                <ul class="bring-to-list">
+                    <li>All our sessions are for 30 guests, so bring your friends & family!</li>
+                    <li>Tickets are per person, not per household/Bookings</li>
+                    <li>After booking, you'll receive the full list of ingredients</li>
+                    <li>You can find all ingredients everywhere! So don't worry ;)</li>
+                    <li>Basic utensils we will use: small pot, large jar, cutting board, knive, large spoon</li>
+
+                </ul>
+                <button class="btn">Show All</button>
+
+            </div>
+            <!-- -------------------Online experience hosted by Pedro-------------------- -->
+            <div class="online-hosted-row-main">
+                    <div class="left-col-main">
+                        <img src="../../../../assets/images/profile-pic.png" alt="Profile" title="Profile">
+                    </div>
+                    <div class="right-col-main">
+                        <div class="heading-1">{{experience?.yourIdea?.type|titlecase}} experience hosted by Pedro</div>
+                        <div class="sub-title-main">Host on Twiwfy since 2017</div>
+                        
+                        <!-- -------------Reviews-row-main---------------------- -->
+                        <div class="review-row-main">
+                            <div class="in-grid-main">
+                                <img src="../../../../assets/images/favorite.svg" alt="favorite" title="favorite">
+                                4993 Reviews
+                            </div>
+                            <div class="in-grid-main">
+                                <img src="../../../../assets/images/verified-account.svg" alt="Verified" title="Verified">
+                                Identity verified
+                            </div>
+
+                        </div>
+
+                        <p>Born and raised in Lisbon, I’m a chef & a foodie, that spent time in the US, where I was a 500lb pro wrestler. Today, I'm a skinny Drag Chef, that lives with 7 fabulous Drag Queens in @DragTaste in Lisbon, where we do unique Experiences every single day! Find us or my drag persona @TeresaAlDente on social media.</p>
+                        <p>This Experience was featured on Forbes, Vogue, New York Times, and more!</p>
+                        <p>I'm in LOVE with food and have my own cooking show on YouTube. I’ve also hosted hundreds of… <a href="#" class="read-more">read more</a></p>
+                    </div>
+
+            </div>
+            <!-- ---Co-host--- -->
+            <div class="co-hosts">
+                Co-hosts:
+                <img src="../../../../assets/images/profile-pic.png" alt="Profile" title="Profile">
+            </div>
+
+            <!-- ----------------Connect-host-------------------------- -->
+            <div class="connect-hosts-main">
+                <div class="left-col-main">
+                    <button>Contact hosts</button>
+                </div>
+                <div class="right-col-main">
+                    <img src="../../../../assets/images/yeallow-verified-main.svg" alt="Yeallow" title="Yeallow">
+                    To protect your payment, never transfer money or communicate outside of the Twiwfy website or app. Learn more
+                </div>
+
+            </div>
+            <!------------------------------------Twiwfy-online-experiences------------------------ -->
+            <div class="heading">Twiwfy Online Experiences</div>
+            <div class=" grid-system-main-hosts">
+                <div class="inner-grid-main">
+                    <img src="../../../../assets/images/though-1.svg" alt="though" title="Though"/>
+                    <div class="right-shot">
+                        <div class="heading-1">Thoughtful hosts</div>
+                        <p>Get to know hosts who share their expertise and a window into their world.</p>
+                    </div>
+                </div>
+                <div class="inner-grid-main">
+                    <img src="../../../../assets/images/though-2.svg" alt="though" title="Though"/>
+                    <div class="right-shot">
+                        <div class="heading-1">Small-group activities</div>
+                        <p>Meet people from all over the world while learning something new together.</p>
+                    </div>
+                </div>
+                <div class="inner-grid-main">
+                    <img src="../../../../assets/images/though-3.svg" alt="though" title="Though"/>
+                    <div class="right-shot">
+                        <div class="heading-1">Simple and global</div>
+                        <p>Join easily and participate from home without a lot of prep.</p>
+                    </div>
+                </div>
+
+            </div>
+            <!-- -----------------Customer-reviews-------------------------- -->
+            <div class="custom-rievews-main">
+                <div class="heading-row">
+                    <div class="heading">Customer Reviews</div>
+                    <div class="favroite-row">
+                        <img src="../../../../assets/images/favorite.svg" alt="favorite" title="Favortie" />
+                        4.95 (4993 reviews)
+                    </div>
+                </div>
+                <!----------------------- Customer-grid-main-------------------->
+                <div class="customer-grid-main">
+                    <div class="inner-grid-main">
+                            <img src="../../../../assets/images/profile-pic.png" alt="profile" title="profile" class="profiles-pics">
+                            <div class="right-col-main-review">
+                                <div class="name-customer">Stephanie</div>
+                                <div class="date-of-review">January 2021</div>
+                                <p>What an amazing and fun experience! It was fun, colorful, intriguing, entertaining and interactive! The hosts were so charming and funny, the entertainers were SKILLED!!!, and the…
+                                    <a href="#" title="read-more">read more</a></p>
+                            </div>
+                    </div>
+                    <div class="inner-grid-main">
+                        <img src="../../../../assets/images/profile-pic.png" alt="profile" title="profile" class="profiles-pics">
+                        <div class="right-col-main-review">
+                            <div class="name-customer">Stephanie</div>
+                            <div class="date-of-review">January 2021</div>
+                            <p>What an amazing and fun experience! It was fun, colorful, intriguing, entertaining and interactive! The hosts were so charming and funny, the entertainers were SKILLED!!!, and the…
+                                <a href="#" title="read-more">read more</a></p>
+                        </div>
+                    </div>
+                    <div class="inner-grid-main">
+                        <img src="../../../../assets/images/profile-pic.png" alt="profile" title="profile" class="profiles-pics">
+                        <div class="right-col-main-review">
+                            <div class="name-customer">Stephanie</div>
+                            <div class="date-of-review">January 2021</div>
+                            <p>What an amazing and fun experience! It was fun, colorful, intriguing, entertaining and interactive! The hosts were so charming and funny, the entertainers were SKILLED!!!, and the…
+                                <a href="#" title="read-more">read more</a></p>
+                        </div>
+                    </div>
+                    <div class="inner-grid-main">
+                        <img src="../../../../assets/images/profile-pic.png" alt="profile" title="profile" class="profiles-pics">
+                        <div class="right-col-main-review">
+                            <div class="name-customer">Stephanie</div>
+                            <div class="date-of-review">January 2021</div>
+                            <p>What an amazing and fun experience! It was fun, colorful, intriguing, entertaining and interactive! The hosts were so charming and funny, the entertainers were SKILLED!!!, and the…
+                                <a href="#" title="read-more">read more</a></p>
+                        </div>
+                    </div>
+                    <div class="inner-grid-main">
+                        <img src="../../../../assets/images/profile-pic.png" alt="profile" title="profile" class="profiles-pics">
+                        <div class="right-col-main-review">
+                            <div class="name-customer">Stephanie</div>
+                            <div class="date-of-review">January 2021</div>
+                            <p>What an amazing and fun experience! It was fun, colorful, intriguing, entertaining and interactive! The hosts were so charming and funny, the entertainers were SKILLED!!!, and the…
+                                <a href="#" title="read-more">read more</a></p>
+                        </div>
+                    </div>
+                    <div class="inner-grid-main">
+                        <img src="../../../../assets/images/profile-pic.png" alt="profile" title="profile" class="profiles-pics">
+                        <div class="right-col-main-review">
+                            <div class="name-customer">Stephanie</div>
+                            <div class="date-of-review">January 2021</div>
+                            <p>What an amazing and fun experience! It was fun, colorful, intriguing, entertaining and interactive! The hosts were so charming and funny, the entertainers were SKILLED!!!, and the…
+                                <a href="#" title="read-more">read more</a></p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- -----------------Show-all-------------- -->
+                <div class="text-center single-btn">
+                    <button class="btn">Show all 4993 reviews</button>
+                </div>
+
+            </div>
+            <!-- ---------Choose-from-dat--------------- -->
+            <div class="choose-from-date-main">
+                    <div class="heading-row-main">
+                        <div class="heading">Choose from available dates</div>
+                        <div class="small-text">(369 available)</div>
+                    </div>
+                    <!-- -------------------slider--------------- -->
+                    <div slickContainer #slickController="slick" [slickConfig]="config23">
+                        <ng-container *ngIf="slickController.initialize">
+                            <div slickItem class="main-img-div" *ngFor="let firstslide of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+                                    <div class="conmanfive">
+                                            <div class="date-title">Wed, 20 Jan</div>
+                                            <div class="time-title">1:30 AM - 3:00 AM (IST)</div>
+                                            <div class="join-title">Join 4 other guests</div>
+                                            <div class="price-title">₹4,541/person</div>
+                                            <button class="btn-title">Choose</button>
+                                    </div>
+
+                            </div>
+                        </ng-container>
+                    </div>
+                    <!-- --------------Show-more-btn------------------ -->
+                    <div class="show-more-btn">
+
+                            <button class="btn">Show more dates</button>
+
+                    </div>
+
+            </div>
+            <!-- -------------Things-to-know-------------------- -->
+            <div class="things-to-know-main">
+                <div class="heading mb-3">Things to know</div>
+
+                <div class="inner-row-know">
+                    <div class="comman-col-main">
+                        <div class="small-heading">Cancellation policy</div>
+                        <p>Any experience can be cancelled and fully refunded within 24 hours of purchase, or at least 7 days before the experience starts.</p>
+                        <a href="#" title="Learn More">Learn More</a>
+
+                    </div>
+                    <div class="comman-col-main">
+                        <div class="small-heading">Guest requirements</div>
+                        <p>You’ll need an internet connection and the ability to stream audio and video to participate. A link and details on how to join will be included in your booking confirmation email.</p>
+                        <a href="#" title="Show more">Show more</a>
+                    </div>
+                </div>
+
+            </div>
+            <!-- ---------------More-online-experience----------------------- -->
+            <div class="more-onlie-experience">
+                    <div class="heading">More online experiences</div>
+
+                    <div class="first-slider-of-home">
+                        <div slickContainer #slickController="slick" [slickConfig]="config32">
+                          <ng-container *ngIf="slickController.initialize">
+                            <div
+                              slickItem
+                              class="main-img-div"
+                              *ngFor="let firstslide of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+                            >
+                              <div class="img-div-main">
+                                <img
+                                  src="../../../assets/images/img-slim-making.png"
+                                  alt="img-slim"
+                                  title="img-slim"
+                                />
+                              </div>
+                              <div class="second-row-slide">
+                                <div class="left-small-heading">United States</div>
+                                <div class="right-star-img">
+                                  <img
+                                    src="../../../assets/images/favorite.svg"
+                                    alt="fav"
+                                    title="fav"
+                                  />
+                                  5.0 (47)
+                                </div>
+                              </div>
+                              <div class="third-row-slide">
+                                <div class="left-col-bold">
+                                  <div class="up-heading">Slim-Making with a Scientist</div>
+                                  <div class="low-heading">From ₹4,541/person</div>
+                                </div>
+                                <div class="right-col-heart-img">
+                                  <img
+                                    src="../../../assets/images/heart.svg"
+                                    alt="heart"
+                                    title="heart"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </ng-container>
+                        </div>
+                      </div>
+
+
+            </div>
+
+            <!-- --------------- -->
+
+    </div>
+
+
+
+</div>

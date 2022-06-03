@@ -1,0 +1,170 @@
+<div class="main-create-experience">
+    <!-- ---------------left-comman-images------------------- -->
+    <div class="left-col-img-comman">
+        <div class="logo-row-main">TWIWFY</div>
+        <div class="first-img-main-main">
+            <img src="../../../../../assets/images/circle-img.png" class="circle-img" alt="circle" title="circle">
+            <div class="main-row-for-img">
+                <div class="left-col-img-vector">
+                    <div class="pink-vector"></div>
+                    <img src="../../../../../assets/images/jaya.png" alt="jaya" title="jaya" class="jaya-img" />
+                </div>
+                <div class="right-col-img-vector">
+                    <div class="parrot-color"></div>
+                    <img src="../../../../../assets/images/yeallow-img.png" alt="yeallow" title="yeallow"
+                        class="yeallow-img">
+                    <div class="blue-round"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ---------------right-comman-area-------------------------- -->
+    <div class="right-col-content-main">
+        <div class="inner-box-white-box">
+            <div class="Logo-row">
+                <a title="Twiwfy" [routerLink]="['/home']">Twiwfy</a>
+                <div class="headers-btn-rows">
+                    <!-- <button class="btn-save mr-2" matRipple *ngIf="currentComponentIndex==27" (click)="previewClick(35)">Preview</button> -->
+                    <button class="btn-save" (click)="saveExperience()" matRipple>Save & Exit</button>
+                </div>
+            </div>
+            <!-- <div class="heading-main-row">
+                <div>
+                    <h2 class="heading">Submit Your Experience</h2>
+                </div>
+                <div>
+                    <button class="btn-save" matRipple *ngIf="currentComponentIndex==27" (click)="previewClick(35)">Preview</button> &nbsp;
+                    <button class="btn-save" (click)="saveExperience()" matRipple>Save & Exit</button>
+                </div>
+            </div>
+            <div class="experience-type-heading">Experience type</div> -->
+
+            <!-- ------------------left-right-col-main-------------------- -->
+            <div class="experience-main-form">
+                <!-- ------------inner-contet---------------- -->
+                <app-left-sidebar
+                    [data]="modal"
+                    [step]="step"
+                    [activeIndices]="activeIndices"
+                    [currentComponentIndex]="currentComponentIndex"
+                    (setStepEvent)="setStep($event)"
+                    data-aos="fade-right" data-aos-delay="100"
+                ></app-left-sidebar>
+                <div data-aos="fade-left" data-aos-delay="100" class="right-side-main">
+                    <!-- -------------------custom-components---------------- -->
+
+                <div id="component-header" class="components">
+
+                    <app-experience-type #child1 *ngIf="currentComponentIndex == 1" [data]="modal" 
+                    (changeExperienceType)="refreshCount()"
+                    (stepEvent)="changeStep($event)">
+                    </app-experience-type>
+                    <app-location #child2 *ngIf="currentComponentIndex == 2" [data]="modal" (stepEvent)="changeStep($event)">
+                    </app-location>
+                    <app-your-theme #child3 *ngIf="currentComponentIndex == 3" [data]="modal" [themesCat]="themes"
+                        (stepEvent)="changeStep($event)"></app-your-theme>
+                    <app-overview #child4 *ngIf="currentComponentIndex == 4" (stepEvent)="changeStep($event)"></app-overview>
+                    <app-expertise #child5 *ngIf="currentComponentIndex == 5" [data]="modal" (stepEvent)="changeStep($event)">
+                    </app-expertise>
+                    <app-participation #child6 *ngIf="currentComponentIndex == 6" [data]="modal" (stepEvent)="changeStep($event)">
+                    </app-participation>
+                    <app-easy-to-do #child7 *ngIf="currentComponentIndex == 7" [data]="modal" (stepEvent)="changeStep($event)">
+                    </app-easy-to-do>
+                    <app-technical-quality #child8 *ngIf="currentComponentIndex == 8" [data]="modal" (stepEvent)="changeStep($event)">
+                    </app-technical-quality>
+                    <app-language #child9 *ngIf="currentComponentIndex == 9" [data]="modal" (stepEvent)="changeStep($event)">
+                    </app-language>
+                    <app-audience #child10 *ngIf="currentComponentIndex == 10" [data]="modal" 
+                    (stepEvent)="changeStep($event)"
+                    (isNonProfitTypeChanged)="refreshCount()"
+                    >
+                    </app-audience>
+                    <app-organisation #child11 *ngIf="currentComponentIndex == 11" [data]="modal" (stepEvent)="changeStep($event)">
+                    </app-organisation>
+                    <app-what-we-will-do #child12 *ngIf="currentComponentIndex == 12" [data]="modal" (stepEvent)="changeStep($event)">
+                    </app-what-we-will-do>
+                    <app-about-you #child13 *ngIf="currentComponentIndex == 13" [data]="modal" (stepEvent)="changeStep($event)">
+                    </app-about-you>
+                    <app-non-profit-organisation #child14 *ngIf="currentComponentIndex == 14" [data]="modal"
+                        (stepEvent)="changeStep($event)"></app-non-profit-organisation>
+                    <app-what-guests-should-bring #child15 *ngIf="currentComponentIndex == 15" [data]="modal"
+                        (stepEvent)="changeStep($event)"></app-what-guests-should-bring>
+                    <app-title #child16 *ngIf="currentComponentIndex == 16" [data]="modal" (stepEvent)="changeStep($event)"></app-title>
+                    <app-photos #child17 *ngIf="currentComponentIndex == 17" [data]="modal" (stepEvent)="changeStep($event)">
+                    </app-photos>
+
+                    <app-video-demostration #child18 *ngIf="currentComponentIndex == 18" [data]="modal"
+                        (stepEvent)="changeStep($event)"></app-video-demostration>
+                    <app-guest-requirements #child19 *ngIf="currentComponentIndex == 19" [data]="modal"
+                        (stepEvent)="changeStep($event)"></app-guest-requirements>
+                    <app-group-size #child20 *ngIf="currentComponentIndex == 20" [data]="modal" (stepEvent)="changeStep($event)">
+                    </app-group-size>
+                    <app-contribution #child21 *ngIf="currentComponentIndex == 21" [data]="modal" (stepEvent)="changeStep($event)">
+                    </app-contribution>
+                    <app-duration #child22 *ngIf="currentComponentIndex == 22" [data]="modal" (stepEvent)="changeStep($event)">
+                    </app-duration>
+                    <app-guest-pricing #child23 *ngIf="currentComponentIndex == 23" [data]="modal" (stepEvent)="changeStep($event)">
+                    </app-guest-pricing>
+                    <app-private-groups #child24 *ngIf="currentComponentIndex == 24" [data]="modal" (stepEvent)="changeStep($event)">
+                    </app-private-groups>
+                    <app-booking-settings #child25 *ngIf="currentComponentIndex == 25" [data]="modal" (stepEvent)="changeStep($event)">
+                    </app-booking-settings>
+                    <app-your-information #child26 *ngIf="currentComponentIndex == 26" [data]="modal" (stepEvent)="changeStep($event)">
+                    </app-your-information>
+                    <app-review-submit #child27 *ngIf="currentComponentIndex == 27" [data]="modal" (stepEvent)="changeStep($event)">
+                    </app-review-submit>
+
+
+                    <app-cleanning-guidelines #child28 *ngIf="currentComponentIndex == 28" [data]="modal"
+                        (stepEvent)="changeStep($event)"></app-cleanning-guidelines>
+                    <app-practise-good-hygiene #child29 *ngIf="currentComponentIndex == 29" [data]="modal"
+                        (stepEvent)="changeStep($event)"></app-practise-good-hygiene>
+                    <app-avoid-physical-contact #child30 *ngIf="currentComponentIndex == 30" [data]="modal"
+                        (stepEvent)="changeStep($event)"></app-avoid-physical-contact>
+                    <app-make-location-adjustment #child31 *ngIf="currentComponentIndex == 31" [data]="modal"
+                        (stepEvent)="changeStep($event)"></app-make-location-adjustment>
+                    <app-follow-cleaning-protocols #child32 *ngIf="currentComponentIndex == 32" [data]="modal"
+                        (stepEvent)="changeStep($event)"></app-follow-cleaning-protocols>
+                    <app-check-your-understanding #child33 *ngIf="currentComponentIndex == 33" [data]="modal"
+                        (stepEvent)="changeStep($event)"></app-check-your-understanding>
+                    <app-your-commitment #child34  *ngIf="currentComponentIndex == 34" [data]="modal" (stepEvent)="changeStep($event)">
+                    </app-your-commitment>
+
+                    
+                    <app-your-preview #child35 *ngIf="currentComponentIndex == 35" [data]="modal" (stepEvent)="changeStep($event)">
+                    </app-your-preview>
+
+                 </div>
+
+
+                    <!-- ------------------end-of-custom-components------------------ -->
+                    <div class="fixed-btns">
+                        <mat-progress-bar mode="determinate" [value]="progressValue"></mat-progress-bar>
+                        <div class="next-back-row-main">
+                                <div class="left-text">
+                                    {{currentCount}} items to submit
+                                </div>
+                                <div class="button-row">
+                                    <button *ngIf="this.currentComponentIndex != 1" class="btn-back" (click)="goBack()" matRipple>Back</button>
+                                    <button type="submit" class="btn-next" (click)="goNext()" matRipple> 
+                                        {{ nextButtonText }}
+                                    </button>
+
+                                </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>

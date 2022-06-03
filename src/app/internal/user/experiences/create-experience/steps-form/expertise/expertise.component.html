@@ -1,0 +1,73 @@
+<form #expertise='ngForm' (ngSubmit)="expertise.form.valid && next(6)">
+<div class="custom-row">
+
+    <div class="left-col">
+            <img class="first-img" src="../../../../../../../assets/images/expert-1.png" alt="expert" title="expert">
+            <div class="second-row-in">
+                <div class="in-left">
+                    <img class="in-first" src="../../../../../../../assets/images/expert-2.png" alt="expert" title="expert" />
+                    <img class="in-second" src="../../../../../../../assets/images/expert-3.png" alt="expert" title="expert" />
+                </div>
+                <div class="in-right">
+                    <img src="../../../../../../../assets/images/piano-artist.png" alt="piano" title="piano" class="piano">
+                </div>
+            </div>
+    </div>
+    <div class="right-col">
+        <div class="heading">Expertise</div>
+        <p>We’re looking for passionate storytellers who can share a unique perspective and insider knowledge.</p>
+        <span class="form-head-label">This could include:</span>
+        <ul class="custom-ul">
+            <li> Being a well-informed enthusiast</li>
+            <li> Having specialised training</li>
+            <li>Having achievements in your field</li>
+        </ul>
+        <p style="margin-top:50px">Guests value hosts with a distinctive point of view they<br/>
+            can’t find elsewhere.</p>
+        <span class="form-head-label">Have you hosted this activity before?</span>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="changeHosted(1)" id="professionally" value="HostedProfessionally" name="activity" #activity="ngModel" ngModel [(ngModel)]="experienceData.whatWeAreLookingFor.hostedBefore" required>
+            <label for="professionally">Yes, I’ve hosted or taught this activity professionally</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="changeHosted(2)" id="friend_and_family" value="HostedWithFamily" name="activity" #activity="ngModel" ngModel [(ngModel)]="experienceData.whatWeAreLookingFor.hostedBefore" required>
+            <label for="friend_and_family">Yes, I’ve hosted this activity informally for friends or family</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="changeHosted(3)" id="activity_before" value="NotHosted" name="activity" #activity="ngModel" ngModel [(ngModel)]="experienceData.whatWeAreLookingFor.hostedBefore" required>
+            <label for="activity_before">No, I’ve never hosted this activity before</label>
+        </div>
+        
+        <div class="error-block"
+                    *ngIf="activity.invalid && (activity.dirty || activity.touched || expertise.submitted)">
+                    <div class="required-text" *ngIf="activity.errors.required">
+                        <p class="error text-danger">Please select any one activity</p>
+                    </div>
+        </div>
+
+        <!-- <div class="Host-alert">
+            <div class="left-col-in">
+                <img src="../../../../../../../assets/images/alert-icon.svg" alt="alert" title="alert">
+            </div>
+            <div class="right-col-in">
+                <div class="small-heading">Hosts should have specific insight and knowledge about 
+                    any animals they feature.</div>
+                <p>Consider choosing a different theme.</p>
+            </div>
+        </div> -->
+
+    </div>
+
+</div>
+<!-- <mat-progress-bar mode="determinate" value="25"></mat-progress-bar>
+<div class="next-back-row-main">
+    <div class="left-text">
+        18 items to submit
+    </div>
+    <div class="button-row">
+        <button class="btn-back" (click)="next(4)" matRipple>Back</button>
+        <button class="btn-next" type="submit" matRipple>Next</button>
+    </div>
+
+</div> -->
+</form>

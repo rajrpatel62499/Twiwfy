@@ -1,0 +1,431 @@
+<div class="comman-margin-top saved-main">
+    <div class="comman-container">
+
+       <!-- ----------Breadcumbs------------------------- -->
+       <div class="breadcumbs-main">
+        <div class="bredcumb-title">Account</div> 
+        > 
+        <div class="bredcumb-title second-margin-left">Payments & Payouts</div>
+    </div>
+
+    <!-- ---------Content-area---------------------- -->
+
+    <div class="personal-info-main">
+
+        <div class="left-col-info">
+            <div class="inner-wrapper-main">
+                <div class="heading-row-main">
+                    <div class="left-heading">Payments & Payouts</div>
+                </div>
+                <!----------------------------- Tabs-main---------------------------------------------- -->
+                <div class="tabs-for-trasnsactions">
+                    <nav>
+                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Payments</a>
+                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Transaction history</a>
+                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Taxes</a>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <!-- ---------------------First-tab-main--------------- -->
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <!-- --------------added-payment-method--------------- -->
+                            <div class="payment-method-added-main">
+                                <div class="form-title">Payment Methods</div>
+                                <div class="row-card-added">
+                                    <div class="left-card-side">
+                                        <img src="../../../../assets/images/visa-card.svg" alt="img" title="img">
+                                        <div class="card-details-main">
+                                            <div class="card-num">**** **** 0123 <span class="default">DEFAULT</span></div>
+                                            <div class="expiration-date">Expiration: 08/21</div>
+                                        </div>                     
+                                    </div>
+                                    <div class="right-card-side">
+                                        <a href="#" title="edit"><img src="../../../../assets/images/edit.svg" alt="edit" title="edit"/></a>
+                                        <a href="#" title="edit"><img src="../../../../assets/images/delete-main.svg" alt="Delete" title="Delete"/></a>
+                                    </div>
+                                </div>
+                                <div class="row-card-added">
+                                    <div class="left-card-side">
+                                        <img src="../../../../assets/images/union-bank.svg" alt="img" title="img">
+                                        <div class="card-details-main">
+                                            <div class="card-num">Union Bank of India 1101</div>
+                                            <div class="expiration-date">Saving Account</div>
+                                        </div>                     
+                                    </div>
+                                    <div class="right-card-side">
+                                        <a href="#" title="edit"><img src="../../../../assets/images/edit.svg" alt="edit" title="edit"/></a>
+                                        <a href="#" title="edit"><img src="../../../../assets/images/delete-main.svg" alt="Delete" title="Delete"/></a>
+                                    </div>
+                                </div>
+
+                                <!-- ---------------Link-a-bank-card---------------------- -->
+
+                                <div class="links-bank-card-main">
+                                    <div class="gray-title">Link a bank or Card</div>
+                                    <div class="grid-links">
+                                        <div class="inner-grid" (click)="linkBankaccount()">
+                                            <img src="../../../../assets/images/link-a-bank.svg" alt="img" title="img">
+                                            <span>Link a bank</span>
+                                        </div>
+                                        <div class="inner-grid" (click)="linkCard()">
+                                            <img src="../../../../assets/images/link-card.svg" alt="img" title="img">
+                                            <span>Link a card</span>
+                                        </div>
+                                    </div>
+                                    <div class="Coupnes-main">
+                                        <div class="form-title">Coupons</div>
+                                        <p>Add a coupon and save on your next experience.</p>
+                                        <input type="text" placeholder="Your coupons">
+                                        <button class="custom-btn">Add coupon</button>
+                                        
+                                    </div>
+
+
+                                </div>
+                                
+
+
+                            </div>
+
+
+                            
+                        </div>
+                        <!-- ---------------Second-tabs-main---------------------- -->
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <div class="main-drops-area-history">
+                                    <div class="first-dropdown-row">
+                                        <div class="comman-col">
+                                            <div class="btn-group" dropdown>
+                                                <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                                                        aria-controls="dropdown-animated">
+                                                        All payout method <span class="caret"></span>
+                                                </button>
+                                                <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu"
+                                                    role="menu" aria-labelledby="button-animated">
+                                                    <li role="menuitem">
+                                                      <a class="dropdown-item" href="#">Demo one</a>
+                                                    </li>
+                                                    <li role="menuitem">
+                                                        <a class="dropdown-item" href="#">Demo two</a>
+                                                    </li>
+                                                    <li role="menuitem">
+                                                        <a class="dropdown-item" href="#">Demo three</a>
+                                                    </li>
+                                                  
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                        <div class="comman-col">
+                                            <div class="btn-group" dropdown>
+                                                <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                                                        aria-controls="dropdown-animated">
+                                                        All listing experience <span class="caret"></span>
+                                                </button>
+                                                <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu"
+                                                    role="menu" aria-labelledby="button-animated">
+                                                    <li role="menuitem">
+                                                      <a class="dropdown-item" href="#">Demo one</a>
+                                                    </li>
+                                                    <li role="menuitem">
+                                                        <a class="dropdown-item" href="#">Demo two</a>
+                                                    </li>
+                                                    <li role="menuitem">
+                                                        <a class="dropdown-item" href="#">Demo three</a>
+                                                    </li>
+                                                  
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- -------------second-row------------------------ -->
+                                    <div class="second-dropdown-row">
+                                            <div class="commn-col-2">
+                                                <div class="form-title">From</div>
+                                                <div class="btn-group" dropdown>
+                                                    <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                                                            aria-controls="dropdown-animated">
+                                                            January <span class="caret"></span>
+                                                    </button>
+                                                    <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu"
+                                                        role="menu" aria-labelledby="button-animated">
+                                                        <li role="menuitem">
+                                                          <a class="dropdown-item" href="#">Demo one</a>
+                                                        </li>
+                                                        <li role="menuitem">
+                                                            <a class="dropdown-item" href="#">Demo two</a>
+                                                        </li>
+                                                        <li role="menuitem">
+                                                            <a class="dropdown-item" href="#">Demo three</a>
+                                                        </li>
+                                                      
+                                                    </ul>
+                                                </div>
+                                                <div class="btn-group" dropdown>
+                                                    <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                                                            aria-controls="dropdown-animated">
+                                                            2021 <span class="caret"></span>
+                                                    </button>
+                                                    <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu"
+                                                        role="menu" aria-labelledby="button-animated">
+                                                        <li role="menuitem">
+                                                          <a class="dropdown-item" href="#">Demo one</a>
+                                                        </li>
+                                                        <li role="menuitem">
+                                                            <a class="dropdown-item" href="#">Demo two</a>
+                                                        </li>
+                                                        <li role="menuitem">
+                                                            <a class="dropdown-item" href="#">Demo three</a>
+                                                        </li>
+                                                      
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                            <div class="commn-col-2">
+                                                <div class="form-title">To</div>
+                                                <div class="btn-group" dropdown>
+                                                    <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                                                            aria-controls="dropdown-animated">
+                                                          March <span class="caret"></span>
+                                                    </button>
+                                                    <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu"
+                                                        role="menu" aria-labelledby="button-animated">
+                                                        <li role="menuitem">
+                                                          <a class="dropdown-item" href="#">Demo one</a>
+                                                        </li>
+                                                        <li role="menuitem">
+                                                            <a class="dropdown-item" href="#">Demo two</a>
+                                                        </li>
+                                                        <li role="menuitem">
+                                                            <a class="dropdown-item" href="#">Demo three</a>
+                                                        </li>
+                                                      
+                                                    </ul>
+                                                </div>
+                                                <div class="btn-group" dropdown>
+                                                    <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                                                            aria-controls="dropdown-animated">
+                                                            2021 <span class="caret"></span>
+                                                    </button>
+                                                    <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu"
+                                                        role="menu" aria-labelledby="button-animated">
+                                                        <li role="menuitem">
+                                                          <a class="dropdown-item" href="#">Demo one</a>
+                                                        </li>
+                                                        <li role="menuitem">
+                                                            <a class="dropdown-item" href="#">Demo two</a>
+                                                        </li>
+                                                        <li role="menuitem">
+                                                            <a class="dropdown-item" href="#">Demo three</a>
+                                                        </li>
+                                                      
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                    </div>
+                                    <!---------------------Third-row--------------------- -->
+                                    <div class="paid-out-main">
+                                        <div class="paid-left">
+                                            <span class="paid-title">Paid Out:</span>
+                                            <span class="paid-value">Rs. 5000</span>
+                                        </div>
+                                        <div class="paid-right">
+                                            <div class="btn-group" dropdown>
+                                                <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                                                        aria-controls="dropdown-animated">
+                                                        Export <span class="caret"></span>
+                                                </button>
+                                                <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu"
+                                                    role="menu" aria-labelledby="button-animated">
+                                                    <li role="menuitem">
+                                                      <a class="dropdown-item" href="#">
+                                                          <img src="../../../../assets/images/pdf-icon.svg" alt="pdf" title="pdf">
+                                                          PDF
+                                                      </a>
+                                                    </li>
+                                                    <li role="menuitem">
+                                                        <a class="dropdown-item" href="#">
+                                                            <img src="../../../../assets/images/csv-icon.svg" alt="csv" title="csv">
+                                                            CSV  
+                                                        </a>
+                                                    </li>
+                                                    <li role="menuitem">
+                                                        <a class="dropdown-item" href="#">
+                                                            <img src="../../../../assets/images/csv-icon.svg" alt="csv" title="csv">
+                                                            JPG
+                                                        </a>
+                                                    </li>
+                                                  
+                                                </ul>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <!-- ------------------Fourth-row--------------------- -->
+                                    <div class="table-main-div">
+                                        <div class="inner-wrapper-table">
+                                            <div class="month-name">January_2021</div>
+                                            <!-- transaction-row-------------- -->
+                                            <div class="transactions-row" *ngFor="let item of transactions">
+                                                <div class="first-col">
+                                                    <div class="card-pics">
+                                                        <img src="../../../../assets/images/credit-card.svg" alt="img" title="img">
+                                                        <div class="com-title">John doe</div>
+                                                    </div>     
+                                                </div>
+                                                <div class="second-col">
+                                                    <div class="com-title group-event-color">Group event</div>
+                                                </div>
+                                                <div class="third-col">
+                                                    <div class="status-col">
+                                                        <div class="com-icon credit-color-icon"></div>
+                                                        <div class="status-title">Credit</div>
+                                                    </div>
+                                                </div>
+                                                <div class="fourth-col">
+                                                    <div class="data-time">10 Jan, 2021 - 07:00 AM - 09:00 AM</div>
+                                                </div>
+                                                <div class="last-col">
+                                                    <div class="credited-balance">+ Rs. 500</div>
+                                                </div>
+                                            </div>
+                                            <!-- -------------Divider-------------- -->
+                                            <div class="diveder"></div>
+                                        </div>
+
+
+
+                                    </div>
+                            </div>
+                        </div>
+                        <!-- ------------------------------Thrid-tab-main------------------- -->
+                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                <div class="vat-tabs-main"> 
+                                    <div class="form-title">VAT</div>
+                                    <p class="description-short">If you are registered for VAT or your stay is for business, you may not be charged VAT on Twiwfy service fees. To get started, enter your business’s VAT ID Number.</p>
+                                    <div class="learn-more">
+                                        <a href="#" title="Learn moren about VAT">Learn more about VAT</a>
+                                    </div>
+
+                                    <button (click)="addVat()" class="custom-btn">Add VAT ID Number</button>
+                                    
+                                    <!-- ----------Business-informations----------------------- -->
+                                    <div class="business-informations-main">
+                                            <div class="first-row-business">
+                                                <div class="form-title">Business Information</div>
+                                                <div class="pending-verification">Pending Verification</div>
+                                                <div class="approved">Approved</div>
+                                            </div>
+                                            <div class="second-row-business">
+                                                <div class="left-col-main">
+                                                    <div class="form-title">Registered Business Name :</div>
+                                                    <div class="form-value">ABC</div>
+                                                </div>
+                                                <div class="right-col-main">
+                                                    <img src="../../../../assets/images/edit.svg" alt="edit" title="edit">
+                                                </div>
+                                            </div>
+                                            <div class="comman-row-for-business">
+                                                <div class="form-title">GST Number :</div>
+                                                <div class="form-value">29AADCB2230M1ZP</div>
+                                            </div>
+                                            <div class="comman-row-for-business">
+                                                <div class="form-title">VAT ID Number :</div>
+                                                <div class="form-value">ATU00000024 </div>
+                                            </div>
+                                            <div class="comman-row-for-business">
+                                                <div class="form-title">Business Address :</div>
+                                                <div class="form-value">3790  Irish Lane, Madison, WI, Wisconsin, 53704</div>
+                                            </div>
+
+                                            <div class="form-title">Legal Document:</div>
+                                            <!-- -----------business-proof-main-------------- -->
+                                            <div class="business-proof-main">
+                                                <div class="busineess-proof-title">Business Proof</div>
+                                                <div class="detais-of-upload-file">
+                                                    <div class="img-col">
+                                                        <img src="../../../../assets/images/jpg-icon.svg" alt="JPG" title="JPG" />
+                                                    </div>
+                                                    <div class="center-col">
+                                                        <div class="file-name">Image name.jpg</div>
+                                                        <div class="file-description">13 Jan, 2021 at 11:05 - 1.4 Mb / 4.8 Mb</div>
+                                                    </div>
+                                                    <div class="action-btn">
+                                                        <a href="#" title="download" class="download-btn">
+                                                            <img src="../../../../assets/images/download.svg" alt="download" title="download"/>
+                                                        </a>
+                                                        <a href="#" title="delete" class="delete-btn">
+                                                            <img  src="../../../../assets/images/delete-red.svg" alt="delete" title="delete" />
+                                                        </a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="business-proof-main">
+                                                <div class="busineess-proof-title">Company Certificate</div>
+                                                <div class="detais-of-upload-file">
+                                                    <div class="img-col">
+                                                        <img src="../../../../assets/images/jpg-icon.svg" alt="JPG" title="JPG" />
+                                                    </div>
+                                                    <div class="center-col">
+                                                        <div class="file-name">Image name.jpg</div>
+                                                        <div class="file-description">13 Jan, 2021 at 11:05 - 1.4 Mb / 4.8 Mb</div>
+                                                    </div>
+                                                    <div class="action-btn">
+                                                        <a href="#" title="download" class="download-btn">
+                                                            <img src="../../../../assets/images/download.svg" alt="download" title="download"/>
+                                                        </a>
+                                                        <a href="#" title="delete" class="delete-btn">
+                                                            <img  src="../../../../assets/images/delete-red.svg" alt="delete" title="delete" />
+                                                        </a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+        <div class="right-col-info">
+                <div class="right-inner-wrapper">
+                    <div class="inner-divs">
+                        <img src="../../../../assets/images/pay-ment.svg" alt="lock" title="lock">
+                        <div class="right-title">Make all payments through TWIWFY</div>
+                        <p>Always pay and communicate through Twiwfy to ensure you're protected under our Terms of Service, Payments Terms of Service, cancellation, and other safeguards. 
+                            <span class="learn-more">Learn more</span></p>
+                        
+                    </div>
+                </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    </div>
+
+
+</div>
+
+
+

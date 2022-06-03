@@ -1,0 +1,307 @@
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+        @content;
+    }
+}
+
+@mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+        @content;
+    }
+}
+
+// ----------------------------For Orientation-----------------------//
+@mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+        @content;
+    }
+}
+
+@mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+        @content;
+    }
+}
+
+// ------------END of Media Screen Mixing--------------//
+
+.heading {
+    font-size      : 28px;
+    text-decoration: none;
+    @include max-mq(1100){
+        font-size: 22px;
+        text-decoration: none;
+        line-height: normal;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+    @include max-mq(991){
+        font-size: 18px;
+        text-decoration: none;
+        line-height: normal;
+        margin-bottom: 15px;
+        margin-top: 10px;
+    }
+}
+
+p {
+    font-size  : 16px;
+    line-height: 26px;
+    color      : #9C9C9C;
+    @include max-mq(1100){
+        font-size: 14px;
+        line-height: 20px;
+    }
+    @include max-mq(567){
+        font-size: 12px;
+        line-height: 18px;
+    }
+}
+
+.form-head-label {
+    display      : block;
+    font-size    : 16px;
+    line-height  : 25px;
+    font-weight  : 500;
+    margin-bottom: 20px;
+    margin-top   : 30px;
+    @include max-mq(1100){
+        font-size: 14px;
+        line-height: 21px;
+        font-weight: 500;
+        margin-bottom: 15px;
+        margin-top: 20px;
+    }
+}
+
+.custom-row {
+    display      : flex;
+    margin-bottom: 100px;
+
+    @include max-mq(1350) {
+        margin-bottom : 30px;
+        flex-direction: column;
+    }
+
+    .left-col {
+        width: 35%;
+
+        @include max-mq(1350) {
+            width        : 100%;
+            margin-bottom: 25px;
+            display      : flex;
+        }
+        @include max-mq(991){
+            flex-direction: column;
+        }
+
+        .first-img {
+            width        : 100%;
+            margin-bottom: 15px;
+            border-radius: 90px 0px 90px;
+
+            @include max-mq(1550) {
+                height    : 300px;
+                object-fit: cover;
+            }
+
+            @include max-mq(1350) {
+                height       : 240px;
+                object-fit   : cover;
+                margin-right : 10px;
+                margin-bottom: 0px;
+                width        : 90%;
+            }
+            @include max-mq(1100){
+                height: 240px;
+                width: 80%;
+                border-radius: 50px 0px 50px;
+            }
+            @include max-mq(991){
+                height: auto;
+                width: 100%;
+                border-radius: 30px 0px 30px;
+                margin-bottom: 15px;
+                margin-right: 0px;
+            }
+        }
+
+        .second-row-in {
+            width  : 100%;
+            display: flex;
+
+            .in-left {
+                width: 30%;
+
+                @include max-mq(1350) {
+                    width: 35%;
+                }
+                @include max-mq(567){
+                    width: 38%;
+                }
+
+                img {
+                    width: 100%;
+                }
+
+                .in-first {
+                    margin-bottom: 10px;
+                    border-radius: 20px;
+                    @include max-mq(1100){
+                        margin-bottom: 6px;
+                        border-radius: 15px;
+                    }
+                }
+
+                .in-second {
+                    border-radius: 20px 20px 20px 60px;
+                    @include max-mq(1100){
+                        border-radius: 15px 15px 15px 40px;
+                    }
+                }
+            }
+
+            .in-right {
+                width      : 70%;
+                margin-left: 10px;
+
+                .piano {
+                    height       : 226px;
+                    width        : 100%;
+                    object-fit   : cover;
+                    border-radius: 40px;
+
+                    @include max-mq(1660) {
+                        height: 179px;
+                    }
+
+                    @include max-mq(1500) {
+                        height: 165px;
+                    }
+
+                    @include max-mq(1350) {
+                        height: 245px;
+                    }
+                    @include max-mq(1100){
+                        height: 250px;
+                        border-radius: 20px;
+                    }
+                    @include max-mq(380){
+                        height: 220px;
+                    }
+                }
+            }
+        }
+    }
+
+    .right-col {
+        width       : 65%;
+        padding-left: 50px;
+
+        @include max-mq(1660) {
+            padding-left: 40px;
+        }
+
+        @include max-mq(1350) {
+            padding-left: 0px;
+        }
+        @include max-mq(1100){
+            width: 100%;
+        }
+    }
+
+    .error-block {
+        .required-text {
+            font-weight: 400;
+            font-size  : 15px;
+        }
+    }
+}
+
+.custom-ul {
+    li {
+        padding-left : 20px;
+        margin-bottom: 15px;
+        font-size    : 14px;
+        color        : #878787;
+        position     : relative;
+
+        span {
+            font-size  : 14px;
+            color      : #000;
+            font-weight: 500;
+        }
+
+        &::before {
+            position     : absolute;
+            content      : '';
+            background   : #000;
+            width        : 8px;
+            height       : 8px;
+            left         : 0;
+            top          : 7px;
+            border-radius: 100%;
+        }
+    }
+}
+
+.Host-alert {
+    border       : 1px solid #D1D1D1;
+    box-sizing   : border-box;
+    border-radius: 8px;
+    padding      : 13px 10px;
+    margin-top   : 30px;
+    display      : flex;
+
+    .left-col-in {
+        margin-right   : 15px;
+        width          : 60px;
+        height         : 60px;
+        background     : orange;
+        border-radius  : 100%;
+        padding        : 20px;
+        display        : flex;
+        align-items    : center;
+        justify-content: center;
+        @include max-mq(991){
+            width: 40px;
+            height: 40px;
+            padding: 10px;
+        }
+
+        img {
+            width: 30px;
+            @include max-mq(991){
+                width: 18px;
+            }
+        }
+    }
+
+    .right-col-in {
+        .small-heading {
+            font-size  : 15px;
+            line-height: 22px;
+            font-weight: 500;
+            @include max-mq(991){
+                font-size: 12px;
+                line-height: 19px;
+                font-weight: 500;
+            }
+        }
+
+        p {
+            font-size    : 14px;
+            line-height  : 22px;
+            margin-bottom: 0px;
+            @include max-mq(991){
+                font-size: 12px;
+                line-height: 19px;
+            }
+        }
+    }
+}

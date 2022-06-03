@@ -1,0 +1,10 @@
+{
+  "HOME": {
+    "SELECT": "Change language"
+  },
+  "BANNER_HEADING": "Get a perfect teacher reach new heights",
+  "ERR_VALID_MOBILE_NUMBER":"Enter valid phone number",
+  "ERR_EMAIL_INVALID":"Enter a valid email",
+  "ERR_FULLNAME_INVALID": "Enter a valid fullname",
+  "ERR_DOB_INVALID": "Enter a valid date"
+}

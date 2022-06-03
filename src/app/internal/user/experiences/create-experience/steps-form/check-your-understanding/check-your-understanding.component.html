@@ -1,0 +1,218 @@
+<form #ubderstanding="ngForm" (ngSubmit)="ubderstanding.form.valid && next(34)"></form>
+<div class="main-container-area">
+    <div class="heading">Check your understanding</div>
+    
+        <p>Now that you’re familiar with the safety and cleaning guidelines, the next step is to check your understanding by answering a few questions.</p>
+
+        <div class="form-title-main mt-5 mb-3">What additional guidelines apply when you and your guests are in your home or
+            a space you manage?</div>
+        <div class="radio-group-custom">
+            <input type="radio" id="test4" (change)="valueChange('Limit areas that guests can access',0)" name="radio-group">
+            <label for="test4">Limit areas that guests can access</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" id="test5" (change)="valueChange('Ventilate shared spaces when possible',0)" name="radio-group">
+            <label for="test5">Ventilate shared spaces when possible</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" id="test6" (change)="valueChange('Adapt activity for social distancing',0)" name="radio-group">
+            <label for="test6">Adapt activity for social distancing</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" id="test7" (change)="valueChange('Complete Twiwfy Cleaning Protocol',0)" name="radio-group">
+            <label for="test7">Complete Twiwfy Cleaning Protocol</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" id="test8" (change)="valueChange('All of the above',0)" name="radio-group">
+            <label for="test8">All of the above</label>
+        </div>
+        
+        <div class="alert-box">
+            <div class="left-col-in">
+                <img src="../../../../../../../assets/images/alert-icon.svg">
+            </div>
+            <div class="right-col-in">
+                <div class="form-title-main">You’re almost there!</div>
+                <p>If you host in your own home or a space you manage, there are
+                    multiple steps you can take to help protect yourself and your guests.</p>
+            </div>
+        </div>
+        <div class="form-title-main mt-5 mb-3">The cleaning protocol is mandatory for hosts who bring guests into their homes or spaces they manage. </div> 
+        <div class="radio-group-custom">
+            <input type="radio" id="test9" name="radio-group1">
+            <label for="test9">True</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" id="test10" name="radio-group1">
+            <label for="test10">False</label>
+        </div>
+        <div class="alert-box">
+            <div class="left-col-in green-col">
+                <img src="../../../../../../../assets/images/check-white.svg">
+            </div>
+            <div class="right-col-in">
+                <div class="form-title-main">You’ve got it!</div>
+                <p>It’s important to both clean and sanitise your space before 
+                    welcoming guests.</p>
+            </div>
+        </div>
+
+        <div class="form-title-main mt-5 mb-3">The cleaning protocol is mandatory for hosts who bring guests into their homes or spaces they manage. </div> 
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('With a hug',1)" id="test11" name="radio-group2">
+            <label for="test11">With a hug</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('With a wave',1)" id="test12" name="radio-group2">
+            <label for="test12">With a wave</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('With a handshake',1)" id="test13" name="radio-group2">
+            <label for="test13">With a handshake</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('With a drink',1)" id="test14" name="radio-group2">
+            <label for="test14">With a drink</label>
+        </div>
+
+        <div class="form-title-main mt-5 mb-3">What is the maximum number of guests you can host during your experience?</div> 
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('15 people',2)" id="test15" name="radio-group3">
+            <label for="test15">15 people</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('25 people',2)" id="test16" name="radio-group3">
+            <label for="test16">25 people</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('10 people',2)" id="test17" name="radio-group3">
+            <label for="test17">10 people</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('20 people',2)" id="test18" name="radio-group3">
+            <label for="test18">20 people</label>
+        </div>
+
+        <div class="form-title-main mt-5 mb-3">Which of the following items of protective equipment do we recommend you wear while cleaning?</div> 
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('Mask or protective face covering',3)" id="test19" name="radio-group4">
+            <label for="test19">Mask or protective face covering</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('Disposable gloves',3)" id="test20" name="radio-group4">
+            <label for="test20">Disposable gloves</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('Gown/apron',3)" id="test21" name="radio-group4">
+            <label for="test21">Gown/apron</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('Shoe coverings',3)" id="test22" name="radio-group4">
+            <label for="test22">Shoe coverings</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('All of the above',3)" id="test23" name="radio-group4">
+            <label for="test23">All of the above</label>
+        </div>
+
+        <div class="form-title-main mt-5 mb-3">How should you adjust your experience if you’re hosting in a public space?</div> 
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('Check local advisories',4)" id="test24" name="radio-group5">
+            <label for="test24">Check local advisories</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio"  (change)="valueChange('Avoid crowded places',4)" id="test25" name="radio-group5">
+            <label for="test25">Avoid crowded places</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio"  (change)="valueChange('Keep guests moving',4)" id="test26" name="radio-group5">
+            <label for="test26">Keep guests moving</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('All of the above',4)" id="test27" name="radio-group5">
+            <label for="test27">All of the above</label>
+        </div>
+        
+        <div class="form-title-main mt-5 mb-3">Cleaning is when you remove germs and dirt from surfaces. Sanitising is when you: ____________.</div> 
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('use soap',5)" id="test28" name="radio-group7">
+            <label for="test28">"use soap"</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('rinse surfaces with water',5)" id="test29" name="radio-group7">
+            <label for="test29">"rinse surfaces with water"</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('use chemicals to reduce the number of bacteria on surfaces',5)" id="test30" name="radio-group7">
+            <label for="test30">"use chemicals to reduce the number of bacteria on surfaces"</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('tidy up your surroundings',5)" id="test31" name="radio-group7">
+            <label for="test31">"tidy up your surroundings"</label>
+        </div>
+
+        <div class="form-title-main mt-5 mb-3">If you are actively hosting and test positive for COVID-19, or come in contact with someone who has tested positive for COVID-19, you should ___. </div> 
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('Get the medical attention you need',6)" id="test32" name="radio-group8">
+            <label for="test32">Get the medical attention you need</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('Contact local health authorities',6)" id="test33" name="radio-group8">
+            <label for="test33">Contact local health authorities</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('Cancel any upcoming bookings for at least 14 days',6)" id="test34" name="radio-group8">
+            <label for="test34">Cancel any upcoming bookings for at least 14 days</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('All of the above',6)" id="test35" name="radio-group8">
+            <label for="test35">All of the above</label>
+        </div>
+    
+        <div class="form-title-main mt-5 mb-3">When washing your hands, scrub for at least ____ seconds with soap and warm water. </div> 
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('20 seconds',7)" id="test36" name="radio-group9">
+            <label for="test36">20 seconds</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('60 seconds',7)" id="test37" name="radio-group9">
+            <label for="test37">60 seconds</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('10 seconds',7)" id="test38" name="radio-group9">
+            <label for="test38">10 seconds</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('5 seconds',7)" id="test39" name="radio-group9">
+            <label for="test39">5 seconds</label>
+        </div>
+        <div class="form-title-main mt-5 mb-3">Which of the following items of protective equipment are you required to wear while hosting your experience</div> 
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('Mask or protective face covering',8)" id="test40" name="radio-group10">
+            <label for="test40">Mask or protective face covering</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('Disposable gloves',8)" id="test41" name="radio-group10">
+            <label for="test41">Disposable gloves</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('Gown/apron',8)" id="test42" name="radio-group10">
+            <label for="test42">Gown/apron</label>
+        </div>
+        <div class="radio-group-custom">
+            <input type="radio" (change)="valueChange('Protective eye covering',8)" id="test43" name="radio-group10">
+            <label for="test43">Protective eye covering</label>
+        </div>
+</div>
+<!-- <mat-progress-bar mode="determinate" value="80"></mat-progress-bar>
+<div class="next-back-row-main">
+    <div class="left-text">
+        11 items to submit
+    </div>
+    <div class="button-row">
+        <button class="btn-back" (click)="next(32)" matRipple>Back</button>
+        <button class="btn-next" type="submit" matRipple>Next</button>
+
+    </div>
+
+</div> -->

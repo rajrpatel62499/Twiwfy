@@ -1,0 +1,71 @@
+<div class="comman-margin-top saved-main">
+    <div class="comman-container">
+        <div class="heading-row">
+            <div class="heading">Account</div>
+            <!-- <div class="right-btn-main">
+                <button class="btn" [routerLink]="['/profile']" routerLinkActive="router-link-active" >Go to Profile</button>
+            </div> -->
+        </div>
+        
+        <!------------------------ Account-name------------------------- -->
+        <div class="emai-id-row">
+            John Doe,  <a href="mailto:johndoe@gmail.com" title="johndoe@gmail.com">johndoe@gmail.com</a>
+
+        </div>
+        
+
+        <div class="accounts-grid-main">
+
+                <div class="inner-grid" [routerLink]="['/' + AppRoutes.PERSONAL_INFO]" >
+                    <img src="../../../../assets/images/personal-info.svg" alt="img" title="img">
+                    <div class="comman-title">Personal Info</div>
+                    <p>Provide personal details and how we  can reach you </p>
+                </div>
+                <div class="inner-grid" [routerLink]="['/' + AppRoutes.LOGIN_SECURITY]"  >
+                    <img src="../../../../assets/images/login-security.svg" alt="img" title="img">
+                    <div class="comman-title">Login & Security</div>
+                    <p>Provide personal details and how we can reach you </p>
+                </div>
+                <div class="inner-grid" [routerLink]="['/' + AppRoutes.PAYMENTS_AND_PAYOUTS]">
+                    <img src="../../../../assets/images/pay-ment.svg" alt="img" title="img">
+                    <div class="comman-title">Payment & Payouts</div>
+                    <p>Provide personal details and how we  can reach you </p>
+                </div>
+                <div class="inner-grid" [routerLink]="['/' + AppRoutes.NOTIFICATION_SETTINGS]">
+                    <img src="../../../../assets/images/notiifcation-bell.svg" alt="img" title="img">
+                    <div class="comman-title">Notifications</div>
+                    <p>Provide personal details and how we  can reach you </p>
+                </div>
+                <div class="inner-grid" [routerLink]="['/' + AppRoutes.PRIVACY_AND_SHARING]">
+                    <img src="../../../../assets/images/privacy-vector.svg" alt="img" title="img">
+                    <div class="comman-title">Privacy & Sharing</div>
+                    <p>Provide personal details and how we  can reach you </p>
+                </div>
+                <div class="inner-grid"  [routerLink]="['/' + AppRoutes.GLOBAL_PREFERENCES]">
+                    <img src="../../../../assets/images/global-new.svg" alt="img" title="img">
+                    <div class="comman-title">Global Preferences</div>
+                    <p>Provide personal details and how we  can reach you </p>
+                </div>
+                <div class="inner-grid" [routerLink]="['/' + AppRoutes.INVITE_FIRENDS]">
+                    <img src="../../../../assets/images/invite-friend.svg" alt="img" title="img">
+                    <div class="comman-title">Invite Friends</div>
+                    <p>Provide personal details and how we  can reach you </p>
+                </div>
+
+
+        </div>
+
+
+        <div class="need-to-deactived-row">
+            <div class="title-main">Need to deactivate your account?</div>
+            <button class="custom-btn">Take care of that now</button>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+

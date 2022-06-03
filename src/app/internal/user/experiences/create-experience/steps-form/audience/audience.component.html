@@ -1,0 +1,190 @@
+<form #audience="ngForm" (ngSubmit)="audience.form.valid && next(11)">
+  <div class="main-container-area">
+    <div class="heading">Audience</div>
+    <div class="small-heading">Who’s your intended audience?</div>
+    <p>
+      Check out our nondiscrimination policy when thinking about how you can
+      make your experience inclusive.
+    </p>
+
+    <div
+      class="error-block"
+      *ngIf="
+        experience.invalid &&
+        (experience.dirty || experience.touched || audience.submitted)
+      "
+    >
+      <div class="required-text" *ngIf="experience.errors.required">
+        <p class="error text-danger">Please select any one experience.</p>
+      </div>
+    </div>
+
+    <div class="radio-group-custom bubble-main">
+      <input
+        type="radio"
+        (change)="changeType('Everyone')"
+        id="everyone"
+        name="experience"
+        #experience="ngModel"
+        [(ngModel)]="experienceData.basicInformation.audienceType"
+        ngModel
+        value="Everyone"
+      />
+      <label for="everyone"
+        ><span>Everyone</span> All guests are welcome to book and join the
+        experience</label
+      >
+    </div>
+    <div class="white-box-inner">
+      <div class="radio-group-custom bubble-main">
+        <input
+          type="radio"
+          (change)="changeType('Specific')"
+          id="specific"
+          name="experience"
+          #experience="ngModel"
+          [(ngModel)]="experienceData.basicInformation.audienceType"
+          ngModel
+          value="Specific"
+        />
+        <label for="specific"
+          ><span>I have a specific audience</span> Experience is designed with a
+          certain group in mind. Select up to three.</label
+        >
+      </div>
+      <div class="inn-check-box-main">
+        <div
+          class="error-block"
+          *ngIf="selectedAudienceType === 'Specific' && isAudianceType"
+        >
+          <div class="required-text" *ngIf="audianceTypeSelected.length == 0">
+            <p class="error text-danger">Please select audience Type.</p>
+          </div>
+          <div class="required-text" *ngIf="audianceTypeSelected.length > 3">
+            <p class="error text-danger">Please select audience up to three.</p>
+          </div>
+        </div>
+        <ng-container *ngIf="!isLoading">
+          
+          <div class="inne-check" *ngFor="let a of audiences">
+            <mat-checkbox
+              class="example-margin"
+              name="{{ a.name }}"
+              [(ngModel)]="a.check"
+              (change)="audienceTypeChange($event, a)"
+              [checked]="a.check"
+              [disabled]="selectedAudienceType == 'Everyone'"
+              >{{ a.name }}</mat-checkbox
+            >
+          </div>
+        </ng-container>
+        <div class="item">
+          <ngx-skeleton-loader
+            count="1"
+            *ngIf="isLoading"
+            animation="pulse"
+            [theme]="{
+              height: '30px',
+              width: '95%',
+              'margin-left': '29px',
+              'border-radius': '10px',
+              'background-color': 'rgb(127, 140, 141);'
+            }"
+          ></ngx-skeleton-loader>
+        </div>
+        <!-- <div class="inne-check">
+                    <mat-checkbox class="example-margin">Couples</mat-checkbox>
+                </div>
+                <div class="inne-check">
+                    <mat-checkbox class="example-margin">Disability Community</mat-checkbox>
+                </div>
+                <div class="inne-check">
+                    <mat-checkbox class="example-margin">Families</mat-checkbox>
+                </div>
+                <div class="inne-check">
+                    <mat-checkbox class="example-margin">Groups</mat-checkbox>
+                </div>
+                <div class="inne-check">
+                    <mat-checkbox class="example-margin">Guest with Pets</mat-checkbox>
+                </div> -->
+      </div>
+    </div>
+
+    <!-- <div class="question-mark">
+      Are you hosting in connection with a partner organisation?
+    </div>
+    <mat-checkbox class="example-margin"
+      >Yes, I have a partner code</mat-checkbox
+    >
+    <div class="provide-input">
+      <input
+        type="text"
+        [(ngModel)]="experienceData.basicInformation.partnerConfirmationCode"
+        name="partner"
+        #partner="ngModel"
+        ngModel maxlength="40"
+        placeholder="Provide the partner confirmation code"
+      />
+    </div>
+    <div class="small-heading">
+      Are you hosting on behalf of a nonprofit organisation?
+    </div>
+    <p>
+      If you’re hosting on behalf of a nonprofit or charitable organisation, you
+      may qualify to host a Social Impact experience. This includes, but is not
+      limited to: 501c3, charities, associations, foundations, etc. Check if
+      your nonprofit qualifies here.
+    </p>
+    <p>
+      If you’re hosting on behalf of a nonprofit or charitable organisation, you
+      may qualify to host a Social Impact experience. This includes, but is not
+      limited to: 501c3, charities, associations, foundations, etc. Check if
+      your nonprofit qualifies here.
+    </p>
+    <div class="mt-3 mb-5 audience-check-box">
+      <mat-checkbox
+        class="example-margin"
+        name="non-profit"
+        (change)="isNonProfitTypeChanged.emit()"
+        [(ngModel)]="experienceData.basicInformation.isNonprofitOrg"
+        >Yes, I’m hosting on behalf of a nonprofit / charitable organisation and
+        have <br />
+        submitted its TechSoup validation</mat-checkbox
+      >
+    </div>
+    <div class="small-heading">
+      Are you signed into an TWIWFY account associated to your nonprofit?
+    </div>
+    <p>
+      To host a Social Impact experience, you’ll need to create a new TWIWFY
+      account using an e-mail address associated with a nonprofit, add the
+      nonprofit’s bank account as a payout method, and set the profile to your
+      specific hosts’ name and photo.
+    </p>
+
+    <div class="d-flex profile-main">
+      <img
+        src="../../../../../../../assets/images/dancer.png"
+        class="profile-img"
+      />
+      <span class="profile-name">Bhavesh Kala</span>
+    </div>
+    <mat-checkbox
+      class="example-margin"
+      name="profit-account"
+      [(ngModel)]="experienceData.basicInformation.signedNonprofitAccount"
+      >I’m signed into the nonprofit’s account and not my personal TWIWFY
+      account.</mat-checkbox
+    > -->
+
+
+  </div>
+  <!-- <mat-progress-bar mode="determinate" value="45"></mat-progress-bar>
+  <div class="next-back-row-main">
+    <div class="left-text">14 items to submit</div>
+    <div class="button-row">
+      <button class="btn-back" (click)="next(9)" matRipple>Back</button>
+      <button class="btn-next" type="submit" matRipple>Next</button>
+    </div>
+  </div> -->
+</form>

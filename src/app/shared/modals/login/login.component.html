@@ -1,0 +1,259 @@
+<div class="header-for-modal-popup">
+  <button (click)="onNoClick()">
+    <img src="../../../assets/images/close-icon.svg" alt="close" title="close" />
+  </button>
+  <span class="heading-text"> {{ isLoginView ? "Login" : "Signup" }}</span>
+</div>
+
+<div id="form-start" class="login-div-inner-main">
+  <form [formGroup]="form" role="form" (ngSubmit)="submit()">
+
+    <ng-container *ngIf="isLoginView">
+      <!-- PHONE LOGIN -->
+      <ng-container *ngIf="!isEmailLogin">
+        <div class="country-reg">
+          <div class="form-filed">Country/Region</div>
+          <div class="form-group country-code-main">
+            <select class="form-control" formControlName="countryCode">
+              <option value="" [disabled]="true">Select Country</option>
+              <option *ngFor="let c of contryList" [value]="c.code">
+                {{ c.name }}({{ c.code }})
+              </option>
+            </select>
+          </div>
+          <!-- <div class="btn-group" dropdown>
+            <button
+              id="button-basic"
+              dropdownToggle
+              type="button"
+              class="btn btn-primary dropdown-toggle"
+              aria-controls="dropdown-basic"
+              formControlName="countryCode"
+            >
+              India (+91) <span class="caret"></span>
+            </button>
+            <ul
+              id="dropdown-basic"
+              *dropdownMenu
+              class="dropdown-menu"
+              role="menu"
+              aria-labelledby="button-basic"
+            >
+              <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+              <li role="menuitem">
+                <a class="dropdown-item" href="#">Another action</a>
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" href="#">Something else here</a>
+              </li>
+            </ul>
+          </div> -->
+        </div>
+  
+        <div [ngClass]="{ 'mt-3': isLoginView }" class="phone-num">
+          <div class="form-filed">Phone number</div>
+          <input type="text" placeholder="Enter phone number" 
+          minlength="10"
+          maxlength="12" appNumbersOnly
+            formControlName="phoneNumber" />
+          <app-validation-message [control]="form.controls['phoneNumber']" [messages]="messageList.phoneNumber">
+          </app-validation-message>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="isEmailLogin"> 
+        <div class="phone-num email-login-main">
+
+          <div class="comman-filed-email">
+            <div class="form-filed">Email</div>
+            <input type="text" placeholder="Enter email" formControlName="email" />
+            <app-validation-message [control]="form.controls['email']" [messages]="messageList.email">
+            </app-validation-message>
+          </div>
+    
+        </div>
+    
+      </ng-container>
+
+    </ng-container>
+
+    <!-- SIGNUP VIEW -->
+    <ng-container *ngIf="!isLoginView">
+      <!-- SIGNUP WITH EMAIL AND Number -->
+        <div class="phone-num email-login-main">
+
+            <!-- <div class="comman-filed-email">
+              <div class="form-filed">First Name</div>
+              <input formControlName="firstname" type="text" placeholder="First Name" />
+              <app-validation-message [control]="form.controls['firstname']" [messages]="messageList.firstname">
+              </app-validation-message>
+            </div> -->
+            <div class="comman-filed-email after-last-name">
+              <div class="form-filed">Full Name</div>
+              <input maxlength="60" formControlName="fullName" type="text" 
+                placeholder="Full Name" />
+
+              <app-validation-message [control]="form.controls['fullName']" 
+              [messages]="messageList.fullName">
+              </app-validation-message>
+            </div>
+            <div class="small-text">Make sure it matches the name on your government ID.</div>
+
+            <div class="comman-filed-email after-last-name">
+              <div class="form-filed">Date of Birth</div>
+              <mat-form-field appearance="fill" class="example-form-field">
+                <mat-label>Select Date</mat-label>
+                <input 
+                placeholder="Select date"
+                [max]="today"
+                formControlName="dob" matInput (click)="datepicker.open()" [matDatepicker]="datepicker">
+                <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                <mat-datepicker #datepicker>
+                  <!-- <mat-datepicker-actions>
+                    <button mat-button matDatepickerCancel>Cancel</button>
+                    <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                  </mat-datepicker-actions> -->
+                </mat-datepicker>
+              </mat-form-field>
+              <app-validation-message [control]="form.controls['dob']" [messages]="messageList.dob">
+              </app-validation-message>
+            </div>
+            <div class="small-text">To sign up, you need to be at least 18. Your birthday won’t be shared with other people
+              who use Twiwfy.</div>
+    
+    
+          <ng-container *ngIf="isEmailLogin; else signUpWithMobile">
+            <div class="comman-filed-email">
+              <div class="form-filed">Email</div>
+              <input type="text" placeholder="Enter email" formControlName="email" />
+              <app-validation-message [control]="form.controls['email']" [messages]="messageList.email">
+              </app-validation-message>
+            </div>
+          </ng-container>
+          <ng-template #signUpWithMobile>
+            <ng-container *ngIf="!isEmailLogin">
+              <div class="country-reg">
+                <div class="form-filed">Country/Region</div>
+                <div class="form-group country-code-main">
+                  <select class="form-control" formControlName="countryCode">
+                    <option value="" [disabled]="true">Select Country</option>
+                    <option *ngFor="let c of contryList" [value]="c.code">
+                      {{ c.name }}({{ c.code }})
+                    </option>
+                  </select>
+                </div>
+
+              </div>
+        
+              <div [ngClass]="{ 'mt-3': isLoginView }" class="phone-num">
+                <div class="form-filed">Phone number</div>
+                <input type="text" placeholder="Enter phone number" maxlength="12" appNumbersOnly
+                  formControlName="phoneNumber" />
+                <app-validation-message [control]="form.controls['phoneNumber']" [messages]="messageList.phoneNumber">
+                </app-validation-message>
+              </div>
+            </ng-container>
+          </ng-template>
+         
+    
+            <div class="terms-text-main">By signing up, I agree to Twiwfy's <span>Terms of
+                Service</span>, <span>Payments Terms of Service</span>, <span> Privacy Policy</span>, and <span>
+                Nondiscrimination Policy</span>.
+            </div>
+            <!-- <div class="agree-text">
+              <mat-checkbox class="example-margin">I don’t want to receive marketing messages from Twiwfy.</mat-checkbox>
+            </div> -->
+    
+        </div>
+    </ng-container>
+
+    <!-- ---------------Email-login--------------------- -->
+    <!-- <div class="phone-num email-login-main" *ngIf="isEmailLogin">
+
+      <ng-container *ngIf="!isLoginView">
+        <div class="comman-filed-email">
+          <div class="form-filed">First Name</div>
+          <input type="text" placeholder="First Name" />
+        </div>
+        <div class="comman-filed-email after-last-name">
+          <div class="form-filed">Last Name</div>
+          <input type="text" placeholder="Last Name" />
+        </div>
+        <div class="small-text">Make sure it matches the name on your government ID.</div>
+        <div class="comman-filed-email after-last-name">
+          <div class="form-filed">Date of Birth</div>
+          <mat-form-field appearance="fill" class="example-form-field">
+            <mat-label>Choose a date</mat-label>
+            <input matInput (click)="datepicker.open()" [matDatepicker]="datepicker">
+            <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+            <mat-datepicker #datepicker>
+            </mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="small-text">To sign up, you need to be at least 18. Your birthday won’t be shared with other people
+          who use Twiwfy.</div>
+
+      </ng-container>
+
+      <div class="comman-filed-email">
+        <div class="form-filed">Email</div>
+        <input type="text" placeholder="Enter email" formControlName="email" />
+        <app-validation-message [control]="form.controls['email']" [messages]="messageList.email">
+        </app-validation-message>
+      </div>
+
+      <ng-container *ngIf="!isLoginView">
+        <div class="terms-text-main">By selecting Agree and continue below, I agree to Twiwfy's <span>Terms of
+            Service</span>, <span>Payments Terms of Service</span>, <span> Privacy Policy</span>, and <span>
+            Nondiscrimination Policy</span>.</div>
+        <div class="agree-text">
+          <mat-checkbox class="example-margin">I don’t want to receive marketing messages from Twiwfy.</mat-checkbox>
+        </div>
+
+      </ng-container>
+    </div> -->
+
+
+    <!-- <div class="small-text">
+      We’ll call or text you to confirm your number. Standard message and data
+      rates apply.
+    </div> -->
+    <div class="text-center mt-3">
+      <button class="btn-custom" type="submit" [disabled]="isApiCalling"
+        [ngStyle]="{ opacity: isApiCalling ? 0.5 : '' }">
+        <i class="fa fa-spinner fa-spin" *ngIf="isApiCalling"></i>
+        {{ isLoginView ? 'Login' : 'Signup'}}
+      </button>
+    </div>
+    <!-- ---or-divider-- -->
+    <div class="divider-main"></div>
+
+    <div class="login-with text-center">
+      <div class="heading-login-with" *ngIf="isLoginView">Login With</div>
+      <div class="heading-login-with" *ngIf="!isLoginView">Signup With</div>
+      <div class="login-thrid-grid">
+        <div class="inner-grid-system" *ngIf="!isEmailLogin" (click)="loginWithEmail()">
+          <img src="../../../assets/images/email.svg" alt="email" title="email" />
+        </div>
+        <div class="inner-grid-system" *ngIf="isEmailLogin" (click)="loginWithPhoneNumber()">
+          <img style="height: 25px;" src="../../../assets/images/mobile.svg" alt="phoneNumber" title="phoneNumber" />
+        </div>
+        <!-- <div class="inner-grid-system">
+          <img src="../../../assets/images/facebook-login.svg" alt="facebook" title="facebook" />
+        </div>
+        <div class="inner-grid-system">
+          <img src="../../../assets/images/google.svg" alt="google" title="google" />
+        </div>
+        <div class="inner-grid-system">
+          <img src="../../../assets/images/apple.svg" alt="apple" title="apple" />
+        </div> -->
+      </div>
+    </div>
+    <div class="last-text-main" *ngIf="isLoginView">
+      Don’t have an account? <a (click)="onSignupClick()">Sign up</a>
+    </div>
+    <div class="last-text-main" *ngIf="!isLoginView">
+      Already have an account? <a (click)="onLoginClick()">Login</a>
+    </div>
+  </form>
+</div>

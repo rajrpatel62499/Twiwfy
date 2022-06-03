@@ -1,0 +1,99 @@
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    @mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    // ----------------------------For Orientation-----------------------//
+    @mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+    @content;
+    }
+    }
+    
+    @mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+    @content;
+    }
+    }    
+// ------------END of Media Screen Mixing--------------//
+
+.heading{
+    font-size: 28px;
+    text-decoration: none;
+    line-height: 40px;
+    margin-bottom: 15px;
+    @include max-mq(1660){
+        font-size: 23px;
+        text-decoration: none;
+        line-height: 33px;
+    }
+    @include max-mq(1500){
+        font-size: 22px;
+    }
+    @include max-mq(567){
+        font-size: 18px;
+    }
+}
+
+p {
+    color: #878787;
+    font-size: 15px;
+    line-height: 23px;
+    @include max-mq(567){
+        font-size: 12px;
+        line-height: 21px;
+    }
+}
+
+.small-heading {
+    margin-bottom: 20px;
+    font-size: 20px;
+    line-height: 25px;
+    font-weight: 500;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 20px;
+    font-size: 14px;
+    line-height: 22px;
+    color: #000;
+    border: 1px solid #C4C4C4;
+    box-shadow: 0px 3px 6px rgb(0 0 0 / 16%);
+    border-radius: 5px;
+    resize: none;
+    outline: none;
+    &::placeholder{
+        color: #aeaeae;
+    }
+    @include max-mq(1500){
+        font-size: 12px;
+        line-height: 20px;
+    }
+}
+
+.main-container-area {
+    width: 500px;
+    margin: auto;
+    overflow-y: auto;
+    // margin-bottom: 250px;
+    @include max-mq(991){
+        width: 100%;
+        margin: auto;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+}

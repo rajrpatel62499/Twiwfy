@@ -1,0 +1,233 @@
+<form #guestPrincing="ngForm" (ngSubmit)="guestPrincing.form.valid && next(24)">
+  <div class="main-container-area">
+    <div class="left-wrapper">
+      <div class="inner-width-wrapper">
+        <div class="heading">Guest Pricing</div>
+        <p>
+          THow much you charge is entirely up to you. Enter the price you want
+          each guest to pay and discover what you can earn.
+          <a class="a-links" href="#">Learn more</a>
+        </p>
+
+        <!-- ----add-title-------------- -->
+        <div class="grid-in-rate">
+          <div class="inner-grid">
+            <div class="first-col">
+              <span class="font-bold">Individual rate</span>
+              <span class="small-title">Ages 13 and older</span>
+            </div>
+          </div>
+          <div class="inner-grid">
+            <div class="second-col">
+              <span class="small-title-2">Ages 13 and older</span>
+              <div class="input-filed">
+                <div class="inr">INR</div>
+                <input
+                  type="text"
+                  placeholder="0.00"
+                  (keypress)="validateNumber($event)"
+                  name="individualRate"
+                  #older="ngModel"
+                  [(ngModel)]="experienceData.settings.individualRate"
+                  ngModel
+                  required
+                />
+              </div>
+
+              <div
+                *ngIf="
+                  older.invalid &&
+                  (older.dirty || older.touched || guestPrincing.submitted)
+                "
+              >
+                <div class="required-text" *ngIf="older.errors.required">
+                  <small class="error text-danger">Please Enter Amount.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="inner-grid">
+            <div class="second-col">
+              <span class="small-title-2">Your estimated earnings</span>
+              <div class="input-filed">
+                <div class="inr">INR</div>
+                <input
+                  type="text"
+                  class="readonly-input"
+                  placeholder="0.00"
+                  name="earning"
+                  [value]="estimatedEarnings"
+                  readonly
+                  />
+              </div>
+
+              <!-- <div
+                class="error-block"
+                *ngIf="
+                  earning.invalid &&
+                  (earning.dirty || earning.touched || guestPrincing.submitted)
+                "
+              >
+                <div class="required-text" *ngIf="earning.errors.required">
+                  <p class="error text-danger">Please Enter Amount.</p>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        <!-- -------------Online-experience -------------------------- -->
+        <!-- <div class="online-experience">
+          <div class="left-col-img">
+            <img src="../../../../../../../assets/images/energy.svg" />
+          </div>
+          <div class="right-col-img">
+            47% of Online Experiences are priced between ₹733 and ₹1,392. The
+            median price of Online Experiences booked in the last 7 days is
+            ₹1,357
+          </div>
+        </div> -->
+
+        <!-- <ng-container *ngIf="experienceData.settings.individualRate">
+          <div @fade id="group-rates">
+
+            <div  class="form-title mt-5">Group Rates</div>
+            <p>Add discounts for different group sizes.</p>
+    
+            <div class="new-card-main" *ngIf="!hideBox">
+              <div class="close-icon" (click)="hideBoxRate()">
+                <img src="../../../../../../../assets/images/cross.svg" />
+              </div>
+              <div class="left-col-inner-img">
+                <img src="../../../../../../../assets/images/new-people.svg" />
+              </div>
+              <div class="right-col-inner-img">
+                <span class="red-color form-title">NEW</span>
+                <span class="form-title">Group Rates</span>
+                <p>
+                  Experiences are often booked for multiple people at once – over
+                  half are booked for groups of 2 or more.
+                </p>
+              </div>
+            </div>
+            <ng-container *ngFor="let groupRate of experienceData.settings.groupRate; index as i">
+
+              <div class="price-filter-main">
+                  <div class="labels-main">
+                        <div class="labals-title">Group Size</div>
+                        <div class="labals-title">Discount</div>
+                        <div class="labals-title">Each guest pays</div>
+                        <div class="labals-title unique-title">Your estimated earnings <img src="../../../../../../../assets/images/alert-icon-1.svg" title="Alert" alt="Alert"></div>
+                  </div>
+                  <div class="filter-inputs-main">
+                    <div class="first-col-input">
+                          <input 
+                            [ngClass]="{ 'outerline-red': groupRate.lowerSize > this.experienceData.settings.maxGroupSize}"
+                            appNumbersOnly maxlength="2" 
+                            [ngModelOptions]="{standalone:true}" 
+                            [(ngModel)]="groupRate.lowerSize" 
+                            type="text" />
+                          <span>-</span>
+                          <input appNumbersOnly maxlength="2" [ngModelOptions]="{standalone:true}" 
+                          [(ngModel)]="groupRate.upperSize" class="readonly-input" type="text" readonly />
+                    </div>
+                    <div class="second-col-input">
+                        <input 
+                        [ngModelOptions]="{standalone:true}"
+                        [(ngModel)]="groupRate.discount" 
+                        (ngModelChange)="onGroupDiscountChange(groupRate)" 
+                        onKeyPress="if(this.value.length==2) return false;"
+                        appNumbersOnly
+                        type="text"
+                        maxlength="2"
+                        />
+                        <span class="percentage">%</span>
+                    </div>
+                    <div class="third-col-input">
+                        <input [ngModelOptions]="{standalone:true}" 
+                        [(ngModel)]="groupRate.amount" class="readonly-input"  
+                        type="number" readonly/>
+                        <span class="inr-tag">INR</span>
+                    </div>
+                    <div class="fourth-col-input">
+                        <div class="left-price-input">
+                          <input [value]="(groupRate.amount - (groupRate.amount * 0.2)).toFixed(2)" class="readonly-input"  type="number" readonly/>
+                          <span class="inr-tags">INR</span>
+                        </div>
+                        <div  (click)="deleteGroupRate(i)" class="right-price">
+                            <img src="../../../../../../../assets/images/delete-icon.svg" alt="delete" title="delete" />
+                        </div>
+                    </div>
+      
+                  </div>
+      
+                    <ng-container *ngIf="groupRate.lowerSize > this.experienceData.settings.maxGroupSize || groupRate.lowerSize < 2">
+                      <small class="error text-danger">Please enter a minimum group size of at least 2 and no more than your experience’s maximum group size.</small>
+                    </ng-container>
+      
+              </div>
+      
+            </ng-container>
+    
+            <div *ngIf="experienceData.settings.groupRate.length < 2" class="add-group-main">
+              <span class="form-title">Add Group Rate</span>
+              <span (click)="addGroupRate()" class="btn-add">
+                <img src="../../../../../../../assets/images/black-add.svg" />
+              </span>
+            </div>
+          </div>
+        </ng-container> -->
+
+        
+      </div>
+    </div>
+    <!-- <div class="right-wrapper">
+      <div class="small-heading">Tips</div>
+      <span class="pop"
+        >Popular start times for guests around the world based on bookings in
+        the last 14 days</span
+      >
+      <div class="white-card-right">
+        <div class="comman-row">
+          <div class="left-watch">
+            <img src="../../../../../../../assets/images/time.svg" />
+          </div>
+          <div class="right-watch">
+            <span class="uper-time">3 AM</span>
+            <span class="lowe-time">2.7X more than avg</span>
+          </div>
+        </div>
+        <div class="comman-row">
+          <div class="left-watch">
+            <img src="../../../../../../../assets/images/time.svg" />
+          </div>
+          <div class="right-watch">
+            <span class="uper-time">3 AM</span>
+            <span class="lowe-time">2.7X more than avg</span>
+          </div>
+        </div>
+        <div class="comman-row">
+          <div class="left-watch">
+            <img src="../../../../../../../assets/images/time.svg" />
+          </div>
+          <div class="right-watch">
+            <span class="uper-time">3 AM</span>
+            <span class="lowe-time">2.7X more than avg</span>
+          </div>
+        </div>
+      </div>
+      <div class="white-card-right">
+        Online Experiences are booked by guests who live in a variety of
+        different time zones.
+      </div>
+    </div> -->
+  </div>
+
+  <!-- <mat-progress-bar mode="determinate" value="95"></mat-progress-bar>
+  <div class="next-back-row-main">
+    <div class="left-text">02 items to submit</div>
+    <div class="button-row">
+      <button class="btn-back" (click)="next(22)" matRipple>Back</button>
+      <button class="btn-next" type="submit" matRipple>Next</button>
+    </div>
+  </div> -->
+</form>

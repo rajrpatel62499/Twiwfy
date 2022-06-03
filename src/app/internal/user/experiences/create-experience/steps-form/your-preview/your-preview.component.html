@@ -1,0 +1,158 @@
+<div class="main-continer-area">
+  <div class="heading">Your Preview</div>
+  <!-- --------carousel--------------------- -->
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ul class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+      <li data-target="#myCarousel" data-slide-to="4"></li>
+    </ul>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img
+          [src]="experienceData?.experiencePage?.coverPhoto"
+          alt="gaming1"
+          width="100%"
+          height="500"
+        />
+      </div>
+      <div class="carousel-item">
+        <img
+        [src]="experienceData?.experiencePage?.hostPhoto"
+          alt="gaming2"
+          width="100%"
+          height="500"
+        />
+      </div>
+      <div class="carousel-item">
+        <img
+        [src]="experienceData?.experiencePage?.actionPhoto"
+          alt="gaming3"
+          width="100%"
+          height="500"
+        />
+      </div>
+      <div class="carousel-item">
+        <img
+        [src]="experienceData?.experiencePage?.detailsPhoto"
+          alt="gaming4"
+          width="100%"
+          height="500"
+        />
+      </div>
+      <div class="carousel-item">
+        <img
+        [src]="experienceData?.experiencePage?.locationPhoto"
+          alt="gaming5"
+          width="100%"
+          height="500"
+        />
+      </div>
+      <ng-container *ngFor="let item of experienceData?.photos">
+        
+        <div class="carousel-item">
+          <img
+          [src]="item.original"
+            alt="gaming5"
+            width="100%"
+            height="500"
+          />
+        </div>
+      </ng-container>
+      
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  </div>
+
+  <!---------------------- First-row--------------------- -->
+  <div class="first-row">
+    <div class="left-col-img">
+      <img src="../../../../../../../assets/images/particip-1.png" />
+    </div>
+    <!-- PUT title -->
+    <div class="right-col">{{experienceData?.experiencePage?.title}} - About You</div>
+  </div>
+  <div class="grid-main-features">
+    <div class="inner-grid-main">
+      <img
+        src="../../../../assets/images/clock-main.svg"
+        alt="clock"
+        title="clock"
+      />
+      <span>{{experienceData?.settings?.duration}}</span>
+    </div>
+    <div class="inner-grid-main">
+      <img
+        src="../../../../assets/images/peoples-main.svg"
+        alt="people"
+        title="people"
+      />
+      <span>Up to {{experienceData?.settings?.maxGroupSize}}</span>
+    </div>
+    <div class="inner-grid-main">
+      <img
+        src="../../../../assets/images/join-tablets.svg"
+        alt="tablets"
+        title="tablets"
+      />
+      <span>Join from your {{ itemsText}}
+        <!-- <ng-container *ngFor="let item of experienceData?.experiencePage?.itemsToBring; index as i">
+          {{ experienceData.experiencePage.itemsToBring.length > 1 ? 
+            i == experienceData.experiencePage.itemsToBring.length - 1 ?
+             'or ' + item : item + ','  :
+             item }}
+        </ng-container> -->
+         
+    </span>
+    </div>
+    <div class="inner-grid-main">
+      <img
+        src="../../../../assets/images/chats.svg"
+        alt="chats"
+        title="chats"
+      />
+      <span>Hosted in {{ experienceData?.basicInformation?.language }}</span>
+    </div>
+  </div>
+
+  <div class="about-us-row-mains">
+    <div class="small-heading">Meet your host, {{userProfile?.fullName}}</div>
+    <p>
+      <!-- {{experienceData.experiencePage?.organisationDescription}} -->
+      {{experienceData?.experiencePage?.yourStory}}
+    </p>
+    
+  </div>
+  <div class="about-us-row-mains">
+    <div class="small-heading">What we’ll do</div>
+    <p>
+      {{experienceData.experiencePage?.experienceDescription}}
+    </p>
+  </div>
+  <!-- <div class="about-us-row-mains">
+    <div class="small-heading">About {{userProfile?.fullName}}</div>
+    <p>
+      {{experienceData?.experiencePage?.yourStory}}
+    </p>
+  </div> -->
+  <div class="about-us-row-mains">
+    <div class="small-heading">Group Size</div>
+    <p>Group size up to {{experienceData?.settings?.maxGroupSize}} guests</p>
+  </div>
+</div>
+
+<!-- <mat-progress-bar mode="determinate" value="95"></mat-progress-bar>
+  <div class="next-back-row-main">
+    <div class="left-text">02 items to submit</div>
+    <div class="button-row">
+      <button class="btn-back" (click)="next('back')" matRipple>Back</button>
+      <button class="btn-next" (click)="next('save')" matRipple>Save</button>
+    </div>
+  </div> -->

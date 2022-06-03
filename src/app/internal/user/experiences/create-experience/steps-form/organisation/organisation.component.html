@@ -1,0 +1,84 @@
+<form #step11="ngForm" (ngSubmit)="step11.form.valid && next(12)">
+  <div class="main-container-area">
+    <div class="heading">
+      Tell us about the organisation <br />
+      you represent
+    </div>
+
+    <div class="form-name-main">
+      <div class="small-heading">Organisation Name</div>
+      <input
+        type="text"
+        name="organizationname"
+        maxlength="40"
+        #organizationname="ngModel"
+        placeholder="Enter name here"
+        [(ngModel)]="experienceData.basicInformation.organisationName"
+        required
+      />
+
+      <div
+        class="error-block"
+        *ngIf="
+          organizationname.invalid &&
+          (organizationname.dirty ||
+            organizationname.touched ||
+            step11.submitted)
+        "
+      >
+        <div class="required-text" *ngIf="organizationname.errors.required">
+          <p class="error text-danger">Organisation Name is required.</p>
+        </div>
+      </div>
+    </div>
+    <div class="i-clery-text">I certify that:</div>
+    <div class="main-chck-box">
+      <mat-checkbox class="example-margin" name="organization" #organization="ngModel" [(ngModel)]="experienceData.basicInformation.organizationCheck" required></mat-checkbox>
+      <p>
+        I have the consent of the charitable organisation to run this experience
+        on their behalf
+      </p>
+    </div>
+    <div
+        class="error-block"
+        *ngIf="
+        organization.invalid &&
+          (organization.dirty ||
+          organization.touched ||
+            step11.submitted)
+        "
+      >
+        <div class="required-text" *ngIf="organization.errors.required">
+          <p class="error text-danger">Please check this option.</p>
+        </div>
+      </div>
+    <div class="main-chck-box">
+      <mat-checkbox class="example-margin" name="socialImpact" #socialImpact="ngModel" [(ngModel)]="experienceData.basicInformation.socialImpactCheck" required></mat-checkbox>
+      <p>
+        The charitable organisation meets
+        <span>TWIWFY’s criteria for a Social Impact experience</span>
+      </p>
+    </div>
+    <div
+        class="error-block"
+        *ngIf="
+        socialImpact.invalid &&
+          (organization.dirty ||
+          socialImpact.touched ||
+            step11.submitted)
+        "
+      >
+        <div class="required-text" *ngIf="socialImpact.errors.required">
+          <p class="error text-danger">Please check this option.</p>
+        </div>
+      </div>
+  </div>
+  <!-- <mat-progress-bar mode="determinate" value="50"></mat-progress-bar>
+  <div class="next-back-row-main">
+    <div class="left-text">13 items to submit</div>
+    <div class="button-row">
+      <button class="btn-back" (click)="next(10)" matRipple>Back</button>
+      <button class="btn-next" type="submit" matRipple>Next</button>
+    </div>
+  </div> -->
+</form>

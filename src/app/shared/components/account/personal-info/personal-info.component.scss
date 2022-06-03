@@ -1,0 +1,379 @@
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    @mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    // ----------------------------For Orientation-----------------------//
+    @mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+    @content;
+    }
+    }
+    
+    @mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+    @content;
+    }
+    }    
+// ------------END of Media Screen Mixing--------------//
+
+.saved-main {
+    padding-top: 40px;
+}
+
+
+.breadcumbs-main {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 15px;
+    font-weight: 300;
+    .bredcumb-title {
+        margin-right: 10px;
+    }
+    .second-margin-left {
+        margin-left: 10px;
+        margin-right: 0;
+    }
+    
+}
+.first-row-profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    .left-inner-first {
+        display: flex;
+        align-items: center;
+        .profile-img{
+            position: relative;
+            margin-right: 30px;
+            @include max-mq(567){
+                margin-right: 20px;
+            }
+            .profile-pic {
+                width: 100px;
+                height: 100px;
+                object-fit: cover;
+                border-radius: 100%;
+                border: 2px solid yellow;
+                @include max-mq(567){
+                    width: 70px;
+                    height: 70px;
+                }
+            }
+            .upload-img {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                cursor: pointer;
+                @include max-mq(567){
+                    width: 20px;
+                }
+            }
+            input[type="file"] {
+                position: absolute;
+                opacity: 0;
+                width: 30px;
+                height: 30px;
+                bottom: 0;
+                right: 0;
+                cursor: pointer;
+                @include max-mq(567){
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+        .right-inner-first{
+            .account-holder-name {
+                font-size: 18px;
+                font-weight: 500;
+                margin-bottom: 8px;
+                line-height: normal;
+                @include max-mq(567){
+                    font-size: 15px;
+                }
+            }
+            .join-date {
+                font-size: 12px;
+                color: #8c8c8c;
+                margin-bottom: 8px;
+                line-height: normal;
+                @include max-mq(567){
+                    font-size: 10px;
+                }
+            }
+            .fav-pic {
+                display: flex;
+                align-items: center;
+                font-size: 13px;
+                color: #8c8c8c;
+                line-height: normal;
+                @include max-mq(567){
+                    font-size: 10px;
+                }
+                img{
+                    width: 15px;
+                    margin-right: 6px;
+                }
+            }
+        }
+    }
+    .edit-btn{
+        img{
+            width: 20px;
+            cursor: pointer;
+        }
+    }
+}
+
+.personal-info-main {
+    display: flex;
+    @include max-mq(991){
+        flex-direction: column;
+    }
+
+   
+    .left-col-info {
+        width: 70%;
+        @include max-mq(991){
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .inner-wrapper-main {
+            width: 60%;
+            @include max-mq(1660){
+                width: 70%;
+            }
+            @include max-mq(1500){
+                width: 80%;
+            }
+            @include max-mq(1100){
+                width: 90%;
+            }
+            @include max-mq(991){
+                width: 100%;
+            }
+            .heading-row-main {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 20px;
+                .left-heading {
+                    font-size: 18px;
+                    font-weight: 500;
+                    text-decoration: underline;
+                }
+                .edit-btn{
+                    cursor: pointer;
+                    img{
+                        width: 20px;
+                    }
+                }
+            }
+        }
+    }
+
+    .right-col-info {
+        width: 30%;
+        @include max-mq(1100){
+            width: 40%;
+        }
+        @include max-mq(991){
+            width: 100%;
+        }
+        .right-inner-wrapper {
+            border: 1px solid #E5E5E5;
+            box-sizing: border-box;
+            border-radius: 10px;
+            padding: 30px;
+            @include max-mq(1500){
+                padding: 25px;
+            }
+            .inner-divs {
+                margin-bottom: 30px;
+                padding-bottom: 30px;
+                border-bottom: 1px solid #e8e8e8;
+                &:last-child{
+                    margin-bottom: 0px;
+                    padding-bottom: 0px;
+                    border: none;
+                }
+                img {
+                    margin-bottom: 20px;
+                }
+                .right-title {
+                    font-size: 16px;
+                    font-weight: 500;
+                    margin-bottom: 15px;
+                    line-height: normal;
+                }
+                p {
+                    font-size: 14px;
+                    color: rgba(51, 51, 51, 0.8);
+                }
+            }
+        }
+    }
+}
+
+.img-profile img {
+    width        : 75px;
+    height       : 75px;
+    border-radius: 100%;
+}
+
+// GENDER BUTTON
+.btn-group{
+    width: 100%;
+    button.btn{
+        width: 100%;
+        padding: 8px 15px;
+        border-radius: 5px;
+        border: 1px solid #e5e5e5 !important;
+        outline: none !important;
+        background: #fff;
+        color: #000;
+        text-align: left;
+        box-shadow: none !important;
+        font-size: 13px;
+        &::after{
+            position: absolute;
+            right: 13px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    }
+    .dropdown-menu {
+        width: 100% !important;
+        min-width: 100%;
+        max-width: 100% !important;
+        box-shadow: 0px 8px 10px #ccc;
+        border: none;
+    }
+}
+.grid-inputs-main {
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    .inner-grid-main{
+        input{
+            width: 100%;
+            // background: #F9F9F9;
+            border: 1px solid #CFD0D1;
+            border-radius: 5px;
+            padding: 12px 20px;
+            font-size: 13px;
+            line-height: normal;
+        }
+        input.ng-touched.ng-invalid {
+            border-color: red;
+        }
+        input[readonly] {
+            background: #F9F9F9 !important;
+            border: 1px solid #CFD0D1 !important;
+        }
+    }
+    .calender{
+        position: relative;
+        &::before{
+            position: absolute;
+            content: '';
+            background: url(../../../../../assets/images/calendar.svg) no-repeat;
+            background-size: 16px;
+            width: 17px;
+            height: 17px;
+            background-position: center;
+            right: 15px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    }
+    .phone-number{
+        position: relative;
+        &::before{
+            position: absolute;
+            content: '';
+            background: url(../../../../../assets/images/mobile-icon.svg) no-repeat;
+            background-size: 13px;
+            width: 19px;
+            height: 23px;
+            background-position: center;
+            right: 15px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    }
+    .email{
+        position: relative;
+        &::before{
+            position: absolute;
+            content: '';
+            background: url(../../../../../assets/images/email.svg) no-repeat;
+            background-size: 13px;
+            width: 19px;
+            height: 23px;
+            background-position: center;
+            right: 15px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    }
+}
+
+.btn-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 20px;
+    .save {
+        background: #001534;
+        border: 1px solid #001534;
+        box-shadow: 0px 6px 3px rgb(0 0 0 / 16%);
+        border-radius: 5px;
+        color: #fff !important;
+        font-size: 13px;
+        padding: 7px 20px;
+        text-decoration: none !important;
+        cursor: pointer;
+        img{
+            width: 10px;
+            margin-right: 5px;
+        }
+    }
+    .cancel {
+        // background: #001534;
+        border: 1px solid #001534;
+        box-shadow: 0px 6px 3px rgb(0 0 0 / 16%);
+        border-radius: 5px;
+        color: rgb(0, 0, 0) !important;
+        font-size: 13px;
+        padding: 7px 20px;
+        text-decoration: none !important;
+        cursor: pointer;
+        margin-right: 20px;
+        font-weight: bold;
+       @include max-mq(567){
+           margin-right: 30px;
+       }
+   }
+}

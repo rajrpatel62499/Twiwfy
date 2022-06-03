@@ -1,0 +1,65 @@
+<form #yourTheme='ngForm' (ngSubmit)="yourTheme.form.valid && next(4)">
+    <div *ngIf="step == 1" class="main-first-step-form">
+
+        <div class="inner-main-first-step">
+            <div class="heading">What type of experience will you host?</div>
+            <p>Select a theme that best describes what guests will mainly be doing on your experience. This will help
+                guests
+                find and book your experience.</p>
+            <div class="search-loaction-input" >
+                <!-- <input (click)="changeStep(2)" type="text" placeholder="Select a Primary Theme" name="ptheme"
+                    [(ngModel)]="experienceData.yourIdea.primaryTheme" readonly /> -->
+                <div class="display-text" 
+                [ngStyle]="{ 'height': parentCategoryText ? '75px': '55px'}"
+                (click)="changeStep(2)">
+                    
+                {{experienceData.yourIdea.primaryTheme ? 
+                        experienceData.yourIdea.primaryTheme : 'Select a Primary Theme' }} 
+                        
+                        <br>
+                    
+                    {{parentCategoryText}}
+                </div>
+                
+                <button [ngStyle]="{ 'height': parentCategoryText ? '75px': '55px'}" (click)="changeStep(2)" class="search-btn">
+                    <img src="../../../../../../../assets/images/black-add.svg" alt="Location" title="Location">
+                </button>
+                <ng-container *ngIf="!experienceData?.yourIdea?.primaryTheme && isNextButtonClicked">
+                        <small class="text-danger">Theme Selection is required.</small>
+                </ng-container>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- -----------conditional-statment------------------ -->
+    <div *ngIf="step == 2" class="all-themes-main">
+        <div class="first-heading-all">All Themes</div>
+        <div class="sub-heading"> 
+            <img *ngIf="selectedCategory" (click)="backClick()"
+                src="../../../../../../../assets/images/back-arrow.svg" alt="back-arrow" 
+                />
+            <img *ngIf="!selectedCategory" (click)="changeStep(1)"
+                src="../../../../../../../assets/images/back-arrow.svg" alt="back-arrow" 
+                />
+                {{ selectedCategory ? 'What exectly in ' + selectedCategory.name + " ?": 'Select a Primary theme'}}
+            
+        </div>
+
+        <div class="search-input-main">
+            <input (keyup)="getThemes()" type="text" name="search" placeholder="Search" [(ngModel)]="search" />
+            <button class="search-btn" (click)="getThemes()">
+                <img src="../../../../../../../assets/images/search-icon.svg" alt="search" title="search">
+            </button>
+        </div>
+
+        <!-- ----------Theme-grid-------------- -->
+        <div class="theme-grid-main">
+            <div class="inner-grid-main" *ngFor="let t of themes" matRipple (click)="assignChildren(t)">{{t.name}}
+                <span *ngIf="t.children && t.children?.length > 0"><img src="/assets/images/forward.png"></span>
+            </div>
+        </div>
+
+    </div>
+
+</form>

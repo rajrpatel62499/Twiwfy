@@ -1,0 +1,39 @@
+
+<div *ngIf="sidebar" class="main-sidebar-area">
+    <div class="right-sidebar-main">
+        <div class="close-side">
+            <img (click)="sidebars()" src="../../../assets/images/close-icon.svg" alt="close" title="close">
+        </div>
+        <div class="inner-menu-area-main">
+            <a title="Profile" href="#">Profile</a>
+            <a title="Messages" href="#">Messages</a>
+            <a title="Notifications" [routerLink]="['/notifications']" >Notifications</a>
+            <a title="Trips" href="#">Trips</a>
+            <a title="Saved" [routerLink]="['/saved']" >Saved</a>
+        </div>
+        <div class="manage-expe-main" *ngIf="isLogin">
+            <a title="Manage experiences" routerLink="/manage-experience">Manage experiences</a>
+            <a title="Manage experiences" (click)="manageaccountDialog()">Manage Accounts</a>
+            <a title="Account" [routerLink]="['/account']" >Account</a>
+        </div>
+
+        <div class="help-main">
+            <a title="Help" href="#">Help</a>
+            <a title="Login" (click)="loginDialog()" *ngIf="!isLogin">Login</a>
+            <a title="Logout" (click)="logout()" *ngIf="isLogin">Logout</a>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- <p *ngIf="sidebar">sidebar works!</p> -->

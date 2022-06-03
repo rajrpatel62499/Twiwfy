@@ -1,0 +1,169 @@
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    @mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    // ----------------------------For Orientation-----------------------//
+    @mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+    @content;
+    }
+    }
+    
+    @mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+    @content;
+    }
+    }    
+// ------------END of Media Screen Mixing--------------//
+
+.main-error-page {
+    margin-top: 100px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 100px;
+    img {
+        width: 40%;
+        @include max-mq(1460){
+            width: 32%;
+        }
+    }
+    p {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 35px;
+        width: 33%;
+        margin: auto;
+        margin-top: 40px;
+        @include max-mq(1460){
+            font-size: 18px;
+            line-height: 30px;
+            width: 46%;
+        }
+        span{
+            color: #4f45bc;
+        }
+    }
+}
+
+
+.first-circle-main {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: #DE2C27;
+    border-radius: 100%;
+    @include max-mq(1460){
+        width: 120px;
+        height: 120px;
+    }
+    &::before{
+        position: absolute;
+        content: '';
+        background: #fff;
+        width: 60px;
+        height: 70px;
+        top: 0;
+        left: 0;
+        @include max-mq(1460){
+            width: 50px;
+            height: 60px;
+        }
+    }
+}
+
+.right-first-circle-main {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    right: 0;
+    left: auto;
+    top: 0;
+    @include max-mq(1460){
+        width: 200px;
+        height: 200px;
+    }
+    .upper-buuble {
+        background: #21C1F3;
+        border-radius: 90px 0px;
+        width: 120px;
+        height: 137px;
+        position: absolute;
+        right: 0;
+        @include max-mq(1460){
+            border-radius: 70px 0px;
+            width: 100px;
+            height: 111px;
+        }
+    }
+    .lower-buble {
+        background: #6B5ACC;
+        border-radius: 0px 0px 100px 100px;
+        position: absolute;
+        width: 120px;
+        height: 114px;
+        right: 0;
+        top: 137px;
+        @include max-mq(1460){
+            border-radius: 0px 0px 50px 50px;
+            width: 100px;
+            height: 84px;
+            top: 110px;
+        }
+    }
+}
+
+
+.new-bubble-low {
+    background: #21C1F3;
+    border-radius: 150px 150px 150px 0px;
+    width: 166px;
+    height: 179px;
+    position: absolute;
+    bottom: 0;
+    @include max-mq(1460){
+        border-radius: 100px 100px 100px 0px;
+        width: 116px;
+        height: 119px;
+    }
+}
+
+.right-low-circle-main {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: #FFB5B5;
+    border-radius: 100%;
+    bottom: 0;
+    left: auto;
+    right: 0;
+    @include max-mq(1460){
+        width: 110px;
+        height: 110px;
+    }
+    &::before{
+        position: absolute;
+        content: '';
+        width: 70px;
+        height: 70px;
+        background: #fff;
+        bottom: 0;
+        right: 0;
+        @include max-mq(1460){
+            width: 50px;
+            height: 50px;
+        }
+    }
+}

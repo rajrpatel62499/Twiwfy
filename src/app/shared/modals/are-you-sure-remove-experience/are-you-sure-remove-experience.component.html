@@ -1,0 +1,23 @@
+
+<div class="heading-row-main">
+    <button class="close-btn" (click)="close()"><img src="../../../../assets/images/close-icon.svg" alt="close" title="close"/></button>
+    <div class="small-heading">Are you sure you want to remove this experience?</div>
+</div>
+
+
+<div class="content-area-main">
+    <p>You'll need to link and conﬁrm your bank account before you can receive payments with TWIWFY.</p>
+
+    <div class="btn-row">
+        <a title="cancel" class="cancel" matRipple (click)="isLoading ? '' : close()">Cancel</a>
+        <a title="Done" class="done" (click)="isLoading ? '' : deleteExperience()"> 
+            Confirm
+        </a>
+        
+    </div>
+    
+
+</div>
+
+
+

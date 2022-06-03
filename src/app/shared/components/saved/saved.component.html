@@ -1,0 +1,84 @@
+<div class="comman-margin-top saved-main">
+    <div class="comman-container">
+
+            <!--------------------------- heading-row--------------------- -->
+            <div class="heading-row">
+                <div class="heading">Saved</div>
+                <div class="right-btn-main">
+                    <button class="btn" (click)="crateList()" >Create a list</button>
+                    <div class="main-drop-down-list" *ngIf="mainDropdown">
+                            <div class="create-list-row">
+                                <div class="close-button" (click)="closeDrop()"> <img src="../../../../assets/images/close-icon.svg" alt="close"></div>
+                                <div class="creat-list">Create a list</div>
+ 
+                            </div>
+                            <div class="content-area-main"> 
+                                <div class="name-filed-main">
+                                    <input placeholder="Name" type="text">
+                                </div>
+                                <div class="select-privacymain">
+                                    <div class="btn-group" dropdown>
+                                        <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                                                aria-controls="dropdown-animated">
+                                                Privacy Settings <span class="caret"></span>
+                                        </button>
+                                        <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu"
+                                            role="menu" aria-labelledby="button-animated">
+                                          <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+                                          <li role="menuitem"><a class="dropdown-item" href="#">Another action</a>
+                                          </li>
+                                          <li role="menuitem"><a class="dropdown-item" href="#">Something else
+                                            here</a></li>
+                                        </ul>
+                                      </div>
+                                </div>
+                                <div class="saved-btn-row">
+                                        <a href="#" title="cancel" class="cancel">Cancel</a>
+                                        <a href="#" title="Save" class="save">Save</a>
+                                </div>
+
+                            </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- ------------Grid-for-cards----------------------------- -->
+            <div class="grid-for-saved-post">
+                <div class="inner-grid-main" *ngFor="let grid of grids">
+                        <div class="tabla-pic-main">
+                            <img src="../../../../assets/images/tabla-pic.png" alt="img" title="img">
+                        </div>
+                        <div class="content-area">
+                            <div class="post-category-time">Anytime</div>
+                            <div class="post-name">ABC</div>
+                            <div class="fav-nations-row">
+                                <div class="nation-name">United States</div>
+                                <div class="fav-star-row">
+                                    <img src="../../../../assets/images/favorite.svg" alt="fav-star" title="fav-star">
+                                    5.0 (47)   
+                                </div>
+                            </div>
+                            <div class="experinece-type-row">
+                                <div class="experience-name">Classical Music</div>
+                                <div class="like-btn">
+                                    <img src="../../../../assets/images/red-heart.svg" alt="heart" title="heart">
+                                </div>
+
+                            </div>
+                        </div>
+
+                </div>
+
+            </div>
+
+
+    </div>
+
+
+</div>
+
+

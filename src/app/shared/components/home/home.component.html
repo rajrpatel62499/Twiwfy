@@ -1,0 +1,575 @@
+<!-- <label>
+  {{ "HOME.SELECT" | translate }}
+  <select #langSelect (change)="translate.use(langSelect.value)">
+    <option
+      *ngFor="let lang of translate.getLangs()"
+      [value]="lang"
+      [selected]="lang === translate.currentLang"
+    >
+      {{ lang }}
+    </option>
+  </select>
+</label> -->
+<div class="custom-container-main">
+  <div class="left-col">
+    <h1 class="banner-heading" data-aos="fade-up">{{ "BANNER_HEADING" | translate }}</h1>
+    <div class="search-bar-inner-main">
+      <div class="upeper-col-main">
+        <input type="text" placeholder="Search for your experience" />
+      </div>
+      <div class="short-text" data-aos="fade-up" data-aos-delay="600">
+        Find unique activities led by one-of-a-kind hosts – all without leaving
+        home.
+      </div>
+    </div>
+  </div>
+  <div class="right-col" data-aos="fade-left" data-aos-delay="200">
+    <img src="../../../assets/images/Home-banner.svg" title="Home-banner" alt="Home-banner" />
+  </div>
+</div>
+<!-- --------------------end of banner-section---------------------- -->
+<!-- -------------------Filter-section---------------------------- -->
+<div class="filter-section-main comman-container">
+  <div class="filter-div-wrpper">
+    <div class="left-grid-system">
+      <div class="inner-grid">
+        <div class="btn-group popular-droddown" dropdown>
+          <button id="button-animated1" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+            aria-controls="dropdown-animated">
+            Popular<span class="caret"></span>
+          </button>
+          <ul id="dropdown-animated1" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-animated">
+            <li role="menuitem">
+              <a class="dropdown-item" href="#" title="New & Trending">New & Trending</a>
+            </li>
+            <li role="menuitem">
+              <a class="dropdown-item" href="#">Most Viewed</a>
+            </li>
+            <li role="menuitem">
+              <a class="dropdown-item" href="#">Favourite</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="inner-grid">
+        <button type="button" class="btn btn-primary" bsDatepicker>
+          Dates
+        </button>
+      </div>
+      <div class="inner-grid">
+        <div class="btn-group time-of-day" dropdown>
+          <button id="button-animated1" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+            aria-controls="dropdown-animated">
+            Time of day<span class="caret"></span>
+          </button>
+          <ul id="dropdown-animated1" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-animated">
+            <li role="menuitem">
+              <div class="left-time">
+                Morning <span class="sub-text">Start before 12pm</span>
+              </div>
+              <div class="right-check">
+                <mat-checkbox class="example-margin"></mat-checkbox>
+              </div>
+            </li>
+            <li role="menuitem">
+              <div class="left-time">
+                Afternoon <span class="sub-text">Start Afternoon</span>
+              </div>
+              <div class="right-check">
+                <mat-checkbox class="example-margin"></mat-checkbox>
+              </div>
+            </li>
+            <li role="menuitem">
+              <div class="left-time">
+                Evening <span class="sub-text">Start after 5pm</span>
+              </div>
+              <div class="right-check">
+                <mat-checkbox class="example-margin"></mat-checkbox>
+              </div>
+            </li>
+            <li role="menuitem" class="last-row">
+              <button type="button" class="btn btn-primary clear-btn">
+                Clear
+              </button>
+              <button type="button" class="btn btn-primary apply-btn">
+                Apply
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="inner-grid">
+        <button type="button" class="btn btn-primary">Price</button>
+      </div>
+      <div class="inner-grid">
+        <button type="button" class="btn btn-primary">Language offered</button>
+      </div>
+    </div>
+    <div class="right-grid-system">
+      <div class="inner-grid">
+        <button type="button" class="btn btn-primary cat-btn" #btn1 (click)="multiselect(btn1)">
+          Great for groups
+        </button>
+      </div>
+      <div class="inner-grid">
+        <button type="button" class="btn btn-primary cat-btn" #btn2 (click)="multiselect(btn2)">
+          Dance
+        </button>
+      </div>
+      <div class="inner-grid">
+        <button type="button" class="btn btn-primary cat-btn" #btn3 (click)="multiselect(btn3)">
+          Cooking
+        </button>
+      </div>
+      <div class="inner-grid">
+        <button type="button" class="btn btn-primary cat-btn" #btn4 (click)="multiselect(btn4)">
+          Music
+        </button>
+      </div>
+      <div class="inner-grid last-grid-system">
+        <div class="btn-group filter-dropdown-main" dropdown>
+          <button id="button-animated1" dropdownToggle type="button"
+            class="filter-btn-main btn btn-primary dropdown-toggle" aria-controls="dropdown-animated">
+            Fillters<span class="caret"></span>
+          </button>
+          <ul id="dropdown-animated1" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-animated">
+            <li role="menuitem">
+              <button type="button" class="btn btn-primary cat-btn" #btn5 (click)="multiselect(btn5)">
+                Great for groups
+              </button>
+              <button type="button" class="btn btn-primary cat-btn" #btn6 (click)="multiselect(btn6)">
+                Dance
+              </button>
+              <button type="button" class="btn btn-primary cat-btn" #btn7 (click)="multiselect(btn7)">
+                Cooking
+              </button>
+              <button type="button" class="btn btn-primary cat-btn" #btn8 (click)="multiselect(btn8)">
+                Music
+              </button>
+              <button type="button" class="btn btn-primary cat-btn" #btn9 (click)="multiselect(btn9)">
+                Drinks
+              </button>
+              <button type="button" class="btn btn-primary cat-btn" #btn10 (click)="multiselect(btn10)">
+                Fitness
+              </button>
+              <button type="button" class="btn btn-primary cat-btn" #btn11 (click)="multiselect(btn11)">
+                Magic
+              </button>
+              <button type="button" class="btn btn-primary cat-btn" #btn12 (click)="multiselect(btn12)">
+                Social impact
+              </button>
+              <button type="button" class="btn btn-primary cat-btn" #btn13 (click)="multiselect(btn13)">
+                Wellness
+              </button>
+              <button type="button" class="btn btn-primary cat-btn" #btn14 (click)="multiselect(btn14)">
+                Entertainment
+              </button>
+            </li>
+            <li role="menuitem" class="last-row">
+              <button type="button" class="btn btn-primary clear-btn">
+                Clear
+              </button>
+              <button type="button" class="btn btn-primary apply-btn">
+                Apply
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!----------------- end of filter section----------------------- -->
+<!-- -----------------festival-experience--------------------- -->
+
+<ng-container *ngIf="!isApiCalling">
+  
+  <ng-container *ngFor="let theme of themeExperiences">
+    <div class="festival-experience-main comman-container">
+      <div class="festival-wrapper">
+        <div class="first-row-for-heading">
+          <div class="left-col" data-aos="fade-right" data-aos-delay="200">
+            <span class="cursuie-heading">Explore</span>
+            <h3 class="heading">{{theme.themeCategory}} Experiences</h3>
+            <p>
+              Lorem Ipsum has been the industry's standard <br />
+              dummy text since the 1500s
+            </p>
+          </div>
+          <div class="right-col" data-aos="fade-left" data-aos-delay="200">
+            <a class="see-all" routerLink="/seeall"> See All</a>
+          </div>
+        </div>
+        <div class="first-slider-of-home">
+          <div slickContainer #slickController="slick" [slickConfig]="config">
+            <ng-container *ngIf="slickController?.initialize">
+              <div slickItem class="main-img-div" *ngFor="let experience of theme.data">
+                <div class="img-div-main" data-aos="fade-down" data-aos-delay="400">
+                  <img 
+                  width="206"
+                  height="232"
+                  [src]=" experience.image ?  
+                  experience.image : 'assets/images/img-slim-making.png'" alt="img-slim" title="img-slim" />
+                </div>
+                <div class="second-row-slide">
+                  <div class="left-small-heading">{{ experience.location ? experience.location : 'Location' }}</div>
+                  <div class="right-star-img">
+                    <img src="assets/images/favorite.svg" alt="fav" title="fav" />
+                    5.0 (47)
+                  </div>
+                </div>
+                <div class="third-row-slide">
+                  <div class="left-col-bold">
+                    <a class="up-heading" target="_blank" [routerLink]="['/', AppRoutes.VIEW_EXPERIENCE, experience._id]" >{{experience.title ? experience.title : 'Title'}}</a>
+                    <div class="low-heading">From ₹{{ experience.individualRate ? experience.individualRate : '5000'}}/person</div>
+                  </div>
+                  <div class="right-col-heart-img">
+                    <img src="assets/images/heart.svg" alt="heart" title="heart" />
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="!slickController?.initialize">
+              <div class="item" style="margin-top: 150px;">
+                <ngx-skeleton-loader
+                  count="1"
+                  animation="pulse"
+                  [theme]="{
+                    height: '200px',
+                    width: '80%',
+                    'margin-left': '0px',
+                    'border-radius': '10px',
+                    'background-color': 'rgb(127, 140, 141);'
+                  }"
+                ></ngx-skeleton-loader>
+              </div>
+              
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>
+
+<div class="item" style="margin-top: 150px;">
+  <ngx-skeleton-loader
+    *ngIf="isApiCalling"
+    count="1"
+    animation="pulse"
+    [theme]="{
+      height: '200px',
+      width: '80%',
+      'margin-left': '0px',
+      'border-radius': '10px',
+      'background-color': 'rgb(127, 140, 141);'
+    }"
+  ></ngx-skeleton-loader>
+</div>
+
+<!-- <div class="festival-experience-main comman-container">
+  <div class="festival-wrapper">
+    <div class="first-row-for-heading">
+      <div class="left-col">
+        <span class="cursuie-heading">Explore</span>
+        <h3 class="heading">Festival Experiences</h3>
+        <p>
+          Lorem Ipsum has been the industry's standard <br />
+          dummy text since the 1500s
+        </p>
+      </div>
+      <div class="right-col">
+        <a class="see-all" routerLink="/seeall"> See All</a>
+      </div>
+    </div>
+    <div class="first-slider-of-home">
+      <div slickContainer #slickController="slick" [slickConfig]="config">
+        <ng-container *ngIf="slickController.initialize">
+          <div slickItem class="main-img-div" *ngFor="let firstslide of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+            <div class="img-div-main">
+              <img src="../../../assets/images/img-slim-making.png" alt="img-slim" title="img-slim" />
+            </div>
+            <div class="second-row-slide">
+              <div class="left-small-heading">United States</div>
+              <div class="right-star-img">
+                <img src="../../../assets/images/favorite.svg" alt="fav" title="fav" />
+                5.0 (47)
+              </div>
+            </div>
+            <div class="third-row-slide">
+              <div class="left-col-bold">
+                <div class="up-heading">Slim-Making with a Scientist</div>
+                <div class="low-heading">From ₹4,541/person</div>
+              </div>
+              <div class="right-col-heart-img">
+                <img src="../../../assets/images/heart.svg" alt="heart" title="heart" />
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- -----------------end-festival-experience--------------------- -->
+
+<!-- --------------Starting In The Next 6 Hours----------------------------- -->
+<!-- <div class="starting-main-next-six">
+  <div class="left-best-deal">BEST TALENT</div>
+
+  <div slickContainer #slickController1="slick" [slickConfig]="config1">
+    <ng-container *ngIf="slickController1.initialize">
+      <div slickItem class="new-starting-main" *ngFor="let firstslide of [1, 2, 3, 4]">
+        <div class="main-inner-second-slider">
+          <div class="left-img">
+            <img src="../../../assets/images/second-slider-main.png" alt="main-img" title="main-img" />
+          </div>
+          <div class="right-content-main">
+            <span class="cursuie-heading">It's a no doubt</span>
+            <h3 class="heading">Starting In The Next 6 Hours</h3>
+
+            <div class="talent-row-main" *ngFor="let contents of [1, 2, 3]">
+              <div class="first-col">1</div>
+              <div class="second-col center-col">
+                <span class="grey-heading">Portugal</span>
+                <span class="title">Magician</span>
+                <span class="sub-title">From ₹4,541/person</span>
+                <div class="btn-row-main">
+                  <div class="comm-btn">8:00 PM</div>
+                  <div class="comm-btn">9:30 PM</div>
+                </div>
+              </div>
+              <div class="third-col">
+                <div class="start-row-main">
+                  <img src="../../../assets/images/favorite.svg" alt="fav" title="fav" />
+                  5.0 (47)
+                </div>
+                <div class="heart-img">
+                  <img src="../../../assets/images/heart.svg" alt="heart" title="heart" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div> -->
+
+<!-- ----------------end Starting In The Next 6 Hours-------------------------- -->
+
+<!-- -----------------Top Sellers--------------------- -->
+
+<!-- <div class="festival-experience-main comman-container">
+  <div class="festival-wrapper">
+    <div class="first-row-for-heading">
+      <div class="left-col">
+        <span class="cursuie-heading">Explore</span>
+        <h3 class="heading">Top Sellers</h3>
+        <p>
+          Lorem Ipsum has been the industry's standard <br />
+          dummy text since the 1500s
+        </p>
+      </div>
+      <div class="right-col">
+        <a class="see-all" href="#"> See All</a>
+      </div>
+    </div>
+    <div class="first-slider-of-home">
+      <div slickContainer #slickController2="slick" [slickConfig]="config2">
+        <ng-container *ngIf="slickController2.initialize">
+          <div slickItem class="main-img-div" *ngFor="let firstslide of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+            <div class="img-div-main">
+              <img src="../../../assets/images/img-slim-making.png" alt="img-slim" title="img-slim" />
+            </div>
+            <div class="second-row-slide">
+              <div class="left-small-heading">United States</div>
+              <div class="right-star-img">
+                <img src="../../../assets/images/favorite.svg" alt="fav" title="fav" />
+                5.0 (47)
+              </div>
+            </div>
+            <div class="third-row-slide">
+              <div class="left-col-bold">
+                <div class="up-heading">Slim-Making with a Scientist</div>
+                <div class="low-heading">From ₹4,541/person</div>
+              </div>
+              <div class="right-col-heart-img">
+                <img src="../../../assets/images/heart.svg" alt="heart" title="heart" />
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- -----------------end-Top Sellers--------------------- -->
+
+<!-- -----------------fourth-slider-main--------------------- -->
+
+<!-- <div class="festival-experience-main fourth-silder-main comman-container">
+  <div class="festival-wrapper">
+    <div class="first-row-for-heading">
+      <div class="left-col">
+        <span class="cursuie-heading">Explore</span>
+        <h3 class="heading">Top Sellers</h3>
+        <p>
+          Lorem Ipsum has been the industry's standard <br />
+          dummy text since the 1500s
+        </p>
+      </div>
+      <div class="right-col">
+        <a class="see-all" href="#"> See All</a>
+      </div>
+    </div>
+    <div class="first-slider-of-home">
+      <div slickContainer #slickController3="slick" [slickConfig]="config3">
+        <ng-container *ngIf="slickController3.initialize">
+          <div slickItem class="fourth-slider-inner-main" *ngFor="let firstslide of [1, 2]">
+            <div class="main-grid-inner-slider">
+              <div class="first-col comman-col">
+                <img src="../../../assets/images/new-img-main.png" class="cut-img" alt="new-img" title="new-img" />
+                <div class="after-img-div-main">
+                  <span class="grey-color-heading">United States</span>
+                  <div class="second-row-slide">
+                    <div class="left-col-bold">
+                      <div class="up-heading">Slim-Making with a Scientist</div>
+                      <div class="low-heading">From ₹4,541/person</div>
+                    </div>
+                    <div class="right-col-heart-img">
+                      <img src="../../../assets/images/heart.svg" alt="heart" title="heart" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="center-col-main">
+                <div class="first-row-main" *ngFor="let firstrow of [1, 2]">
+                  <div class="left-col">
+                    <img src="../../../assets/images/img-slim-making.png" alt="img-slim" title="img-slim" />
+                  </div>
+                  <div class="right-col">
+                    <div class="first-row-slide">
+                      <div class="left-small-heading">United States</div>
+                      <div class="right-star-img">
+                        <img src="../../../assets/images/favorite.svg" alt="fav" title="fav" />
+                        5.0 (47)
+                      </div>
+                    </div>
+                    <div class="second-row-slide">
+                      <div class="left-col-bold">
+                        <div class="up-heading">
+                          Slim-Making with a Scientist
+                        </div>
+                        <div class="low-heading">From ₹4,541/person</div>
+                      </div>
+                      <div class="right-col-heart-img">
+                        <img src="../../../assets/images/heart.svg" alt="heart" title="heart" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="first-col comman-col">
+                <img src="../../../assets/images/new-img-main.png" class="cut-img" alt="new-img" title="new-img" />
+                <div class="after-img-div-main">
+                  <span class="grey-color-heading">United States</span>
+                  <div class="second-row-slide">
+                    <div class="left-col-bold">
+                      <div class="up-heading">Slim-Making with a Scientist</div>
+                      <div class="low-heading">From ₹4,541/person</div>
+                    </div>
+                    <div class="right-col-heart-img">
+                      <img src="../../../assets/images/heart.svg" alt="heart" title="heart" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- -----------------end of fourth-slider-main--------------------- -->
+
+<!-- ---------last-slider-of-home-page------------------------>
+<!-- <div class="last-slider-main">
+  <div class="comman-container">
+    <div class="festivl-wrap">
+      <span class="cursuie-heading">Explore</span>
+      <h3 class="heading">New This Weeks</h3>
+    </div>
+  </div>
+</div>
+
+<div class="comman-container new-this-week-slider">
+  <div class="first-slider-of-home">
+    <div slickContainer #slickController4="slick" [slickConfig]="config4">
+      <ng-container *ngIf="slickController4.initialize">
+        <div slickItem class="inner-slider-main-last" *ngFor="let firstslide of [1, 2, 3]">
+          <div class="main-grid-area-for-last">
+            <div class="first-col-main">
+              <img src="../../../assets/images/last-firt.png" alt="last-first" title="last-first" />
+              <div class="blue-color-round"></div>
+            </div>
+            <div class="center-col-main">
+              <div class="left-col">
+                <img src="../../../assets/images/big-last-img.png" class="big-img" alt="big-img" />
+                <div class="second-row-img">
+                  <div class="left-col-img">
+                    <img class="upper-img" src="../../../assets/images/last-second.png" alt="last-second"
+                      title="last-second" />
+                    <img class="lower-img" src="../../../assets/images/last-third.png" alt="last-second"
+                      title="last-second" />
+                  </div>
+                  <div class="right-col-img">
+                    <img class="full-rounded-img" src="../../../assets/images/piano-artist.png" alt="piano"
+                      title="piano" />
+                  </div>
+                </div>
+              </div>
+              <div class="right-col">
+                <div class="first-row-green">
+                  <div class="green-shape"></div>
+                  <img src="../../../assets/images/adventure.png" class="adventure-img" alt="adventer" />
+                </div>
+                <div class="second-heading-row">
+                  <h4 class="heading">
+                    Most popular <br />
+                    around a world
+                  </h4>
+                  <div class="right-col">
+                    <a class="see-all" href="#"> See All</a>
+                  </div>
+                </div>
+                <div class="third-row-orange">
+                  <img class="dancer-img" src="../../../assets/images/dancer.png" alt="dancer" title="dancer" />
+                  <div class="orange-shape"></div>
+                </div>
+              </div>
+            </div>
+            <div class="last-col-main">
+              <div class="last-col-left">
+                <img src="../../../assets/images/traditional.png" class="traditional" alt="traditional"
+                  title="traditional" />
+                <img src="../../../assets/images/guiterist.png" class="guitarist" alt="guitar" title="guitar" />
+              </div>
+              <div class="last-col-right light-orange"></div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="load-more-btn">
+    <button class="btn">Load More</button>
+  </div>
+</div> -->
+<!-- ----------end of last-slider-home-page-------------------- -->

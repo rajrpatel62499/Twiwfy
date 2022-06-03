@@ -1,0 +1,34 @@
+<form #contribution="ngForm" (ngSubmit)="contribution.form.valid && next(22)">
+  <div class="main-container-area">
+    <div class="heading">Explain what the guest’s money benefits</div>
+    <p>
+      Give guests an insight into how the nonprofit organisation will use their
+      money. What will they be funding or enabling the nonprofit organisation to
+      do?
+    </p>
+    <textarea
+      [(ngModel)]="experienceData.settings.additionalRequirements" name="guestDescription" #guestDescription="ngModel" ngModel required
+      placeholder="E.g. Guests should have prior surfing experience, guests must have a scuba licence, guests should be comfortable around dogs, etc."
+    ></textarea>
+
+    <div
+      class="error-block"
+      *ngIf="
+      guestDescription.invalid && (guestDescription.dirty || guestDescription.touched || contribution.submitted)
+      "
+    >
+      <div class="required-text" *ngIf="guestDescription.errors?.required">
+        <p class="error text-danger">Description is required</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- <mat-progress-bar mode="determinate" value="95"></mat-progress-bar>
+  <div class="next-back-row-main">
+    <div class="left-text">03 items to submit</div>
+    <div class="button-row">
+      <button class="btn-back" (click)="next(20)" matRipple>Back</button>
+      <button class="btn-next" type="submit" matRipple>Next</button>
+    </div>
+  </div> -->
+</form>

@@ -1,0 +1,203 @@
+<div class="comman-margin-top">
+    <div class="comman-container  manage-experience-dashboard">
+        <!-- -------First-row-main------------ -->
+        <div class="first-row-wrapper-main">
+            <div class="left-col-main-progress">
+                <div class="heading-row-main">
+                    <div class="small-heading">Experiences</div>
+                    <div class="heading">Your Experiences</div>
+                </div>
+
+                <!-- --------- Progress-------------------->
+                <div class="in-progress-main">
+                    <div class="in-progress-title">In progress</div>
+                    <div class="inner-main-div">
+                            <div class="left-col-main">
+                                <img src="../../../../assets/images/experience-img.png" alt="experience" title="">
+                            </div>
+                            <div class="right-col-main">
+                                    <div class="title-of-experience">Experience</div>
+                                    <div class="sub-title">You’ll need to add a few more details before you can submit.</div>
+
+                                    <div class="title-main">
+
+                                        <div class="title-of-passed">Finish submitting your experience</div>
+                                        <div class="sub-title">Make sure you  complete all the sections to submit your experience for review </div>
+
+                                    </div>
+                                    <div class="btn-row-main">
+                                        <div class="comman-btn">Continue</div>
+                                        <div class="comman-btn">Delete</div>
+                                    </div>
+                            </div>
+                    </div>
+                </div>
+
+                <!-- ---------------------Declined----------------------- -->
+                <div class="in-progress-main">
+                    <div class="in-progress-title-declined">Experience declined</div>
+                    <div class="inner-main-div">
+                            <div class="left-col-main">
+                                <img src="../../../../assets/images/experience-img.png" alt="experience" title="">
+                            </div>
+                            <div class="right-col-main">
+                                    <div class="title-of-experience">Dance</div>
+                                    <div class="sub-title">Sorry, but it's look like your experience didn't meet our standards. Please read up on our quality standards and submit a new idea</div>
+
+                                    <div class="btn-row-main border-top-custom">
+                                        <div class="comman-btn">Continue</div>
+                                        <div class="comman-btn">Delete</div>
+                                    </div>
+                            </div>
+                    </div>
+                </div>
+
+                  <!-- ---------------------Declined----------------------- -->
+                  <div class="in-progress-main">
+                    <div class="available-main">Available</div>
+                    <div class="inner-main-div">
+                            <div class="left-col-main">
+                                <img src="../../../../assets/images/experience-img.png" alt="experience" title="">
+                            </div>
+                            <div class="right-col-main">
+                                    <div class="title-of-experience">Night Photoshoot in Pink Place Market</div>
+                                    <div class="sub-title">Your experience is live and available for guests to book.</div>
+
+                                    <div class="btn-row-main border-top-custom">
+                                        <div class="comman-btn">Edit</div>
+                                        <div class="comman-btn">View</div>
+                                        <div class="comman-btn">Pause</div>
+                                        <div class="comman-btn">Delete</div>
+                                    </div>
+                            </div>
+                    </div>
+                </div>
+
+                <!-- ---------Upcoming-Experiences-------------- -->
+                <div class="upcoming-experiences-heading-main">
+                    <div class="left-upcoming">
+                        <div class="small-heading">New</div>
+                        <div class="heading">Upcoming Experiences</div>
+                    </div>
+                    <div class="right-upcoming">
+                        <button class="manage-btn" [routerLink]="['/manage-calendar']" >Manage calendar</button>
+                    </div>
+                </div>
+
+                <!-------------------------- Grid-experiences---------------------- -->
+                <div class="grid-system-experience-main">
+                        <div class="inner-grid-main" *ngFor="let grid of [1,2,3,4]">
+                            <div class="left-img-upcoming">
+                                <img src="../../../../assets/images/experience-img.png" alt="img" title="img" />
+                            </div>
+                            <div class="right-col-upcoming">
+                                <div class="upcoming-card-heading">
+                                    <div class="small-heading">Japanese Food Trivia Night</div>
+                                    <div class="time-strip">7:00 AM -9:00 AM(IST), Jan 26, 2021</div>
+                                </div>
+                                <div class="no-guest-yet-main">
+                                    <span>No guest yet</span>
+                                </div>
+                                <div class="location-language-main">
+                                    <div class="locations-main">Vancouver</div>
+                                    <div class="language-main">English</div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+
+
+
+
+            </div>
+            <div class="right-col-main-progress">
+                <div class="user-participate-row-main">
+                    <div class="aside-title">User Participate</div>
+                    <div class="right-side-dropdown">
+                        <div class="btn-group" dropdown>
+                            <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                                    aria-controls="dropdown-animated">
+                             This Week <span class="caret"></span>
+                            </button>
+                            <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu"
+                                role="menu" aria-labelledby="button-animated">
+                              <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+                              <li role="menuitem"><a class="dropdown-item" href="#">Another action</a>
+                              </li>
+                              <li role="menuitem"><a class="dropdown-item" href="#">Something else
+                                here</a></li>
+                            </ul>
+                          </div>
+                    </div>
+                </div>
+                <!-- ------------------Chart-row-main------------- -->
+                <div class="chart-row-main">
+                        <div class="left-chart-main">
+                            <canvas
+                            baseChart
+                            chartType="doughnut"
+                            [data]="doughnutChartData"
+                            [colors]="donutColors"
+                            [options]="chartOptions"
+                            [legend]="true">
+                            </canvas>
+                        </div>
+                        <div class="right-chart-main">
+                            <span class="participate">Participate</span>
+                            <span class="registered">Registered only</span>
+                        </div>
+
+                </div>
+                <!-- ------------Recent-activity------------ -->
+                <div class="recent-activity-main">
+                    <div class="aside-title">Recent Activity</div>
+                    <div class="inner-wrapper-main-acitivity">
+                            <div class="comman-row-activity" *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]">
+                                <div class="left-col-img">
+                                    <img src="../../../../assets/images/activity-people.png" alt="Img" title="Img">
+                                </div>
+                                <div class="right-col-activity-recent">
+                                    <div class="activity-title">John Doe participate in Japanese Food Trivia event.</div>
+                                    <div class="activity-times">7:00 AM -9:00 AM(IST), Jan 26, 2021</div>
+
+                                </div>
+                             </div>
+                            
+                    </div>
+                </div>
+
+           
+            </div>
+        </div>
+
+        <!-- -----------Second-row-main ---------------->
+        <div class="second-row-wrapper-main">
+            <div class="heading-row-main">
+                <div class="small-heading">News</div>
+                <div class="heading">Latest Blog</div>
+            </div>
+            <!-- -----------Slider-row-blogs------------- -->
+            <div class="blogs-slider-main">
+                <div class="first-slider-of-home">
+                    <div slickContainer #slickController="slick" [slickConfig]="config">
+                      <ng-container *ngIf="slickController.initialize">
+                        <div slickItem class="main-img-div" *ngFor="let firstslide of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+                            <div class="blog-img-main">
+                                <img src="../../../../assets/images/blog-img.png" alt="blog" title="blog">
+                            </div>
+                            <div class="content-area-blogs">
+                                <div class="blog-title">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</div>
+                                <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                            </div>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </div>
+                  
+            </div>
+
+        </div>
+    </div>
+    
+</div>

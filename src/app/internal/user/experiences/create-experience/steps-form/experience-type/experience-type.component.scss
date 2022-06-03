@@ -1,0 +1,353 @@
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    @mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    // ----------------------------For Orientation-----------------------//
+    @mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+    @content;
+    }
+    }
+    
+    @mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+    @content;
+    }
+    }    
+// ------------END of Media Screen Mixing--------------//
+
+.main-first-step-form {
+    padding-bottom: 50px;
+    margin-top: 0px;
+    // height: 630px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    scrollbar-width: none;
+    @include max-mq(1200){
+        padding-bottom: 50px;
+    }
+    @include max-mq(991){
+        padding-bottom: 40px;
+        height: auto;
+    }
+    .inner-main-first-step {
+        width: 600px;
+        margin: auto;
+        padding: 0px 10px;
+        position: relative;
+        @include max-mq(1600){
+            width: 500px;
+        }
+        @include max-mq(1200){
+            width: 98%;
+        }
+        @include max-mq(1100){
+            width: 100%;
+        }
+        @include max-mq(991){
+            width: 100%;
+            padding: 0 ;
+        }
+        &::before{
+            position: absolute;
+            content: "";
+            background: rgba(255, 113, 112, 0.4);
+            width: 150px;
+            height: 150px;
+            border-radius: 100%;
+            right: -70px;
+            bottom: -67px;
+            z-index: 1;
+            @include max-mq(1600){
+                width: 130px;
+                height: 130px;
+                right: -60px;
+                bottom: -47px;
+            }
+            @include max-mq(1500){
+                width: 90px;
+                height: 90px;
+                right: -40px;
+                bottom: -37px;
+            }
+            @include max-mq(1200){
+                width: 90px;
+                height: 90px;
+                right: 0px;
+                bottom: -27px;
+            }
+            
+
+        }
+        .heading{
+            font-size: 26px;
+            line-height: 50px;
+            text-decoration: none;
+            @include max-mq(1600){
+                font-size: 22px;
+                line-height: 40px;
+            }
+            @include max-mq(1500){
+                font-size: 18px;
+                line-height:normal;
+            }
+            @include max-mq(1300){
+                font-size: 18px;
+                line-height: normal;
+                margin-bottom: 30px;
+            }
+            @include max-mq(1200){
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+            @include max-mq(567){
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+            @include max-mq(567){
+                font-size: 15px;
+                margin-bottom: 10px;
+            }
+        }
+        p {
+            font-size: 15px;
+            line-height: 24px;
+            color: #8C8C8C;
+            @include max-mq(1500){
+                font-size: 13px;
+                line-height:normal;
+            }
+            @include max-mq(1200){
+                font-size: 13px;
+                
+            }
+            @include max-mq(567){
+                font-size: 12px;
+            }
+            a{
+                font-size: 15px;
+                text-decoration: underline;
+                @include max-mq(1600){
+                    font-size: 13px;
+                    line-height: 22px;
+                }
+                @include max-mq(1500){
+                    font-size: 13px;
+                    line-height:normal
+                }
+                @include max-mq(567){
+                    font-size: 12px;
+                
+                }
+            }
+        }
+    }
+}
+
+
+.grid-main-system {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    position: relative;
+    @include max-mq(1500){
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    @include max-mq(1200){
+        grid-template-columns: repeat(1, 1fr);
+        grid-row-gap: 30px;
+    }
+    @include max-mq(1100){
+        grid-row-gap: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    &::before{
+        position: absolute;
+        content: "";
+        background: rgba(116, 217, 247, 0.3);
+        width: 150px;
+        height: 150px;
+        border-radius: 100%;
+        left: -100px;
+        top: auto;
+        bottom: -80px;
+        @include max-mq(1600){
+            width: 120px;
+            height: 120px;
+            left: -70px;
+            bottom: -60px;
+        }
+        @include max-mq(1500){
+            width: 90px;
+            height: 90px;
+            left: -50px;
+            bottom: -60px;
+        }
+        @include max-mq(1200){
+            width: 80px;
+            height: 80px;
+            left: -16px;
+            bottom: -60px;
+        }
+    }
+    .inner-grid-system {
+        box-shadow: 0px 4px 2px rgb(0 0 0 / 16%);
+        border-radius: 8px;
+        padding: 30px 30px;
+        background: #fff;
+        cursor: pointer;
+        z-index: 99;
+        @include max-mq(1600){
+            padding: 20px 20px;
+        }
+        @include max-mq(1500){
+            padding: 15px 15px;
+        }
+        @include max-mq(567){
+            padding: 15px 15px;
+        }
+        img {
+            width: 40px;
+            height: 40px;
+            object-fit: scale-down;
+            margin-bottom: 20px;
+            @include max-mq(1600){
+                width: 32px;
+                height: 32px;
+                margin-bottom: 16px;
+            }
+            @include max-mq(1500){
+                width: 25px;
+                height: 25px;
+                margin-bottom: 10px;
+            }
+            @include max-mq(567){
+                width: 25px;
+                height: 25px;
+                margin-bottom: 10px;
+            }
+        }
+        .small-heading {
+            font-size: 18px;
+            line-height: 25px;
+            margin-bottom: 20px;
+            @include max-mq(1600){
+                font-size: 16px;
+                line-height: 23px;
+                margin-bottom: 10px;
+            }
+            @include max-mq(1500){
+                font-size: 14px;
+                margin-bottom: 6px;
+                line-height:normal;
+            }
+            @include max-mq(567){
+                font-size: 14px;
+                line-height: 20px;
+                margin-bottom: 5px;
+            }
+        }
+        p {
+            font-size: 12px !important;
+            line-height: 20px !important;
+            margin-bottom: 0;
+            @include max-mq(567){
+                font-size: 11px !important;
+                line-height: 18px !important;
+            }
+        }
+    }
+    .active{
+        position: relative;
+        &:before{
+            position: absolute;
+            content: '';
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            border: 2px solid #FFF686;
+            border-radius: 9px;
+        }
+    }
+}
+
+.alert-box-main {
+    display: flex;
+    border: 1px solid #D1D1D1;
+    border-radius: 8px;
+    padding: 30px 30px;
+    z-index: 999;
+    background: #fff;
+    position: relative;
+    @include max-mq(1600){
+        padding: 20px 20px;
+    }
+    @include max-mq(567){
+        padding: 15px 15px;
+    }
+    .left-col-icon {
+        width: 60px;
+        height: 60px;
+        background: #FF9D17;
+        border-radius: 100%;
+        margin-right: 30px;
+        padding: 13px;
+        @include max-mq(567){
+            width: 35px;
+            height: 35px;
+            margin-right: 9px;
+            padding: 1px;
+        }
+        img{
+            width: 32px;
+            height: 18px;
+        }
+    }
+    .right-col-main{
+        .review-heading {
+            font-weight: 500;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+            line-height: 22px;
+            @include max-mq(1600){
+                font-size: 15px;
+                line-height: 22px;
+            }
+            @include max-mq(567){
+                font-size: 14px;
+                line-height: 19px;
+            }
+        }
+        p {
+            font-size: 11px !important;
+            margin-bottom: 0 !important;
+            line-height: 18px !important;
+            @include max-mq(567){
+                font-size: 10px !important;
+                line-height: 16px !important;
+            }
+        }
+    }
+}

@@ -1,0 +1,203 @@
+<form #durationForm="ngForm" (ngSubmit)="durationForm.form.valid && next(23)">
+  <div class="main-container-area">
+    <div class="left-wrapper">
+      <div class="inner-width-wrapper">
+        <div class="heading">How long is your experience?</div>
+        <p>
+          The ideal length for online experiences is 2 hours. It also helps
+          minimise the physical strain of extensive screen time and is
+          respectful of guests who share devices or have bandwidth, data, or
+          technical limitations.
+        </p>
+
+        <!-- ----add-title-------------- -->
+        <div class="form-title mt-4">Duration</div>
+        <div class="drop-down-min-age">
+          <div class="btn-group" dropdown>
+            <button
+              class="btn btn-primary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {{ name }}
+            </button>
+            <div class="dropdown-menu duration-dropdown" aria-labelledby="dropdownMenuButton">
+              <a
+                *ngFor="
+                  let l of durationTimes
+                "
+                class="dropdown-item"
+                (click)="setDuration(l)"
+                >{{ l }}</a
+              >
+              <!-- <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="error-block" *ngIf="formValidation.isDurationValue">
+          <div class="required-text">
+            <p class="error text-danger">Please select duration.</p>
+          </div>
+        </div>
+
+        <div class="form-title mt-4">
+          What time would you typically start your experience?
+        </div>
+        <p>
+          Later, you’ll pick the exact calendar dates you’d like to host. You’ll
+          also be able to adjust times for each individual date.
+        </p>
+
+        <div class="form-title mt-4">Experience start time</div>
+        <div class="drop-down-min-age">
+          <div class="dropdown experience-dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {{ experienceLableName }}
+            </button>
+            <div class="dropdown-menu experience-start-time-dropdown" aria-labelledby="dropdownMenuButton">
+              <a
+                class="dropdown-item"
+                *ngFor="let exp of experienceStartTimeData"
+                (click)="setExperienceStartTimeData(exp)"
+                >{{ exp }}</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="error-block" *ngIf="formValidation.isStartTime">
+          <div class="required-text">
+            <p class="error text-danger">Please select start time.</p>
+          </div>
+        </div>
+
+        <div class="form-title mt-4">
+          What activity level should people expect?
+        </div>
+        <p>
+          Think about how active people will get during your entire experience.
+        </p>
+        <div class="radio-group-custom">
+          <input
+            type="radio"
+            id="test4"
+            name="days"
+            #days="ngModel"
+            [(ngModel)]="experienceData?.settings.activityLevel" 
+            value="Weekdays"
+          />
+          <label for="test4">Weekdays</label>
+        </div>
+        <div class="radio-group-custom">
+          <input
+            type="radio"
+            id="test5"
+            name="days"
+            #days="ngModel"
+            [(ngModel)]="experienceData?.settings.activityLevel" 
+            value="Weekends"
+          />
+          <label for="test5">Weekends</label>
+        </div>
+        <div class="radio-group-custom">
+          <input
+            type="radio"
+            id="test6"
+            name="days"
+            #days="ngModel"
+            [(ngModel)]="experienceData?.settings.activityLevel" 
+            value="Both weekdays and weekends"
+          />
+          <label for="test6">Both weekdays and weekends</label>
+        </div>
+        <div class="radio-group-custom">
+          <input
+            type="radio"
+            id="test7"
+            name="days"
+            #days="ngModel"
+            [(ngModel)]="experienceData?.settings.activityLevel" 
+            value="I don’t know yet"
+          />
+          <label for="test7">I don’t know yet</label>
+        </div>
+
+        <div
+          class="error-block"
+          *ngIf="
+          days.invalid &&
+            (days.dirty ||
+            days.touched ||
+            durationForm.submitted)
+          "
+        >
+          <div class="required-text" *ngIf="days.errors?.required">
+            <p class="error text-danger">Please select any one option</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- <div class="right-wrapper">
+      <div class="small-heading">Tips</div>
+      <span class="pop"
+        >Popular start times for guests around the world based on bookings in
+        the last 14 days</span
+      >
+      <div class="white-card-right">
+        <div class="comman-row">
+          <div class="left-watch">
+            <img src="../../../../../../../assets/images/time.svg" />
+          </div>
+          <div class="right-watch">
+            <span class="uper-time">3 AM</span>
+            <span class="lowe-time">2.7X more than avg</span>
+          </div>
+        </div>
+        <div class="comman-row">
+          <div class="left-watch">
+            <img src="../../../../../../../assets/images/time.svg" />
+          </div>
+          <div class="right-watch">
+            <span class="uper-time">3 AM</span>
+            <span class="lowe-time">2.7X more than avg</span>
+          </div>
+        </div>
+        <div class="comman-row">
+          <div class="left-watch">
+            <img src="../../../../../../../assets/images/time.svg" />
+          </div>
+          <div class="right-watch">
+            <span class="uper-time">3 AM</span>
+            <span class="lowe-time">2.7X more than avg</span>
+          </div>
+        </div>
+      </div>
+      <div class="white-card-right">
+        Online Experiences are booked by guests who live in a variety of
+        different time zones.
+      </div>
+    </div> -->
+  </div>
+
+  <!-- <mat-progress-bar mode="determinate" value="95"></mat-progress-bar>
+  <div class="next-back-row-main">
+    <div class="left-text">02 items to submit</div>
+    <div class="button-row">
+      <button class="btn-back" (click)="next(21)" matRipple>Back</button>
+      <button class="btn-next" type="submit" matRipple>Next</button>
+    </div>
+  </div> -->
+</form>

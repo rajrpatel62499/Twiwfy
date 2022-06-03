@@ -1,0 +1,190 @@
+<div class="main-container-area">
+    <div class="left-wrapper">
+        <div class="inner-width-wrapper">
+            <div class="heading">Your information</div>
+            <p>Before you submit, we need a few more things. This is so we can keep our community safe.</p>
+            <!-- ----add-title-------------- -->
+            <div class="title-filed mt-3">
+                <div class="small-heading-1 mb-2">Verify your government ID</div>
+                <p>We require this for all hosts. You’ll be automatically redirected back to
+                    this page when you’re done.</p>
+                <button class="btn" [disabled]="isUploading" (click)="photos.click()">
+                  <i class="fa " [ngClass]="{ 'fa-spinner fa-spin' : isUploading}" aria-hidden="true"></i>
+                  {{ isUploading ? 'Uploading..' : 'Verify My ID'}}
+                  
+                </button>
+                <input type="file" #photos (change)="onFileSelected($event.target.files[0])" name="photo" #photo="ngModel"
+                    accept=".jpg,.jpeg,.png,.pdf" style="display: none;" ngModel required />
+            </div>
+
+            <div class="row mt-5">
+              <ng-container *ngFor="let pic of experienceData.verificationDocument; index as i">
+                <div class="col-6 verfiy-img">
+                    <img 
+                    class="placeholder"       
+                    style="border-radius: 10px;"         
+                    height="250" width="250" 
+                    [src]="pic.original? pic.original : 'assets/images/place-holder-img.svg'" alt="">
+                    <!-- ---------Close-btn---------- -->
+                    <img (click)="deletePic(i)" src="../../../../../../../assets/images/close-icon.svg"
+                     alt="close-icon" title="close-iocn" class="close-btn">
+
+
+                </div>
+
+              </ng-container>
+                <!-- <div class="col-6">
+                    <img 
+                    class="placeholder"                
+                    
+                    height="250" width="250" 
+                    [src]="experienceData.verificationDocument && experienceData.verificationDocument[0]?.original ? experienceData.verificationDocument[0]?.original : 'assets/images/place-holder-img.svg'" alt="">
+                </div>
+                <div class="col-6">
+                    <img  
+                    class="placeholder"                
+                    height="250" width="250"
+                    [src]="experienceData.verificationDocument && experienceData.verificationDocument[1]?.original ? experienceData.verificationDocument[1]?.original : 'assets/images/place-holder-img.svg'" 
+                    alt="">
+                </div> -->
+            </div>
+
+            <!-- <div class="grid-system-main">
+                <div class="inner-grid-main">
+                  <div 
+                  [ngClass]=" { 'outline-red' : !experienceData.verificationDocument[0] && isNextClicked}"
+                  class="place-holder-img" (click)="firstImage.click()">
+                    <input
+                      style="display: none"
+                      type="file"
+                      (change)="onFileSelected($event, 1)"
+                      accept=".png, .jpg, .jpeg"
+                      #firstImage
+                      name="hostImage"
+                      #firstImg="ngModel"
+                      ngModel                
+                    />
+                    <img
+                      src="../../../../../../../assets/images/place-holder-img.svg"
+                      alt="placeholder"
+                      class="placeholder"                
+                      [ngClass]="{ 'placeholder-load': firstLoader }"
+                      [ngStyle]="{'display':!experienceData.verificationDocument[0] ? 'block':'none'}"
+                    />
+                    <img
+                      width="200"
+                      height="200"
+                      [src]="experienceData.verificationDocument[0]?.original"
+                      alt="placeholder"
+                      class="placeholder display-placeholder-image"                
+                      [ngStyle]="{'display':experienceData.verificationDocument[0] ? 'block':'none'}"
+                    />
+      
+                    <div class="skeleton-loader" *ngIf="firstLoader">
+                      <ngx-skeleton-loader
+                        count="1"
+                        appearance="circle"
+                        [theme]="{
+                          width: '158px',
+                          height: '150px',
+                          'border-radius': '20px'
+                        }"
+                      >
+                      </ngx-skeleton-loader>
+                    </div>
+                  </div>
+                  <div
+                    class="error-block"
+                    *ngIf="
+                      firstImg.invalid &&
+                      (firstImg.dirty || firstImg.touched)
+                    "
+                  >
+                    <div class="required-text" *ngIf="firstImg.errors.required && !experienceData.verificationDocument[0]">
+                      <p class="error text-danger">Please upload image.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="inner-grid-main">
+                  <div 
+                  class="place-holder-img" (click)="secondImage.click()">
+                    <input
+                      style="display: none"
+                      type="file"
+                      (change)="onFileSelected($event, 2)"
+                      accept=".png, .jpg, .jpeg"
+                      #secondImage
+                      name="actionImage"
+                      #secondImg="ngModel"
+                      ngModel                
+                    />
+                    <img
+                      src="../../../../../../../assets/images/place-holder-img.svg"
+                      alt="placeholder"
+                      class="placeholder"                
+                      [ngClass]="{ 'placeholder-load': secondLoader }"
+                      [ngStyle]="{'display':!experienceData.verificationDocument[1] ? 'block':'none'}"
+                    />
+                    <img
+                      width="200"
+                      height="200"
+                      [src]="experienceData.verificationDocument[1]?.original"
+                      alt="placeholder"
+                      class="placeholder display-placeholder-image"                
+                      [ngStyle]="{'display':experienceData.verificationDocument[1] ? 'block':'none'}"
+                    />
+      
+                    <div class="skeleton-loader" *ngIf="secondLoader">
+                      <ngx-skeleton-loader
+                        count="1"
+                        appearance="circle"
+                        [theme]="{
+                          width: '158px',
+                          height: '150px',
+                          'border-radius': '20px'
+                        }"
+                      >
+                      </ngx-skeleton-loader>
+                    </div>
+                  </div>
+                  <div
+                    class="error-block"
+                    *ngIf="
+                      secondImg.invalid &&
+                      (secondImg.dirty ||
+                        secondImg.touched)
+                    "
+                  >
+                    <div class="required-text" *ngIf="secondImg.errors.required && !experienceData.verificationDocument[1]">
+                      <p class="error text-danger">Please upload image.</p>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+        </div>
+
+    </div>
+    <div class="right-wrapper">
+        <div class="small-heading">Helpful Resources</div>
+        <div class="do-main">
+            <div class="small-img-tag">
+                <img src="../../../../../../../assets/images/pixel-pic.png" alt="pixel" title="pixel">
+            </div>
+            <div class="small-heading-2">Resource Center</div>
+            <p>How to create a great video submission for your experience</p>
+        </div>
+
+
+    </div>
+
+
+</div>
+<!-- <mat-progress-bar mode="determinate" value="80"></mat-progress-bar>
+<div class="next-back-row-main">
+  <div class="left-text">02 items to submit</div>
+  <div class="button-row">
+    <button class="btn-back" (click)="next(25)" matRipple>Back</button>
+    <button class="btn-next" (click)="next(27)" matRipple>Next</button>
+  </div>
+</div> -->

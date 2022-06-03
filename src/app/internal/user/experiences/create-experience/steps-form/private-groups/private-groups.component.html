@@ -1,0 +1,124 @@
+<form #privateGroup="ngForm" (ngSubmit)="privateGroup.form.valid && next(25)">
+  <div class="main-container-area">
+    <div class="left-wrapper">
+      <div class="inner-width-wrapper">
+        <div class="heading">Private Groups</div>
+        <p>
+          This allows you to schedule private-only groups, and also lets guests
+          book instances as private groups if no other seats are taken. You'll
+          still be able to change this setting for specific instances by editing
+          the booking type.
+        </p>
+
+        <!-- ----add-title-------------- -->
+        <div class="add-privat-group d-flex space-between">
+          <span>Allow Private Groups</span>
+          <label class="switch">
+            <input type="checkbox" name="privateGroup" #privateGroup (change)="allowPrivateGroup($event)" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <ng-container *ngIf="experienceData.settings.allowPrivateGroups">
+
+          <div class="form-title mt-4">Minimum price</div>
+          <div class="inr-price">
+            <div class="inr">INR</div>
+            <input type="text" [(ngModel)]="experienceData.settings.minPrice" placeholder="1500"
+              (keypress)="validateNumber($event)" name="minimumPrice" #minimumPrice="ngModel" ngModel required />
+          </div>
+
+          <div class="error-block" *ngIf="
+            minimumPrice.invalid &&
+            (minimumPrice.dirty ||
+              minimumPrice.touched ||
+              privateGroup.submitted)
+          ">
+            <div class="required-text" *ngIf="minimumPrice.errors.required">
+              <p class="error text-danger">Minimum price is required.</p>
+            </div>
+          </div>
+
+          <p class="mb-5">
+            This is the minimum a group has to pay to book privately. If the cost
+            per person is higher than the minimum price entered, guests will pay
+            the higher amount.
+          </p>
+
+          <div class="form-title">Maximum group size</div>
+          <div class="drop-down-min-age">
+            <div class="btn-group" dropdown>
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ name }}
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a *ngFor="
+                  let l of ageArray" class="dropdown-item" (click)="setMaxGroupSize(l)">{{ l }}</a>
+                <!-- <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a> -->
+              </div>
+            </div>
+
+            <div class="error-block" *ngIf="isGroupSize">
+              <div class="required-text">
+                <p class="error text-danger">Group Size is required.</p>
+              </div>
+            </div>
+          </div>
+          <p>
+            For Online Experiences, you can host a private group of up to 30
+            guests. The number entered here will also be applied as the maximum
+            for any group rates you add.
+          </p>
+        </ng-container>
+      </div>
+    </div>
+    <!-- <div class="right-wrapper">
+      <div class="small-heading">Tips</div>
+      <span class="pop">Popular start times for guests around the world based on bookings in
+        the last 14 days</span>
+      <div class="white-card-right">
+        <div class="comman-row">
+          <div class="left-watch">
+            <img src="../../../../../../../assets/images/time.svg" />
+          </div>
+          <div class="right-watch">
+            <span class="uper-time">3 AM</span>
+            <span class="lowe-time">2.7X more than avg</span>
+          </div>
+        </div>
+        <div class="comman-row">
+          <div class="left-watch">
+            <img src="../../../../../../../assets/images/time.svg" />
+          </div>
+          <div class="right-watch">
+            <span class="uper-time">3 AM</span>
+            <span class="lowe-time">2.7X more than avg</span>
+          </div>
+        </div>
+        <div class="comman-row">
+          <div class="left-watch">
+            <img src="../../../../../../../assets/images/time.svg" />
+          </div>
+          <div class="right-watch">
+            <span class="uper-time">3 AM</span>
+            <span class="lowe-time">2.7X more than avg</span>
+          </div>
+        </div>
+      </div>
+      <div class="white-card-right">
+        Online Experiences are booked by guests who live in a variety of
+        different time zones.
+      </div>
+    </div> -->
+  </div>
+
+  <!-- <mat-progress-bar mode="determinate" value="95"></mat-progress-bar>
+  <div class="next-back-row-main">
+    <div class="left-text">02 items to submit</div>
+    <div class="button-row">
+      <button class="btn-back" (click)="next(23)" matRipple>Back</button>
+      <button class="btn-next" type="submit" matRipple>Next</button>
+    </div>
+  </div> -->
+</form>

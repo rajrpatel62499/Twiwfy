@@ -1,0 +1,26 @@
+Routes                          =>  Purpose
+======================================================================
+USER
+------------
+/home                           [AA] => to show all experiences(online|in-person) hosted by host.
+/user/experiences               [AA] => to show list of experiences attended by user.
+/user/experience/:id            [AA] => details of experience attended by user
+
+/user/profile                   [UA] => user's profile details
+/user/accounts                  [UA] => user's accounts overvied
+/user/notifications             [UA] => user's notifications list 
+/user/saved                     [UA] => user's saved experiences
+
+HOST 
+----------
+home                            [AA] => list of all experiences hosted by other hosts  
+/host/experiences               [HA] => list of host's experience        
+/host/experience/:type/:id      [HA] => edit mode of host's hosted experience 
+
+  
+Notes: 
+/user/home and /host/home converted to /home will be the same page.
+UA = User (can) Access
+AA = Anyone (can) Access [UA and HA can]
+HA = Host (can) Access
+

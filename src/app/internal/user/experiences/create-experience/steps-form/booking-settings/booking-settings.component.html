@@ -1,0 +1,206 @@
+<form #bookingForm="ngForm" (ngSubmit)="bookingForm.form.valid && next(26)">
+  <div class="main-container-area">
+    <div class="left-wrapper">
+      <div class="inner-width-wrapper">
+        <div class="heading">Booking settings</div>
+        <p>
+          This is how much advance notice you need to prepare for the start of
+          your experience. If you need more time to prepare, we recommend a
+          longer cutoff time. If you don’t need much time, you can go shorter.
+        </p>
+
+        <!-- ------------Min-age------------- -->
+        <div class="form-title mt-4">Cutoff time for additional guests</div>
+        <p>
+          If an instance is booked, this is how far in advance any new guests
+          can book.
+        </p>
+        <div class="drop-down-min-age">
+          <div class="btn-group" dropdown>
+            <button
+              class="btn btn-primary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {{ this.experienceData.settings.cuttOffTimeForOthers ? this.experienceData.settings.cuttOffTimeForOthers : 'Choos Cutoff time' }}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a
+                *ngFor="let ctf of cutOffTimesForOthers; index as i"
+                class="dropdown-item"
+                (click)="setCutOffTimeForOthers(ctf,i)"
+                >{{ ctf.value }}</a
+              >
+              <!-- <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a> -->
+            </div>
+          </div>
+
+          <div class="error-block" *ngIf="isCutOfTime">
+            <div class="required-text">
+              <p class="error text-danger">Select Any Option.</p>
+            </div>
+          </div>
+
+          <!-- <div class="btn-group" dropdown>
+                    <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                            aria-controls="dropdown-animated">
+                            {{name}} <span class="caret"></span>
+                    </button>
+                    <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu"
+                        role="menu" aria-labelledby="button-animated" >
+                      <li role="menuitem" *ngFor="let data of cutOfTimeData" (click)="setCutOfTIme(data.value)"><a class="dropdown-item">{{data.value}}</a></li>                      
+                    </ul>
+                  </div> -->
+        </div>
+
+        <div class="yeallow-main">
+          <div class="left-col-yellow">
+            <img
+              src="../../../../../../../assets/images/Chari.svg"
+              alt="chari"
+              title="chari"
+            />
+          </div>
+          <div class="right-col-yellow">
+            We suggest Beginner skill level based on your previous selections.
+            Make sure it’s accurate so guests know what to expect.
+          </div>
+        </div>
+        <div class="form-title mt-5">Cutoff time for your first guest</div>
+        <p>
+          If no one books by this window, the instance will be removed from your
+          calendar.
+        </p>
+        <div class="drop-down-min-age">
+          <div class="btn-group" dropdown>
+            <button
+              class="btn btn-primary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {{ this.experienceData.settings.cuttOffTimeForFirst ? this.experienceData.settings.cuttOffTimeForFirst : 'Choos Cutoff time' }}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a
+                *ngFor="let ctf of cutOffTimesForFirst"
+                class="dropdown-item"
+                (click)="this.experienceData.settings.cuttOffTimeForFirst = ctf.value;"
+                >{{ ctf.value }}</a
+              >
+            </div>
+          </div>
+
+          <div class="error-block" *ngIf="isCutOfTime">
+            <div class="required-text">
+              <p class="error text-danger">Select Any Option.</p>
+            </div>
+          </div>
+
+        </div>
+        <!-- <div class="input-field">
+          <input
+            type="text"
+            name="firstGuest"
+            #firstGuest="ngModel"
+            ngModel
+            required
+            placeholder="2 Hours before start time"
+            [(ngModel)]="experienceData.settings.cuttOffTimeForFirst"
+          />
+        </div>
+
+        <div
+          class="error-block"
+          *ngIf="
+          firstGuest.invalid &&
+            (firstGuest.dirty ||
+            firstGuest.touched ||
+              bookingForm.submitted)
+          "
+        >
+          <div class="required-text" *ngIf="firstGuest.errors.required">
+            <p class="error text-danger">This Feild is required.</p>
+          </div>
+        </div> -->
+
+        <div class="form-title mt-5">Cutoff time for your first guest</div>
+        <mat-checkbox
+          [(ngModel)]="experienceData.settings.availability"
+          [checked]="experienceData.settings.availability"
+          class="example-margin"
+          #Cutofftimeforyourfirstguest="ngModel" 
+          name="Cutofftimeforyourfirstguest" ngModel
+          >Allow people to request dates and times not listed.</mat-checkbox
+        >
+<!-- 
+        <div
+          class="error-block"
+          *ngIf="
+          Cutofftimeforyourfirstguest.invalid &&
+            (Cutofftimeforyourfirstguest.dirty ||
+            Cutofftimeforyourfirstguest.touched ||
+              bookingForm.submitted)
+          "
+        >
+          <div class="required-text" *ngIf="Cutofftimeforyourfirstguest.errors.required">
+            <p class="error text-danger">Please check this mark.</p>
+          </div>
+        </div> -->
+
+        <p class="mt-3">
+          When unmarked, “Contact host” will still appear on your experience
+          page so people can message you, but the “Request availability” link
+          will be removed from your calendar.
+        </p>
+      </div>
+    </div>
+    <!-- <div class="right-wrapper">
+      <div class="small-heading">Tips</div>
+      <div class="do-main">
+        <div class="small-heading">Do</div>
+        <ul class="say-yes">
+          <li>
+            Be honest about any age, exertion, or skill limits needed to
+            participate
+          </li>
+          <li>
+            Remember that people might book spots for multiple guests, across
+            multiple ages and skills levels, at once
+          </li>
+          <li>Make sure that any child who joins is accompanied by an adult</li>
+        </ul>
+      </div>
+      <div class="do-main">
+        <div class="small-heading">DON’T</div>
+        <ul class="say-no">
+          <li>
+            Select a high activity or skill level without outlining specifics or
+            explaining what’s involved
+          </li>
+          <li>
+            Expect that all guests will have the same skill level or expertise
+          </li>
+          <li>
+            Include physical requirements that put people’s safety at risk
+          </li>
+        </ul>
+      </div>
+    </div> -->
+  </div>
+
+  <!-- <mat-progress-bar mode="determinate" value="95"></mat-progress-bar>
+  <div class="next-back-row-main">
+    <div class="left-text">02 items to submit</div>
+    <div class="button-row">
+      <button class="btn-back" (click)="next(24)" matRipple>Back</button>
+      <button class="btn-next" type="submit" matRipple>Next</button>
+    </div>
+  </div> -->
+</form>

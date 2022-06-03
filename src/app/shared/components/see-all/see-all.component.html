@@ -1,0 +1,330 @@
+<div class="comman-margin-top">
+    <!-- -------------banner-are-see-all-------------- -->
+    <div class="main-banner-area">
+            <div class="comman-container">
+                <h1 class="heading" data-aos="fade-up" data-aos-delay="400">Most Popular Around The <br/> World</h1>
+                <p data-aos="fade-up" data-aos-delay="600">Lorem Ipsum has been the industry's standard dummy text ever since <br/>
+                    the 1500s, when an unknown printer took a galley of type and scrambled it to make<br/> 
+                    a type specimen book. </p>
+            </div>
+
+    </div>
+    <!-- -------------------see-all-listing--------------------- -->
+    <div class="festival-experience-main comman-container">
+        <div class="festival-wrapper">
+            <div class="first-row-for-heading">
+                <div class="left-col" data-aos="fade-right" data-aos-delay="600">
+                <span class="cursuie-heading">Explore</span>
+                <h3 class="heading">Festival Experiences</h3>
+                <p>
+                    Lorem Ipsum has been the industry's standard 
+                    dummy text since the 1500s
+                </p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------------commanc-filter--------------------- -->
+    <!-- -------------------Filter-section---------------------------- -->
+<div class="filter-section-main comman-container">
+    <div class="filter-div-wrpper">
+      <div class="left-grid-system">
+        <div class="inner-grid">
+          <div class="btn-group popular-droddown" dropdown>
+            <button
+              id="button-animated1"
+              dropdownToggle
+              type="button"
+              class="btn btn-primary dropdown-toggle"
+              aria-controls="dropdown-animated"
+            >
+              Popular<span class="caret"></span>
+            </button>
+            <ul
+              id="dropdown-animated1"
+              *dropdownMenu
+              class="dropdown-menu"
+              role="menu"
+              aria-labelledby="button-animated"
+            >
+              <li role="menuitem">
+                <a class="dropdown-item" href="#" title="New & Trending"
+                  >New & Trending</a
+                >
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" href="#">Most Viewed</a>
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" href="#">Favourite</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="inner-grid">
+          <button type="button" class="btn btn-primary" bsDatepicker>
+            Dates
+          </button>
+        </div>
+        <div class="inner-grid">
+          <div class="btn-group time-of-day" dropdown>
+            <button
+              id="button-animated1"
+              dropdownToggle
+              type="button"
+              class="btn btn-primary dropdown-toggle"
+              aria-controls="dropdown-animated"
+            >
+              Time of day<span class="caret"></span>
+            </button>
+            <ul
+              id="dropdown-animated1"
+              *dropdownMenu
+              class="dropdown-menu"
+              role="menu"
+              aria-labelledby="button-animated"
+            >
+              <li role="menuitem">
+                <div class="left-time">
+                  Morning <span class="sub-text">Start before 12pm</span>
+                </div>
+                <div class="right-check">
+                  <mat-checkbox class="example-margin"></mat-checkbox>
+                </div>
+              </li>
+              <li role="menuitem">
+                <div class="left-time">
+                  Afternoon <span class="sub-text">Start Afternoon</span>
+                </div>
+                <div class="right-check">
+                  <mat-checkbox class="example-margin"></mat-checkbox>
+                </div>
+              </li>
+              <li role="menuitem">
+                <div class="left-time">
+                  Evening <span class="sub-text">Start after 5pm</span>
+                </div>
+                <div class="right-check">
+                  <mat-checkbox class="example-margin"></mat-checkbox>
+                </div>
+              </li>
+              <li role="menuitem" class="last-row">
+                <button type="button" class="btn btn-primary clear-btn">
+                  Clear
+                </button>
+                <button type="button" class="btn btn-primary apply-btn">
+                  Apply
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="inner-grid">
+          <button type="button" class="btn btn-primary">Price</button>
+        </div>
+        <div class="inner-grid">
+          <button type="button" class="btn btn-primary">Language offered</button>
+        </div>
+      </div>
+      <div class="right-grid-system">
+        <div class="inner-grid">
+          <button
+            type="button"
+            class="btn btn-primary cat-btn"
+            #btn1
+            (click)="multiselect(btn1)"
+          >
+            Great for groups
+          </button>
+        </div>
+        <div class="inner-grid">
+          <button
+            type="button"
+            class="btn btn-primary cat-btn"
+            #btn2
+            (click)="multiselect(btn2)"
+          >
+            Dance
+          </button>
+        </div>
+        <div class="inner-grid">
+          <button
+            type="button"
+            class="btn btn-primary cat-btn"
+            #btn3
+            (click)="multiselect(btn3)"
+          >
+            Cooking
+          </button>
+        </div>
+        <div class="inner-grid">
+          <button
+            type="button"
+            class="btn btn-primary cat-btn"
+            #btn4
+            (click)="multiselect(btn4)"
+          >
+            Music
+          </button>
+        </div>
+        <div class="inner-grid last-grid-system">
+          <div class="btn-group filter-dropdown-main" dropdown>
+            <button
+              id="button-animated1"
+              dropdownToggle
+              type="button"
+              class="filter-btn-main btn btn-primary dropdown-toggle"
+              aria-controls="dropdown-animated"
+            >
+              Fillters<span class="caret"></span>
+            </button>
+            <ul
+              id="dropdown-animated1"
+              *dropdownMenu
+              class="dropdown-menu"
+              role="menu"
+              aria-labelledby="button-animated"
+            >
+              <li role="menuitem">
+                <button
+                  type="button"
+                  class="btn btn-primary cat-btn"
+                  #btn5
+                  (click)="multiselect(btn5)"
+                >
+                  Great for groups
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary cat-btn"
+                  #btn6
+                  (click)="multiselect(btn6)"
+                >
+                  Dance
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary cat-btn"
+                  #btn7
+                  (click)="multiselect(btn7)"
+                >
+                  Cooking
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary cat-btn"
+                  #btn8
+                  (click)="multiselect(btn8)"
+                >
+                  Music
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary cat-btn"
+                  #btn9
+                  (click)="multiselect(btn9)"
+                >
+                  Drinks
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary cat-btn"
+                  #btn10
+                  (click)="multiselect(btn10)"
+                >
+                  Fitness
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary cat-btn"
+                  #btn11
+                  (click)="multiselect(btn11)"
+                >
+                  Magic
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary cat-btn"
+                  #btn12
+                  (click)="multiselect(btn12)"
+                >
+                  Social impact
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary cat-btn"
+                  #btn13
+                  (click)="multiselect(btn13)"
+                >
+                  Wellness
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary cat-btn"
+                  #btn14
+                  (click)="multiselect(btn14)"
+                >
+                  Entertainment
+                </button>
+              </li>
+              <li role="menuitem" class="last-row">
+                <button type="button" class="btn btn-primary clear-btn">
+                  Clear
+                </button>
+                <button type="button" class="btn btn-primary apply-btn">
+                  Apply
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- ---------end of filter-section----------------------- -->
+  <!-- -------------listing-main-grid-system -->
+  <div class="comman-container">
+    <div class="main-grid-for-see-all">
+        <div class="inner-grid-system" [routerLink]="['/viewexperience']" routerLinkActive="router-link-active"  *ngFor="let firstslide of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]">
+            <div class="featured-img-proven">
+              <img src="../../../../assets/images/tabla-img.png" alt="tabla" title="tabla"/>
+            </div>
+            <div class="after-img-div">
+                <div class="first-row-rating">
+                    <div class="left-label">United States</div>
+                    <div class="right-rating-text">
+                        <img src="../../../../assets/images/favorite.svg" alt="fav" title="fav" />
+                        5.0 (47)
+                    </div>
+                </div>
+                <div class="second-row-name">
+                      <div class="left-col-bold">
+                          <div class="up-heading-place">Classical Music</div>
+                          <div class="low-small-text">From ₹4,541/person</div>
+                      </div>
+                      <div class="right-col-img">
+                          <img src="../../../../assets/images/heart.svg" alt="heart" title="heart">
+                      </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+  </div>
+  <!-- ----------------end fo listing grid-system--------------- -->
+  <!-- ----------load-more-button------------ -->
+  <div class="comman-container">
+      <div class="load-more-btn">
+            <button class="load-more-btn-orig">Load More</button>
+      </div>
+
+  </div>
+
+</div>
+
+

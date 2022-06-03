@@ -1,0 +1,112 @@
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    @mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    // ----------------------------For Orientation-----------------------//
+    @mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+    @content;
+    }
+    }
+    
+    @mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+    @content;
+    }
+    }    
+// ------------END of Media Screen Mixing--------------//
+
+.saved-main {
+    padding-top: 40px;
+}
+
+
+.heading-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 50px;
+    @include max-mq(1100){
+        margin-bottom: 30px;
+    }
+    .heading{
+        margin-bottom: 0px;
+    }
+}
+
+
+.notications-main{
+    margin-bottom: 50px;
+    .new-title {
+        font-size: 18px;
+        margin-bottom: 40px;
+        text-decoration: underline;
+        color: rgba(0, 21, 52, 0.8);
+        font-weight: 400;
+    }
+}
+
+.new-notifications-area-main {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e8e8e8;
+    display: flex;
+    @include max-mq(567){
+        flex-direction: column;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+    .img-main {
+        margin-right: 20px;
+        @include max-mq(567){
+            margin-right: 0px;
+            margin-bottom: 10px;
+        }
+        img{
+            width: 50px;
+        }
+    }
+    .center-col {
+        width: 70%;
+        @include max-mq(567){
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .notification-title {
+            font-size: 16px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        p {
+            font-size: 14px;
+            color: #8c8c8c;
+            margin-bottom: 0px;
+            @include max-mq(567){
+                font-size: 12px;
+            }
+        }
+    }
+    .time-main{
+        width: 30%;
+        text-align: right;
+        font-size: 14px;
+        color: #8c8c8c;
+        @include max-mq(567){
+            width: 100%;
+        }
+    }
+}

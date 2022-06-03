@@ -1,0 +1,176 @@
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    @mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    // ----------------------------For Orientation-----------------------//
+    @mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+    @content;
+    }
+    }
+    
+    @mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+    @content;
+    }
+    }    
+// ------------END of Media Screen Mixing--------------//
+
+.saved-main {
+    padding-top: 40px;
+}
+
+
+.breadcumbs-main {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 15px;
+    font-weight: 300;
+    .bredcumb-title {
+        margin-right: 10px;
+    }
+    .second-margin-left {
+        margin-left: 10px;
+        margin-right: 0;
+    }
+    
+}
+
+.personal-info-main {
+    display: flex;
+    margin-bottom: 200px;
+    @include max-mq(991){
+        flex-direction: column;
+    }
+    @include max-mq(567){
+        margin-bottom: 40px;
+    }
+    .left-col-info {
+        width: 70%;
+        @include max-mq(991){
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .inner-wrapper-main {
+            width: 60%;
+            @include max-mq(1660){
+                width: 70%;
+            }
+            @include max-mq(1500){
+                width: 80%;
+            }
+            @include max-mq(1100){
+                width: 90%;
+            }
+            @include max-mq(991){
+                width: 100%;
+            }
+            .heading-row-main {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 20px;
+                .left-heading {
+                    font-size: 18px;
+                    font-weight: 500;
+                    text-decoration: underline;
+                }
+                .edit-btn{
+                    cursor: pointer;
+                    img{
+                        width: 20px;
+                    }
+                }
+            }
+        }
+    }
+
+    .right-col-info {
+        width: 30%;
+        @include max-mq(1100){
+            width: 40%;
+        }
+        @include max-mq(991){
+            width: 100%;
+        }
+        .right-inner-wrapper {
+            border: 1px solid #E5E5E5;
+            box-sizing: border-box;
+            border-radius: 10px;
+            padding: 30px;
+            @include max-mq(1500){
+                padding: 25px;
+            }
+            .inner-divs {
+                margin-bottom: 30px;
+                padding-bottom: 30px;
+                border-bottom: 1px solid #e8e8e8;
+                &:last-child{
+                    margin-bottom: 0px;
+                    padding-bottom: 0px;
+                    border: none;
+                }
+                img {
+                    margin-bottom: 20px;
+                }
+                .right-title {
+                    font-size: 16px;
+                    font-weight: 500;
+                    margin-bottom: 15px;
+                    line-height: normal;
+                }
+                p {
+                    font-size: 14px;
+                    color: rgba(51, 51, 51, 0.8);
+                }
+            }
+        }
+    }
+}
+
+
+
+.form-title {
+    font-size: 15px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.password-row-main {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    .left-input {
+        width: 50%;
+        @include max-mq(567){
+            width: 85%;
+        }
+        input{
+            width: 100%;
+            background: #F9F9F9;
+            border: 1px solid #CFD0D1;
+            box-sizing: border-box;
+            border-radius: 5px;
+            outline: none;
+            line-height: normal;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
+    }
+}
+

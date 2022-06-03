@@ -1,0 +1,122 @@
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    @mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    // ----------------------------For Orientation-----------------------//
+    @mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+    @content;
+    }
+    }
+    
+    @mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+    @content;
+    }
+    }    
+// ------------END of Media Screen Mixing--------------//
+
+.modal-dialog{
+    max-width: 40% !important;
+}
+
+.header-for-modal-popup{
+    padding: 18px 30px;
+    margin-bottom: 20px;
+    @include max-mq(567){
+        padding: 14px 20px;
+    }
+    .heading-text{
+        font-size: 20px;
+        line-height: normal;
+        @include max-mq(567){
+            font-size: 16px;
+        }
+    }
+}
+
+
+.content-area-main {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 40px;
+    @include max-mq(567){
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 30px;
+    }
+    .enter-code-text {
+        margin-bottom: 20px;
+        font-size: 16px;
+        font-weight: 300;
+        @include max-mq(567){
+            font-size: 14px;
+        }
+        .phone-num{
+            font-size: 16px;
+            font-weight: 500;
+            @include max-mq(567){
+                font-size: 14px;
+                display: block;
+            }
+        }
+    }
+}
+
+.otp-main-div {
+    margin-bottom: 20px;
+}
+
+.short-text-main {
+    font-size: 16px;
+    line-height: normal;
+    font-weight: 300;
+    @include max-mq(567){
+        font-size: 14px;
+    }
+    a{
+        font-size: 16px;
+        font-weight: 500;
+        text-decoration: underline;
+        @include max-mq(567){
+            font-size: 14px;
+        }
+    }
+}
+
+.btn-custom {
+    background: #001534;
+    border: 1px solid #001534;
+    box-shadow: 0px 6px 3px rgb(0 0 0 / 16%);
+    border-radius: 5px;
+    color: #ffff;
+    font-size: 17px;
+    line-height: 23px;
+    text-align: center;
+    color: #F7F0F7;
+    padding: 14px 60px;
+    cursor: pointer;
+    @include max-mq(767){
+        font-size: 13px;
+        line-height: 18px;
+        padding: 10px 40px;
+    }
+    @include max-mq(567){
+        font-size: 11px;
+        line-height: 14px;
+        padding: 7px 30px;
+    }
+}

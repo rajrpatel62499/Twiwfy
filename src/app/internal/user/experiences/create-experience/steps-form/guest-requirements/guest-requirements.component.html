@@ -1,0 +1,164 @@
+<form #guestRequirment="ngForm" (ngSubmit)="guestRequirment.form.valid && next(20)">
+  <div class="main-container-area">
+    <div class="left-wrapper">
+      <div class="inner-width-wrapper">
+        <div class="heading">Who can attend your experience?</div>
+        <p>
+          Keep in mind that someone booking your experience might book spots for
+          other guests. If there are strict requirements in terms of age, skill
+          level or certifications, include them here.
+        </p>
+
+        <!-- ------------Min-age------------- -->
+        <div class="form-title mt-4">Minimum Age</div>
+        <p>
+          Set age limits for guests. Minors can only attend with their legal
+          guardian.
+        </p>
+        <div class="drop-down-min-age">
+          <div class="btn-group">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              {{ name }}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a *ngFor="
+                  let l of ageArray" class="dropdown-item" (click)="setMinAge(l)">{{ l }}</a>
+              <!-- <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a> -->
+            </div>
+          </div>
+
+          <!-- <div class="btn-group" dropdown>
+                    <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                        aria-controls="dropdown-animated">
+                        13 <span class="caret"></span>
+                    </button>
+                    <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu" role="menu"
+                        aria-labelledby="button-animated">
+                        <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+                        <li role="menuitem"><a class="dropdown-item" href="#">Another action</a>
+                        </li>
+                        <li role="menuitem"><a class="dropdown-item" href="#">Something else
+                                here</a></li>
+                    </ul>
+                </div> -->
+        </div>
+        <!-- <mat-checkbox #canBringKid [checked]="experienceData.settings.canBringKid" class="example-margin"
+          (change)="onCanBringKid($event)">Parents can bring kids under the age of 2</mat-checkbox> -->
+
+        <!-- <div class="error-block" *ngIf="
+            canBringKid.invalid &&
+            (canBringKid.dirty ||
+              canBringKid.touched ||
+              guestRequirment.submitted)
+          ">
+          <div class="required-text" *ngIf="canBringKid.errors.required">
+            <p class="error text-danger">Please select this option.</p>
+          </div>
+        </div> -->
+
+        <div class="form-title mt-5">
+          What activity level should people expect?
+        </div>
+        <p>
+          Think about how active people will get during your entire experience.
+        </p>
+
+        <div class="radio-group-custom" *ngFor="let al of activityLevel">
+          <input type="radio" id="test{{ al.id }}" name="activityL_{{al.id}}" [value]="al.value"
+            [(ngModel)]="experienceData.settings.activityLevel" (change)="onActivityLevelChange(al.value)" />
+          <label for="test{{ al.id }}">{{ al.name }}</label>
+        </div>
+        <!-- <div class="radio-group-custom">
+                <input type="radio" id="test6" name="radio-group">
+                <label for="test6">Moderate</label>
+            </div>
+            <div class="radio-group-custom">
+                <input type="radio" id="test7" name="radio-group">
+                <label for="test7">Strenuous</label>
+            </div>
+            <div class="radio-group-custom">
+                <input type="radio" id="test8" name="radio-group">
+                <label for="test8">Strenuous</label>
+            </div> -->
+
+        <div class="form-title mt-5">What skill level was required?</div>
+        <p>
+          Think about how experienced people should be to take your activity.
+        </p>
+        <div class="radio-group-custom" *ngFor="let skill of skillLevel">
+          <input type="radio" id="skill{{ skill.id }}" name="radio-group1" [value]="skill.value"
+            [(ngModel)]="experienceData.settings.skillLevel" (change)="onSkillLevelChange(skill.value)" />
+          <label for="skill{{ skill.id }}">{{ skill.name }}</label>
+        </div>
+        <!-- <div class="radio-group-custom">
+                <input type="radio" id="test10" name="radio-group1">
+                <label for="test10">Intermediate</label>
+            </div>
+            <div class="radio-group-custom">
+                <input type="radio" id="test11" name="radio-group1">
+                <label for="test11">Advanced</label>
+            </div>
+            <div class="radio-group-custom">
+                <input type="radio" id="test12" name="radio-group1">
+                <label for="test12">Expert</label>
+            </div> -->
+
+        <!-- <div class="yeallow-main">
+          <div class="left-col-yellow">
+            <img src="../../../../../../../assets/images/Chari.svg" alt="chari" title="chari" />
+          </div>
+          <div class="right-col-yellow">
+            We suggest Beginner skill level based on your previous selections.
+            Make sure it’s accurate so guests know what to expect.
+          </div>
+        </div> -->
+        <div class="form-title mt-5">Additional requirements (optional)</div>
+        <textarea name="additionalRequirements" #additionalRequirements="ngModel" ngModel
+          [(ngModel)]="experienceData.settings.additionalRequirements"
+          placeholder="E.g. Guests should have prior surfing experience, guests must have a scuba licence, guests should be comfortable around dogs, etc."></textarea>
+      </div>
+    </div>
+    <!-- <div class="right-wrapper">
+      <div class="small-heading">Tips</div>
+      <div class="do-main">
+        <div class="small-heading">Do</div>
+        <ul class="say-yes">
+          <li>
+            Be honest about any age, exertion, or skill limits needed to
+            participate
+          </li>
+          <li>
+            Remember that people might book spots for multiple guests, across
+            multiple ages and skills levels, at once
+          </li>
+          <li>Make sure that any child who joins is accompanied by an adult</li>
+        </ul>
+      </div>
+      <div class="do-main">
+        <div class="small-heading">DON’T</div>
+        <ul class="say-no">
+          <li>
+            Select a high activity or skill level without outlining specifics or
+            explaining what’s involved
+          </li>
+          <li>
+            Expect that all guests will have the same skill level or expertise
+          </li>
+          <li>
+            Include physical requirements that put people’s safety at risk
+          </li>
+        </ul>
+      </div>
+    </div> -->
+  </div>
+  <!-- <mat-progress-bar mode="determinate" value="90"></mat-progress-bar>
+  <div class="next-back-row-main">
+    <div class="left-text">05 items to submit</div>
+    <div class="button-row">
+      <button class="btn-back" (click)="next(18)" matRipple>Back</button>
+      <button class="btn-next" type="submit" matRipple>Next</button>
+    </div>
+  </div> -->
+</form>

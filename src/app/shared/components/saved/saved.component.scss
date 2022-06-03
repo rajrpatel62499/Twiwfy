@@ -1,0 +1,262 @@
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    @mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    // ----------------------------For Orientation-----------------------//
+    @mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+    @content;
+    }
+    }
+    
+    @mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+    @content;
+    }
+    }    
+// ------------END of Media Screen Mixing--------------//
+
+.saved-main {
+    padding-top: 40px;
+}
+
+.heading-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 50px;
+    @include max-mq(1100){
+        margin-bottom: 30px;
+    }
+    .heading{
+        margin-bottom: 0px;
+    }
+}
+
+
+.main-drop-down-list {
+    border: 1px solid #B9B9B9;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 5px 2px rgb(0 0 0 / 10%);
+    border-radius: 10px;
+    position: absolute;
+    right: 0px;
+    width: 350px;
+    z-index: 999;
+    background: #fff;
+    top: 37px;
+    @include max-mq(1100){
+        width: 300px;
+    }
+    @include max-mq(567){
+        width: 85%;
+    }
+    .create-list-row {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #e5e5e5;
+        .close-button{
+            margin-right: 10px;
+            cursor: pointer;
+            img{
+                width: 15px;
+                @include max-mq(1100){
+                    width: 10px;
+                }
+            }
+        }
+        .creat-list {
+            font-size: 16px;
+            line-height: normal;
+            font-weight: 400;
+            @include max-mq(1100){
+                font-size: 14px;
+            }
+        }
+    }
+
+    .content-area-main {
+        padding: 0px 30px;
+        padding-bottom: 30px;
+        @include max-mq(1100){
+            padding: 0px 20px;
+            padding-bottom: 20px;
+        }
+        .name-filed-main {
+            margin-bottom: 20px;
+            input{
+                width: 100%;
+                font-size: 14px;
+                border: 1px solid #707070;
+                border-radius: 5px;
+                padding: 5px 20px;
+                @include max-mq(567){
+                    font-size: 12px;
+                    padding: 8px 20px;
+                    line-height: normal;
+                }
+            
+            }
+        }
+        .select-privacymain {
+            margin-bottom: 40px;
+            @include max-mq(567){
+                margin-bottom: 30px;
+            }
+            .btn-group{
+                width: 100%;
+                .btn {
+                    width: 100% !important;
+                    max-width: 100% !important;
+                    display: block !important;
+                    text-align: left;
+                    font-size: 14px;
+                    line-height: normal;
+                    padding: 10px 20px;
+                    @include max-mq(567){
+                        font-size: 12px;
+                        padding: 5px 20px;
+                    }
+                }
+            }
+        }
+        .saved-btn-row {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            .cancel {
+                margin-right: 20px;
+                font-size: 14px;
+                color: #707070;
+                text-decoration: underline;
+            }
+            .save {
+                font-size: 14px;
+                background: #001534;
+                border-radius: 3px;
+                color: #fff;
+                line-height: normal;
+                padding: 8px 25px;
+            }
+        }
+    }
+    
+}
+
+.grid-for-saved-post {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    margin-bottom: 100px;
+    @include max-mq(1500){
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @include max-mq(991){
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @include max-mq(567){
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .inner-grid-main{
+            background: #FFFFFF;
+            border: 1px solid #F1F1F1;
+            box-shadow: 0px 4px 10px 2px #f1f1f1;
+            border-radius: 10px;       
+            overflow: hidden;
+        .tabla-pic-main{
+            margin-bottom: 20px;
+            @include max-mq(1500){
+                margin-bottom: 15px;
+            }
+            img{
+                width: 100%;
+            }
+        }
+        .content-area {
+            padding: 0px 30px;
+            padding-bottom: 30px;
+            @include max-mq(1500){
+                padding: 0px 20px;
+                padding-bottom: 20px;
+            }
+            .post-category-time {
+                color: #8C8C8C;
+                font-size: 15px;
+                margin-bottom: 5px;
+            }
+            .post-name {
+                font-size: 16px;
+                line-height: normal;
+                margin-bottom: 20px;
+                @include max-mq(1100){
+                    font-size: 15px;
+                    margin-bottom: 10px;
+                }
+            }
+            .fav-nations-row {
+                display: flex;
+                margin-bottom: 5px;
+                justify-content: space-between;
+                .nation-name {
+                    font-size: 14px;
+                    @include max-mq(1100){
+                        font-size: 12px;
+                    }
+                }
+                .fav-star-row {
+                    display: flex;
+                    align-items: center;
+                    font-size: 14px;
+                    line-height: normal;
+                    @include max-mq(1100){
+                        font-size: 12px;
+                    }
+                    img{
+                        width: 15px;
+                        margin-right: 6px;
+                        position: relative;
+                        top: -1px;
+                        @include max-mq(1100){
+                            width: 12px;
+                        }
+                    }
+                }
+            }
+            .experinece-type-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .experience-name {
+                    font-size: 16px;
+                    font-weight: 500;
+                    @include max-mq(1100){
+                        font-size: 14px;
+                    }
+                }
+                .like-btn{
+                    cursor: pointer;
+                    img{
+                        width: 18px;
+                    }
+                }
+            }
+        }
+    }
+}

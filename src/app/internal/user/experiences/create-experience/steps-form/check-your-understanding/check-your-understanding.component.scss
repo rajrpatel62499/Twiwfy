@@ -1,0 +1,150 @@
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    @mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    // ----------------------------For Orientation-----------------------//
+    @mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+    @content;
+    }
+    }
+    
+    @mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+    @content;
+    }
+    }    
+// ------------END of Media Screen Mixing--------------//
+
+.heading{
+    font-size: 28px;
+    text-decoration: none;
+    line-height: 40px;
+    margin-bottom: 20px;
+    @include max-mq(1660){
+        font-size: 23px;
+        text-decoration: none;
+        line-height: 33px;
+    }
+    @include max-mq(1500){
+        font-size: 22px;
+    }
+}
+
+p {
+    color: #878787;
+    font-size: 15px;
+    line-height: 23px;
+}
+
+.small-heading {
+    margin-bottom: 20px;
+    font-size: 20px;
+    line-height: 25px;
+    font-weight: 500;
+}
+
+
+.main-container-area {
+    width: 600px;
+    margin: auto;
+    margin-bottom: 130px;
+    position: relative;
+    
+}
+
+.form-name-main{
+    input{
+        width: 100%;
+        background: #FFFFFF;
+        border: 1px solid #C4C4C4;
+        box-shadow: 0px 3px 6px rgb(0 0 0 / 16%);
+        border-radius: 5px;
+        padding: 20px 30px;
+        font-size: 15px;
+        margin-bottom: 40px;
+        outline: none;
+    }
+}
+
+.i-clery-text {
+    margin-bottom: 30px;
+}
+
+.main-chck-box {
+    display: flex;
+    p {
+        margin-top: 7px;
+        span {
+            font-size: 15px;
+            color: #001534;
+        }
+    }
+}
+
+.form-title-main {
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+
+.checkbox-main {
+    display: flex;
+    p{
+        margin-bottom: 0px;
+        span{
+            font-size: 15px;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+    }
+}
+
+
+.alert-box {
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    .left-col-in {
+        width: 100px;
+        height: 51px;
+        background: #FF9D17;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+        img{
+            width: 22px;
+        }
+    }
+    .green-col{
+        width: 40px;
+        height: 35px;
+        background: #049B53;
+    }
+    .right-col-in{
+        p{
+            margin-bottom: 0px;
+        }
+    }
+}

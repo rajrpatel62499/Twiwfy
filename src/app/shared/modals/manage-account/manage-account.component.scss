@@ -1,0 +1,99 @@
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    @mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    // ----------------------------For Orientation-----------------------//
+    @mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+    @content;
+    }
+    }
+    
+    @mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+    @content;
+    }
+    }    
+// ------------END of Media Screen Mixing--------------//
+
+.main-box-for-account-type {
+    padding: 0px 50px;
+    padding-bottom: 50px;
+    @include max-mq(767){
+        padding: 0px 30px;
+        padding-bottom: 30px;
+    }
+    .inner-box-main {
+        margin-bottom: 20px;
+        display: flex;
+        border: 1px solid #DEDEDE;
+        border-radius: 5px;
+        padding: 15px 30px;
+        align-items: center;
+        .img-pro {
+            margin-right: 20px;
+        }
+        .right-text-box{
+            span.account-holder {
+                display: block;
+                margin-bottom: 3px;
+                font-weight: 500;
+                font-size: 17px;
+                line-height: 20px;
+                @include max-mq(767){
+                    font-size: 14px;
+                    line-height: 10px;
+                }
+                @include max-mq(350){
+                    font-size: 12px;
+                    line-height: 20px;
+                    display: block;
+                }
+            }
+            span.phone-text {
+                font-weight: 300;
+                font-size: 15px;
+                line-height: 20px;
+                @include max-mq(767){
+                    font-size: 12px;
+                    line-height: 15px;
+                }
+                @include max-mq(350){
+                    position: relative;
+                    top: -10px;
+                }
+            }
+        }
+    }
+}
+
+
+.main-box-for-account-type {
+    font-size: 15px;
+    font-weight: 300;
+    @include max-mq(767){
+        font-size: 13px;
+        
+    }
+    a{
+        text-decoration: underline;
+        font-size: 15px;
+        font-weight: 500;
+        @include max-mq(767){
+            font-size: 13px;   
+        }
+    }
+}

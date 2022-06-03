@@ -1,0 +1,119 @@
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    @mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    // ----------------------------For Orientation-----------------------//
+    @mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+    @content;
+    }
+    }
+    
+    @mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+    @content;
+    }
+    }    
+// ------------END of Media Screen Mixing--------------//
+
+.heading-row-main {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e8e8e8;
+    @include max-mq(1400){
+        padding: 10px 12px;
+    }
+    .close-btn {
+        margin-bottom: 0;
+        margin-right: 10px;
+        outline: none;
+        img{
+            width: 15px;
+            @include max-mq(1400){
+                width: 12px;
+            }
+        }
+    }
+    .small-heading {
+        font-size: 18px;
+        font-weight: 500;
+        color: #001534;
+        @include max-mq(567){
+            font-size: 16px;
+            line-height: 20px;
+        }
+    }
+}
+
+
+
+.content-area-main {
+    padding: 0px 70px;
+    padding-bottom: 40px;
+    @include max-mq(567){
+        padding: 0px 20px;
+        padding-bottom: 40px;
+    }
+    p {
+        font-size: 15px;
+        text-align: center;
+        margin-bottom: 70px;
+        @include max-mq(567){
+            font-size: 13px;
+            margin-bottom: 40px;
+        }
+    }
+}
+
+.btn-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    .cancel {
+         // background: #001534;
+         border: 1px solid #001534;
+         box-shadow: 0px 6px 3px rgb(0 0 0 / 16%);
+         border-radius: 5px;
+         color: rgb(0, 0, 0) !important;
+         font-size: 13px;
+         padding: 7px 20px;
+         text-decoration: none !important;
+         cursor: pointer;
+         margin-right: 20px;
+         font-weight: bold;
+        @include max-mq(567){
+            margin-right: 30px;
+        }
+    }
+    .done {
+        background: #001534;
+        border: 1px solid #001534;
+        box-shadow: 0px 6px 3px rgb(0 0 0 / 16%);
+        border-radius: 5px;
+        color: #fff !important;
+        font-size: 13px;
+        padding: 7px 20px;
+        text-decoration: none !important;
+        cursor: pointer;
+        img{
+            width: 10px;
+            margin-right: 5px;
+        }
+    }
+}

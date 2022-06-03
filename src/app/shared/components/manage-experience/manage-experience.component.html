@@ -1,0 +1,170 @@
+<div class="comman-margin-top">
+
+    <div class="comman-container manage-experience-heading">
+
+
+        <!-- <h1 class="heading">Manage Experience</h1>
+            <button class="btn" [routerLink]="['/user/create-experience']" > Create New Experience</button> -->
+
+        <nav class="main-tabs-for-manage-experience">
+            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+                    aria-controls="nav-home" aria-selected="true">Experiences</a>
+                <!-- <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+                    aria-controls="nav-profile" aria-selected="false">Resources</a> -->
+            </div>
+        </nav>
+        <div *ngIf="manageExperinceArray.length > 0" class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <!-- -----------Heading-row-main --------------->
+                <div class="heading-row-main">
+                    <div class="left-col-head">
+                        <div class="small-heading">Experiences</div>
+                        <div class="heading">Your experiences</div>
+                    </div>
+                    <div class="right-col-head">
+                        <button class="btn" [routerLink]="['/user/create-experience']">Create Experience</button>
+                    </div>
+                </div>
+
+                <!-- --------------Content-area---------------------------------- -->
+
+                <ng-container *ngIf="!isLoading">
+
+                    <div class="in-progress-main" *ngFor="let exp of manageExperinceArray">
+                        <div class="in-progress-title">{{exp.status}}</div>
+                        <div class="inner-main-div">
+                            <div *ngIf="exp?.experiencePage?.coverPhoto" class="left-col-main">
+                                <img height="250" width="250" [src]="exp.experiencePage.coverPhoto" alt="experience"
+                                    title="">
+                            </div>
+                            <div class="right-col-main ml-2">
+                                <div class="title-of-experience">Experience</div>
+                                <div class="sub-title">You’ll need to add a few more details before you can submit.
+                                </div>
+
+                                <div class="title-main">
+
+                                    <div class="title-of-passed">Finish submitting your experience</div>
+                                    <div class="sub-title">Make sure you complete all the sections to submit your
+                                        experience for review </div>
+
+                                </div>
+                                <div class="btn-row-main">
+                                    <div *ngIf="
+                                                exp.status == 'DRAFT' ||
+                                                exp.status == 'DECLINED' || 
+                                                exp.status == 'INREVIEW' " class="comman-btn"
+                                        routerLink="/user/create-experience/{{exp._id}}">Continue</div>
+                                    <div class="comman-btn" (click)="Delete(exp._id)">Delete</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+
+                <div *ngIf="isLoading" class="item">
+                    <br><br><br><br> <br>
+                    <ngx-skeleton-loader count="1" animation="pulse" [theme]="{
+                            height: '250px',
+                            width: '96%',
+                            'margin-left': '29px',
+                            'border-radius': '10px',
+                            'background-color': 'rgb(127, 140, 141);'
+                          }"></ngx-skeleton-loader>
+                </div>
+
+                <!-- <div class="in-progress-main">
+                        <div class="in-progress-title-declined">Experience declined</div>
+                        <div class="inner-main-div">
+                                <div class="left-col-main">
+                                    <img src="../../../../assets/images/experience-img.png" alt="experience" title="">
+                                </div>
+                                <div class="right-col-main">
+                                        <div class="title-of-experience">Dance</div>
+                                        <div class="sub-title">Sorry, but it's look like your experience didn't meet our standards. Please read up on our quality standards and submit a new idea</div>
+
+                                        <div class="btn-row-main border-top-custom">
+                                            <div class="comman-btn">Continue</div>
+                                            <div class="comman-btn">Delete</div>
+                                        </div>
+                                </div>
+                        </div>
+                    </div> -->
+
+
+
+
+
+
+            </div>
+            <!-- <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat
+                veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit
+                non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim
+                occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit.
+                Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit
+                occaecat anim ullamco ad duis occaecat ex.
+            </div> -->
+
+        </div>
+
+        <!-- ------------First-time-users----------------------------- -->
+        <div class="create-experience-main-first-time" *ngIf="manageExperinceArray.length == 0">
+
+            <div class="heading-row-main">
+                <div class="left-col-head">
+                    <div class="small-heading">Experiences</div>
+                    <div class="heading">Your experiences</div>
+                </div>
+                <div class="right-col-head">
+                    <button class="btn" [routerLink]="['/user/create-experience']">Create Experience</button>
+                </div>
+            </div>
+            <div class="main-area-of-hosting">
+                <div class="left-text-area-maintain" data-aos="fade-right" data-aos-delay="400">
+                    <div class="headings-text">Welcome! Your hosting
+                        journey starts here.</div>
+
+                    <p>TWIWFY Experiences are small-group activities led by passionate local hosts.</p>
+                    <p>All experience ideas are reviewed by a small team at TWIWFY. If your idea
+                        meets our quality standards, you’ll get to add dates and start hosting.</p>
+                    <p>We’re excited to learn more about you, and what you’d like to share with
+                        the world.</p>
+                    <div class="continue-btn">
+                        <button class="continue-btn-focus" matRipple>Continue</button>
+                    </div>
+                </div>
+                <div class="right-text-area-maintain" data-aos="fade-left" data-aos-delay="400">
+                    <div class="right-img-lnner-left">
+                        <img src="../../../../assets/images/creat-exp-one.png" alt="icon" title="icon"
+                            class="first-img" />
+                    </div>
+                    <div class="right-img-inner-right">
+                        <div class="above-row-main">
+                            <img src="../../../../assets/images/creat-exp-two.png" alt="icon" title="icon"
+                                class="second-img" />
+                        </div>
+                        <div class="below-row-main">
+                            <div class="left-below-col">
+                                <img src="../../../../assets/images/creat-exp-three.png" alt="icon" title="icon"
+                                    class="third-img" />
+                                <img src="../../../../assets/images/creat-exp-four.png" alt="icon" title="icon"
+                                    class="fourth-img" />
+                            </div>
+                            <div class="right-below-col">
+                                <img src="../../../../assets/images/creat-exp-five.png" alt="icon" title="icon"
+                                    class="fifth-img" />
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>

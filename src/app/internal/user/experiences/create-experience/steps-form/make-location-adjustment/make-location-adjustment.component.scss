@@ -1,0 +1,114 @@
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    @mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    // ----------------------------For Orientation-----------------------//
+    @mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+    @content;
+    }
+    }
+    
+    @mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+    @content;
+    }
+    }    
+// ------------END of Media Screen Mixing--------------//
+
+.heading {
+    font-size: 28px;
+    text-decoration: none;
+    line-height: 35px;
+}
+p{
+    font-size: 16px;
+    line-height: 26px;
+    color: #9C9C9C;
+}   
+
+.custom-ul{
+    li{
+        padding-left: 20px;
+        margin-bottom: 15px;
+        font-size: 14px;
+        color: #878787;
+        position: relative;
+        span {
+            font-size: 14px;
+            color: #000;
+            font-weight: 500;
+        }
+        &::before{
+            position: absolute;
+            content: '';
+            background: #000;
+            width: 8px;
+            height: 8px;
+            left: 0;
+            top: 7px;
+            border-radius: 100%;
+        }
+    }
+}
+
+.custom-row{
+    // height: 600px;
+    @include max-mq(1350){
+        height: auto;
+    }
+}
+
+.custom-row {
+    display: flex;
+    // margin-top: 100px;
+    // margin-bottom: 100px;
+    overflow-y: auto;
+    @include max-mq(1350){
+        margin-bottom: 30px;
+        flex-direction: column;
+    }
+    .left-col {
+        width: 35%;
+        @include max-mq(1350){
+            width: 100%;
+            margin-bottom: 25px;
+            display: flex;
+        }
+        
+    }
+    .right-col{
+        width: 65%;
+        padding-left: 50px;
+        @include max-mq(1660){
+            padding-left: 40px;
+        }
+        @include max-mq(1350){
+            padding-left: 0px;
+            width: 100%;
+        }
+        
+    }
+}
+
+
+.first-row-img{
+    .participation-1 {
+        width: 100%;
+        // border-radius: 0px 150px 0px 150px;
+        border-radius: 100%;
+       
+    }
+}

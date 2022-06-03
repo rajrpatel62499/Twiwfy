@@ -1,0 +1,186 @@
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    @mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    // ----------------------------For Orientation-----------------------//
+    @mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+    @content;
+    }
+    }
+    
+    @mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+    @content;
+    }
+    }    
+// ------------END of Media Screen Mixing--------------//
+
+.main-sidebar-area {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(51, 51, 51, 0.45);
+    z-index: 9999;
+    .right-sidebar-main {
+        margin-left: auto;
+        width: 350px;
+        background: #fff;
+        position: absolute;
+        left: auto;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        @include max-mq(767){
+            padding-top: 10px;
+            padding-bottom: 10px;
+            max-height: 420px;
+            overflow: auto;
+        }
+        @include max-mq(567){
+            width: 220px;
+            max-height: inherit;
+        }
+    }
+}
+
+
+
+.close-side {
+    padding: 0px 30px;
+    text-align: right;
+    margin-bottom: 30px;
+    @include max-mq(767){
+        margin-bottom: 10px;
+    }
+    @include max-mq(567){
+        padding: 0px 20px;
+    }
+    img{
+        cursor: pointer;
+        @include max-mq(767){
+            width: 13px;
+        }
+    }
+}
+
+.inner-menu-area-main {
+    padding: 0px 30px;
+    @include max-mq(567){
+        padding: 0px 20px;
+    }
+    a {
+        display: block;
+        margin-bottom: 32px;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 25px;
+        cursor: pointer;
+        @include max-mq(991){
+            margin-bottom: 25px;
+            font-size: 16px;
+            line-height: 15px;
+        }
+        @include max-mq(767){
+            font-size: 14px;
+            line-height: 15px;
+            margin-bottom: 18px;
+        }
+        @include max-mq(567){
+            font-size: 12px;
+            line-height: 14px;
+            margin-bottom: 15px;
+        }
+    }
+}
+
+.manage-expe-main {
+    padding: 0px 15px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-top: 1px solid #DEDEDE;
+    border-bottom: 1px solid #DEDEDE;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin: 0px 15px;
+    @include max-mq(767){
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    @include max-mq(567){
+        margin: 0px 8px;
+    }
+    a{
+        display: block;
+        margin-bottom: 30px;
+        font-size: 18px;
+        line-height: 25px;
+        color: rgba(0, 21, 52, 0.8);    
+        cursor: pointer;
+        @include max-mq(991){
+            margin-bottom: 25px;
+            font-size: 14px;
+            line-height: 20px;
+        }
+        @include max-mq(767){
+            margin-bottom: 15px;
+        }
+        @include max-mq(567){
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        &:last-child{
+            margin-bottom: 0px;
+        }
+    }
+}
+
+.help-main {
+    padding: 20px 30px;
+    @include max-mq(767){
+        padding: 10px 30px;
+    }
+    @include max-mq(567){
+        padding: 10px 22px;
+    }
+    a{
+        display: block;
+        margin-bottom: 30px;
+        font-size: 18px;
+        line-height: 25px;
+        color: rgba(0, 21, 52, 0.8);    
+        cursor: pointer;
+        @include max-mq(991){
+            margin-bottom: 25px;
+            font-size: 14px;
+            line-height: 20px;
+        }
+        @include max-mq(767){
+            margin-bottom: 15px;
+        }
+        @include max-mq(567){
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
+        &:last-child{
+            margin-bottom: 0px;
+        }
+    }
+}

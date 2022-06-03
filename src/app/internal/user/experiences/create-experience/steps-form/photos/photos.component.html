@@ -1,0 +1,572 @@
+<form #photosForm="ngForm" (ngSubmit)="photosForm.form.valid && next(18)">
+  <div class="main-container-area">
+    <div class="left-wrapper">
+      <div class="inner-width-wrapper">
+        <div class="heading">Add photos to your experience</div>
+        <p>
+          Add at least 7 high-quality photos to show guests what it’s like to
+          take your experience. They will be reviewed by our team so make sure
+          they meet our photo standards.
+        </p>
+        <!-- ----add-title-------------- -->
+        <div class="title-filed mt-3">
+          <div class="small-heading-1 mb-2">Requirements for all photos</div>
+          <p>1. Photos must be bright, clear, and in colour</p>
+          <p>2. They must accurately describe the experience</p>
+          <p>
+            3. They can’t show people posing for the camera or taking a selfie
+          </p>
+          <p>
+            4. They can’t be edited with filters, text or graphics, logos, or
+            collages
+          </p>
+          <p>5. They must belong to you – don’t use copyrighted work</p>
+        </div>
+        <div class="cover-photos">
+          <div class="small-heading-1 mb-2">
+            Cover photo: Show people interacting on your experience
+          </div>
+          <p>
+            Choose a candid photo that includes at least one person, and
+            represents the experience as a whole. Selfies, posed, or staged
+            photos will not be accepted.
+          </p>
+          <div
+            [ngClass]=" { 'outline-red' : !experienceData.experiencePage.coverPhoto && isNextClicked}"
+            class="place-holder-img mt-4 mb-2"
+          >
+            <input
+              style="display: none"
+              type="file"
+              onclick="this.value=null;" 
+              (change)="onFileSelect($event.target.files[0], 'coverPhoto')"
+              accept=".png, .jpg, .jpeg"
+              #coverImageInput
+              name="coverImage"
+              name="coverImage"
+              #coverImage="ngModel"
+              ngModel              
+            />
+            <img
+              (click)="coverImageInput.click()"
+              src="../../../../../../../assets/images/place-holder-img.svg"
+              for="coverphoto"
+              alt="placeholder"
+              class="placeholder"              
+              [ngClass]="{ 'placeholder-load': loadingSkeleton.coverPhoto }"
+              [ngStyle]="{'display':!experienceData.experiencePage.coverPhoto? 'block':'none'}"
+            />
+            <img
+              [src]="experienceData.experiencePage.coverPhoto"
+              for="coverphoto"
+              alt="placeholder"
+              class="placeholder display-placeholder-image"
+              [ngStyle]="{'display':experienceData.experiencePage.coverPhoto ? 'block':'none'}"
+            />
+            <img 
+              *ngIf="experienceData?.experiencePage?.coverPhoto" 
+              (click)="deletePhotos('coverPhoto')" 
+              src="../../../../../../../assets/images/close-icon.svg" alt="close-icon" title="close-iocn" class="close-btn">
+
+
+            <div class="skeleton-loader" *ngIf="loadingSkeleton.coverPhoto">
+              <ngx-skeleton-loader
+                count="1"
+                appearance="circle"
+                [theme]="{
+                  width: '200px',
+                  height: '200px',
+                  'border-radius': '20px'
+                }"
+              >
+              </ngx-skeleton-loader>
+            </div>
+          </div>
+          <div
+            class="error-block"
+            *ngIf="
+              coverImage.invalid &&
+              (coverImage.dirty || coverImage.touched || photosForm.submitted)
+            "
+          >
+            <div class="required-text" *ngIf="coverImage.errors.required && !experienceData.experiencePage.coverPhoto">
+              <p class="error text-danger">Cover Image is required.</p>
+            </div>
+          </div>
+        </div>
+        <div class="small-heading-1 mb-2">
+          Gallery photos: Show a variety of small and large details
+        </div>
+        <p>
+          Upload at least 6 more photos that highlight different aspects of your
+          experience. Photos should include host/guest interaction, the location
+          where you’re hosting, and close-up details of the experience.
+        </p>
+        <div class="grid-system-main">
+          <div class="inner-grid-main">
+            <div 
+            [ngClass]=" { 'outline-red' : !experienceData.experiencePage.hostPhoto && isNextClicked}"
+            class="place-holder-img" >
+              <input
+                style="display: none"
+                type="file"
+                onclick="this.value=null;" 
+                (change)="onFileSelect($event.target.files[0], 'hostPhoto')"
+                accept=".png, .jpg, .jpeg"
+                #hostImageInput
+                name="hostImage"
+                #hostImage="ngModel"
+                ngModel                
+              />
+              <img
+                (click)="hostImageInput.click()"
+                src="../../../../../../../assets/images/place-holder-img.svg"
+                alt="placeholder"
+                class="placeholder"                
+                [ngClass]="{ 'placeholder-load': loadingSkeleton.hostPhoto }"
+                [ngStyle]="{'display':!experienceData.experiencePage.hostPhoto? 'block':'none'}"
+              />
+              <img
+                [src]="experienceData.experiencePage.hostPhoto"
+                alt="placeholder"
+                class="placeholder display-placeholder-image"                
+                [ngStyle]="{'display':experienceData.experiencePage.hostPhoto ? 'block':'none'}"
+              />
+              <img *ngIf="experienceData?.experiencePage?.hostPhoto" 
+              (click)="deletePhotos('hostPhoto')" src="../../../../../../../assets/images/close-icon.svg" alt="close-icon" title="close-iocn" class="close-btn">
+
+
+              <div class="skeleton-loader small-loader" *ngIf="loadingSkeleton.hostPhoto">
+                <ngx-skeleton-loader
+                  count="1"
+                  appearance="circle"
+                  [theme]="{
+                    width: '180px',
+                    height: '180px',
+                    'border-radius': '20px'
+                  }"
+                >
+                </ngx-skeleton-loader>
+              </div>
+            </div>
+            <div
+              class="error-block"
+              *ngIf="
+                hostImage.invalid &&
+                (hostImage.dirty || hostImage.touched || photosForm.submitted)
+              "
+            >
+              <div class="required-text" *ngIf="hostImage.errors.required && !experienceData.experiencePage.hostPhoto">
+                <p class="error text-danger">Please upload image.</p>
+              </div>
+            </div>
+            <div class="title-img">
+              Host · Show yourself leading the activity
+            </div>
+          </div>
+          <div class="inner-grid-main">
+            <div 
+            [ngClass]=" { 'outline-red' : !experienceData.experiencePage.actionPhoto && isNextClicked}"
+            
+            class="place-holder-img" >
+              <input
+                style="display: none"
+                type="file"
+                onclick="this.value=null;" 
+                (change)="onFileSelect($event.target.files[0], 'actionPhoto')"
+                accept=".png, .jpg, .jpeg"
+                #actionImageInput
+                name="actionImage"
+                #actionImage="ngModel"
+                ngModel                
+              />
+              <img
+                (click)="actionImageInput.click()"
+                src="../../../../../../../assets/images/place-holder-img.svg"
+                alt="placeholder"
+                class="placeholder"                
+                [ngClass]="{ 'placeholder-load': loadingSkeleton.actionPhoto }"
+                [ngStyle]="{'display':!experienceData.experiencePage.actionPhoto ? 'block':'none'}"
+              />
+              <img
+                [src]="experienceData.experiencePage.actionPhoto"
+                alt="placeholder"
+                class="placeholder display-placeholder-image"                
+                [ngStyle]="{'display':experienceData.experiencePage.actionPhoto ? 'block':'none'}"
+              />
+              <img 
+              *ngIf="experienceData?.experiencePage?.actionPhoto" 
+              (click)="deletePhotos('actionPhoto')" src="../../../../../../../assets/images/close-icon.svg" alt="close-icon" title="close-iocn" class="close-btn">
+
+              <div class="skeleton-loader small-loader" *ngIf="loadingSkeleton.actionPhoto">
+                <ngx-skeleton-loader
+                  count="1"
+                  appearance="circle"
+                  [theme]="{
+                    width: '180px',
+                    height: '180px',
+                    'border-radius': '20px'
+                  }"
+                >
+                </ngx-skeleton-loader>
+              </div>
+            </div>
+            <div
+              class="error-block"
+              *ngIf="
+                actionImage.invalid &&
+                (actionImage.dirty ||
+                  actionImage.touched ||
+                  photosForm.submitted)
+              "
+            >
+              <div class="required-text" *ngIf="actionImage.errors.required && !experienceData.experiencePage.actionPhoto">
+                <p class="error text-danger">Please upload image.</p>
+              </div>
+            </div>
+            <div class="title-img">
+              Action · Show guests engaging in your experience
+            </div>
+          </div>
+          <div class="inner-grid-main">
+            <div 
+            [ngClass]=" { 'outline-red' : !experienceData.experiencePage.detailsPhoto && isNextClicked}"
+            class="place-holder-img" >
+              <input
+                style="display: none"
+                type="file"
+                onclick="this.value=null;" 
+                (change)="onFileSelect($event.target.files[0], 'detailsPhoto')"
+                accept=".png, .jpg, .jpeg"
+                #detailsImageInput
+                name="detailsImage"
+                #detailsImage="ngModel"
+                ngModel                
+              />
+              <img
+              (click)="detailsImageInput.click()"
+                src="../../../../../../../assets/images/place-holder-img.svg"
+                alt="placeholder"
+                class="placeholder"                
+                [ngClass]="{ 'placeholder-load': loadingSkeleton.detailsPhoto }"
+                [ngStyle]="{'display':!experienceData.experiencePage.detailsPhoto ? 'block':'none'}"
+              />
+              <img
+                [src]="experienceData.experiencePage.detailsPhoto"
+                alt="placeholder"
+                class="placeholder display-placeholder-image"                
+                [ngStyle]="{'display':experienceData.experiencePage.detailsPhoto ? 'block':'none'}"
+              />
+              <img 
+              *ngIf="experienceData?.experiencePage?.detailsPhoto" 
+              (click)="deletePhotos('detailsPhoto')" src="../../../../../../../assets/images/close-icon.svg" alt="close-icon" title="close-iocn" class="close-btn">
+
+              <div class="skeleton-loader small-loader" *ngIf="loadingSkeleton.detailsPhoto">
+                <ngx-skeleton-loader
+                  count="1"
+                  appearance="circle"
+                  [theme]="{
+                    width: '180px',
+                    height: '180px',
+                    'border-radius': '20px'
+                  }"
+                >
+                </ngx-skeleton-loader>
+              </div>
+            </div>
+            <div
+              class="error-block"
+              *ngIf="
+                detailsImage.invalid &&
+                (detailsImage.dirty ||
+                  detailsImage.touched ||
+                  photosForm.submitted)
+              "
+            >
+              <div class="required-text" *ngIf="detailsImage.errors.required && !experienceData.experiencePage.detailsPhoto">
+                <p class="error text-danger">Please upload image.</p>
+              </div>
+            </div>
+            <div class="title-img">
+              Details · Capture a close-up of textures or interesting details
+            </div>
+          </div>
+          <div class="inner-grid-main">
+            <div 
+            [ngClass]=" { 'outline-red' : !experienceData.experiencePage.locationPhoto && isNextClicked}"
+            class="place-holder-img" >
+              <input
+                style="display: none"
+                type="file"
+                onclick="this.value=null;" 
+                (change)="onFileSelect($event.target.files[0], 'locationPhoto')"
+                accept=".png, .jpg, .jpeg"
+                #locationImageInput
+                name="locationImage"
+                #locationImage="ngModel"
+                ngModel                
+              />
+              <img
+              (click)="locationImageInput.click()"
+                src="../../../../../../../assets/images/place-holder-img.svg"
+                alt="placeholder"
+                class="placeholder"                
+                [ngClass]="{
+                  'placeholder-load': loadingSkeleton.locationPhoto
+                }"
+                [ngStyle]="{'display':!experienceData.experiencePage.locationPhoto ? 'block':'none'}"
+                
+              />
+              <img
+                [src]="experienceData?.experiencePage.locationPhoto"
+                alt="placeholder"
+                class="placeholder display-placeholder-image"                
+                [ngStyle]="{'display':experienceData.experiencePage.locationPhoto ? 'block':'none'}"
+              />
+              <img 
+              *ngIf="experienceData?.experiencePage?.locationPhoto" 
+              (click)="deletePhotos('locationPhoto')" src="../../../../../../../assets/images/close-icon.svg" alt="close-icon" title="close-iocn" class="close-btn">
+
+              <div
+                class="skeleton-loader small-loader"
+                *ngIf="loadingSkeleton.locationPhoto"
+              >
+                <ngx-skeleton-loader
+                  count="1"
+                  appearance="circle"
+                  [theme]="{
+                    width: '180px',
+                    height: '180px',
+                    'border-radius': '20px'
+                  }"
+                >
+                </ngx-skeleton-loader>
+              </div>
+            </div>
+            <div
+              class="error-block"
+              *ngIf="
+                locationImage.invalid &&
+                (locationImage.dirty ||
+                  locationImage.touched ||
+                  photosForm.submitted)
+              "
+            >
+              <div class="required-text" *ngIf="locationImage.errors.required && !experienceData.experiencePage.locationPhoto">
+                <p class="error text-danger">Please upload image.</p>
+              </div>
+            </div>
+            <div class="title-img">
+              Location · Show the full scene and try to include people
+            </div>
+          </div>
+          
+          <ng-container 
+            *ngFor="let photo of this.experienceData.photos; index as i"
+          >
+            <div class="inner-grid-main">
+              <div
+                class="place-holder-img"
+               
+              >
+                <input
+                  style="display: none"
+                  type="file"
+                  onclick="this.value=null;" 
+                  (change)="onPhotosArrayUpload($event.target.files[0], i)"
+                  #photos
+                  accept=".png, .jpg, .jpeg"
+                />
+                <img
+                (click)="photos.click()"
+                src="../../../../../../../assets/images/place-holder-img.svg"
+                alt="placeholder"
+                class="placeholder"                
+                [ngClass]="{
+                  'placeholder-load': loadingSkeleton.locationPhoto
+                }"
+                [ngStyle]="{'display':!photo.original ? 'block':'none'}"
+              />
+              <img
+                [src]="photo.original"
+                alt="placeholder"
+                class="placeholder display-placeholder-image"                
+                [ngStyle]="{'display':photo.original ? 'block':'none'}"
+              />
+              <img *ngIf="photo.original" 
+              (click)="deletePhotosFromArray(i)" src="../../../../../../../assets/images/close-icon.svg" alt="close-icon" title="close-iocn" class="close-btn">
+
+                <div
+                  class="skeleton-loader small-loader"
+                  *ngIf="loadingSkeleton.miscellaneousPhoto"
+                >
+                  <ngx-skeleton-loader
+                    count="1"
+                    appearance="circle"
+                    [theme]="{
+                      width: '180px',
+                      height: '180px',
+                      'border-radius': '20px'
+                    }"
+                  >
+                  </ngx-skeleton-loader>
+                </div>
+                
+              </div>
+
+              <div class="title-img">Miscellaneous · Add up to 15 photos</div>
+            </div>
+            
+          </ng-container>
+
+          <div *ngIf="experienceData.photos.length < 11" class="inner-grid-main">
+            <div
+            [ngClass]=" { 'outline-red' : experienceData.photos.length === 0 && isNextClicked}"
+
+              class="place-holder-img"
+              (click)="miscellaneousImageInput.click()"
+            >
+              <input
+                style="display: none"
+                type="file"
+                onclick="this.value=null;" 
+                (change)="onMultiFileUpload($event.target.files[0], 'miscellaneousPhoto')"
+                #miscellaneousImageInput
+                accept=".png, .jpg, .jpeg"
+              />
+              <img
+                src="../../../../../../../assets/images/place-holder-img.svg"
+                accept=".png, .jpg, .jpeg"
+                alt="placeholder"
+                class="placeholder"                
+                [ngClass]="{
+                  'placeholder-load': loadingSkeleton.miscellaneousPhoto
+                }"
+              />
+              <!-- <img
+                [src]="experienceData?.photos[0]?.original"
+                alt="placeholder"
+                class="placeholder display-placeholder-image"
+                *ngIf="experienceData.photos.length != 0"
+              /> -->
+           
+              <div
+                class="skeleton-loader small-loader"
+                *ngIf="loadingSkeleton.miscellaneousPhoto"
+              >
+                <ngx-skeleton-loader
+                  count="1"
+                  appearance="circle"
+                  [theme]="{
+                    width: '180px',
+                    height: '180px',
+                    'border-radius': '20px'
+                  }"
+                >
+                </ngx-skeleton-loader>
+              </div>
+              
+            </div>
+
+            <div class="title-img">Miscellaneous · Add up to 15 photos</div>
+          </div>
+
+
+          <!-- <div class="inner-grid-main">
+            <div
+            [ngClass]=" { 'outline-red' : experienceData.photos1.length === 0 && isNextClicked}"
+              class="place-holder-img"
+              (click)="miscellaneousImageInput1.click()"
+            >
+              <input
+                style="display: none"
+                type="file"
+                (change)="
+                  onMultiFileUpload($event, 'miscellaneousPhoto1')
+                "
+                accept=".png, .jpg, .jpeg"
+                #miscellaneousImageInput1
+                multiple
+              />
+              <img
+                src="../../../../../../../assets/images/place-holder-img.svg"
+                alt="placeholder"
+                class="placeholder"
+                *ngIf="!imageSoucrce.miscellaneousPhoto1"
+                [ngClass]="{
+                  'placeholder-load': loadingSkeleton.miscellaneousPhoto1
+                }"
+              />
+              <img
+                [src]="imageSoucrce.miscellaneousPhoto1"
+                alt="placeholder"
+                class="placeholder display-placeholder-image"
+                *ngIf="imageSoucrce.miscellaneousPhoto1"
+              />
+
+              <div
+                class="skeleton-loader small-loader"
+                *ngIf="loadingSkeleton.miscellaneousPhoto1"
+              >
+                <ngx-skeleton-loader
+                  count="1"
+                  appearance="circle"
+                  [theme]="{
+                    width: '180px',
+                    height: '180px',
+                    'border-radius': '20px'
+                  }"
+                >
+                </ngx-skeleton-loader>
+              </div>
+            </div>
+            <div class="title-img">Miscellaneous · Add up to 15 photos</div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <!-- <div class="right-wrapper">
+      <div class="small-heading">Tips</div>
+      <div class="do-main">
+        <div class="small-heading">Do</div>
+        <ul class="say-yes">
+          <li>
+            Pick photos that show how your experience is different from others
+          </li>
+          <li>
+            Include a photo of yourself speaking in front of your camera or
+            computer to show that the experience is taking place online
+          </li>
+          <li>
+            Try a “practice run” of your online experience with friends or
+            family, and use screenshots that show them having fun
+          </li>
+        </ul>
+      </div>
+      <div class="do-main">
+            <div class="small-heading">DON’T</div>
+            <ul  class="say-no">
+                <li>Include the word “online” or variations of that word in your title – Twiwfy will automatically label your experience with “online” in multiple places</li>
+            </ul>
+        </div>
+
+      <div class="example-main">
+        <div class="small-heading">Example</div>
+        <div class="img-div-main">
+          <img src="../../../../../../../assets/images/coffee.png" />
+          <span class="img-over"
+            >Coffee Masterclass <br />with National Judge</span
+          >
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <!-- <mat-progress-bar mode="determinate" value="80"></mat-progress-bar>
+  <div class="next-back-row-main">
+    <div class="left-text">07 items to submit</div>
+    <div class="button-row">
+      <button class="btn-back" (click)="next(16)" matRipple>Back</button>
+      <button class="btn-next" type="submit" matRipple>Next</button>
+    </div>
+  </div> -->
+</form>

@@ -1,0 +1,120 @@
+<form #videoForm="ngForm" (ngSubmit)="videoForm.form.valid && next(19)">
+  <div class="main-container-area">
+    <div class="left-wrapper">
+      <div class="inner-width-wrapper">
+        <div class="heading">Submit a video demonstration</div>
+        <p>
+          Upload a video that demonstrates the online experience that you’d like
+          to host. We’ll use this video to assess the quality of your
+          submission.
+        </p>
+        <!-- ----add-title-------------- -->
+        <div class="title-filed mt-3">
+          <div class="small-heading-1 mb-2">What’s being evaluated</div>
+          <p>
+            Reference our step-by-step checklist in English or French to help
+            plan out your video – it has detailed suggestions on what your
+            demonstration should include to help us review your online
+            experience submission.
+          </p>
+          <p>
+            The recording can be as concise as you’d like, but please don’t go
+            over 15 minutes.
+          </p>
+        </div>
+
+        <div class="small-heading-1 mb-2">Upload your video</div>
+        <p>
+          Use Zoom to record your video. A free Zoom account will allow you to
+          record your screen. If you need help, check out Zoom's recording
+          tutorial.
+        </p>
+        <p>
+          When you’re done, export the recording as an MP4 file. The file size
+          must be under 1GB.
+        </p>
+
+        <div class="file-upload-main" *ngIf="!experienceData.video">
+          <input
+            type="file"
+            onclick="this.value=null;" 
+            (change)="onFileSelected($event.target.files[0])"
+            name="video"
+            #video="ngModel"
+            ngModel
+            #videoRef
+            accept=".mp4"
+          />
+         
+
+          <div class="inner-img-div-upload">
+            <img
+            (click)="videoRef.click()"
+              src="../../../../../../../assets/images/video-recorder.svg"
+              [ngClass]="{ 'inner-img-div-upload-loading': isVideoUpload }"
+            />
+            <span>Drop your video here, or upload one</span>
+          </div>
+          <div class="skeleton-loader">
+            <ngx-skeleton-loader
+              count="1"
+              appearance="circle"
+              *ngIf="isVideoUpload"
+              [theme]="{
+                width: '100%',
+                height: '250px',
+                'border-radius': '15px'
+              }"
+            >
+            </ngx-skeleton-loader>
+          </div>
+        </div>
+
+        <div class="video-screen file-upload-main" *ngIf="experienceData.video">
+          <video width="100%" height="100%" style="border-radius: 15px;" autoplay loop controls          >
+            <source [src]="experienceData.video" type="video/mp4">            
+          </video>
+          <img 
+          (click)="deleteVideo()"
+            *ngIf="experienceData.video"
+            src="../../../../../../../assets/images/close-icon.svg" 
+            alt="close-icon" title="close-iocn" class="close-btn">
+        </div>
+
+        <!-- <div
+          class="error-block"
+          *ngIf="
+          video.invalid &&
+            (video.dirty || video.touched || videoForm.submitted)
+          "
+        >
+          <div class="required-text" *ngIf="video.errors.required">
+            <p class="error text-danger">Video is required.</p>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <!-- <div class="right-wrapper">
+      <div class="small-heading">Helpful Resources</div>
+      <div class="do-main">
+        <div class="small-img-tag">
+          <img
+            src="../../../../../../../assets/images/pixel-pic.png"
+            alt="pixel"
+            title="pixel"
+          />
+        </div>
+        <div class="small-heading-2">Resource Center</div>
+        <p>How to create a great video submission for your experience</p>
+      </div>
+    </div> -->
+  </div>
+  <!-- <mat-progress-bar mode="determinate" value="85"></mat-progress-bar>
+  <div class="next-back-row-main">
+    <div class="left-text">06 items to submit</div>
+    <div class="button-row">
+      <button class="btn-back" (click)="next(17)" matRipple>Back</button>
+      <button class="btn-next" type="submit" matRipple>Next</button>
+    </div>
+  </div> -->
+</form>

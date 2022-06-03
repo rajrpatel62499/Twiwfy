@@ -1,0 +1,230 @@
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    @mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    // ----------------------------For Orientation-----------------------//
+    @mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+    @content;
+    }
+    }
+    
+    @mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+    @content;
+    }
+    }    
+// ------------END of Media Screen Mixing--------------//
+
+.heading{
+    font-size: 28px;
+    text-decoration: none;
+    line-height: 40px;
+    @include max-mq(1660){
+        font-size: 23px;
+        text-decoration: none;
+        line-height: 33px;
+    }
+    @include max-mq(1500){
+        font-size: 22px;
+    }
+}
+
+p {
+    color: #878787;
+    font-size: 15px;
+    line-height: 23px;
+    @include max-mq(1500){
+        font-size: 13px;
+        line-height: 20px;
+    }
+}
+
+.small-heading {
+    margin-bottom: 20px;
+    font-size: 20px;
+    line-height: 25px;
+    font-weight: 500;
+    @include max-mq(1500){
+        font-size: 16px;
+    }
+}
+
+
+.main-container-area {
+    width: 600px;
+    margin: auto;
+    margin-bottom: 100px;
+    position: relative;
+    @include max-mq(991){
+        width: 100%;
+        margin-bottom: 40px;
+    }
+    &::before{
+        position: absolute;
+        content: '';
+        width: 120px;
+        height: 120px;
+        border-radius: 100%;
+        top: 210px;
+        left: -80px;
+        background: #D6E6FF;
+        @include max-mq(1100){
+            width: 80px;
+            height: 80px;
+            left: -40px;
+        }
+        @include max-mq(991){
+            left: -20px;
+        }
+    }
+    &::after{
+        position: absolute;
+        content: "";
+        width: 120px;
+        height: 120px;
+        border-radius: 100%;
+        top: 120px;
+        right: -80px;
+        background: #302EA7;
+        @include max-mq(1100){
+            width: 80px;
+            height: 80px;
+            right: -40px;
+        }
+        @include max-mq(991){
+            right: -20px;
+        }
+    }
+}
+
+.required-text{
+    margin-top: 15px;
+    .text-danger{
+        font-size: 15px;
+        font-weight: 400;
+    }
+}
+
+.radio-group-custom {
+    background: #F9F9F9;
+    border: 2px solid #FFF686;
+    box-shadow: 0px 4px 2px rgb(0 0 0 / 16%);
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 20px;
+    @include max-mq(1500){
+        padding: 20px 30px;
+
+    }
+    label {
+        margin-bottom: 0;
+        span {
+            display: block;
+            margin-bottom: 16px;
+            font-size: 20px;
+            line-height: 19px;
+            color: #001534;
+            @include max-mq(1500){
+                font-size: 15px;
+            }
+        }
+    }
+}
+
+
+.bubble-main {
+    position: relative;
+    z-index: 999;
+}
+
+.white-box-inner{
+    background: #ffffff;
+    border: 2px solid #FFF686;
+    box-shadow: 0px 4px 2px rgb(0 0 0 / 16%);
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 30px;
+    margin-top: 0px;
+    z-index: 999;
+    position: relative;
+    @include max-mq(1500){
+        padding: 20px 30px;
+    }
+    .radio-group-custom{
+        background: none;
+        border: none;
+        box-shadow: none;
+        border-radius: 0px;
+        padding: 0px;
+        margin-bottom: 20px;
+    }
+}
+
+.question-mark {
+    font-size: 16px;
+    line-height: 25px;
+    margin-bottom: 15px;
+    @include max-mq(567){
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 12px;
+    }
+}
+
+.provide-input {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    input{
+        border: 1px solid #C4C4C4;
+        box-shadow: 0px 3px 6px rgb(0 0 0 / 16%);
+        border-radius: 5px;
+        padding: 16px 21px;
+        font-size: 15px;
+        width: 70%;
+        margin-left: 30px;
+        @include max-mq(567){
+            padding: 10px 15px;
+            font-size: 12px;
+            width: 100%;
+            margin-left: 0px;
+        }
+    }
+}
+
+.profile-main {
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    .profile-img {
+        width: 70px;
+        margin-right: 20px;
+        border-radius: 100%;
+        @include max-mq(1500){
+            width: 50px;
+            margin-right: 10px;
+        }
+    }
+    .profile-name {
+        display: block;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 20px;
+        @include max-mq(1500){
+            font-size: 16px;
+        }
+    }
+}

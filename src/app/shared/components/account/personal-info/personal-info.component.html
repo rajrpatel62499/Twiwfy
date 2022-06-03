@@ -1,0 +1,203 @@
+<div class="comman-margin-top saved-main">
+    <div class="comman-container">
+        <!-- ----------Breadcumbs------------------------- -->
+        <div class="breadcumbs-main">
+            <div class="bredcumb-title">Account</div>
+            >
+            <div class="bredcumb-title second-margin-left">Personal Info</div>
+        </div>
+
+        <!-- ---------Content-area---------------------- -->
+
+        <!-- <ng-container *ngIf="isLoading; else showContent">
+            <h3>Loading....</h3>
+        </ng-container> -->
+        
+        <ng-container [formGroup]="form" >
+            
+            <div class="first-row-profile">
+                <div class="left-inner-first">
+                    <diV class="profile-img">
+                        <!-- <img src="../../../../assets/images/profile-pic.png" class="profile-pic" alt="profile"
+                            title="profile"> -->
+                            <ng-container *ngIf="isLoading || isUploading; else showProfilePic">
+                                <div style="position: relative;left: -2.5rem;top:0.3rem">
+                                    <ngx-skeleton-loader  appearance="circle" [theme]="{ width: '100px', height: '100px' }"></ngx-skeleton-loader>
+                                </div>
+                            </ng-container>
+                        
+                            <ng-template #showProfilePic>
+                            
+                                <ng-container *ngIf="userProfile?.profilePic; else showAvtar">
+                                    <!-- <div class="img-profile"> -->
+                                    <img   class="profile-pic" 
+                                    [src]="userProfile.profilePic" alt="My Profile Pic" title="My Profile Pic" />
+                                    <!-- </div> -->
+                                </ng-container>
+                        
+                                <ng-template #showAvtar>
+                                    <ngx-avatar size="100" bgColor="#14649c" [name]="userProfile?.fullName ? userProfile?.fullName: 'P' "></ngx-avatar>
+                                </ng-template>
+                            </ng-template>
+                        <img class="upload-img" 
+                        (click)="profilePic.click()"    
+                        src="../../../../assets/images/cam-upload.svg" alt="cam-uploda"
+                            title="cam-upload">
+                        <input 
+                        onclick="this.value=null;" 
+                        (change)="onFileSelect($event.target.files[0])"
+                        accept=".png, .jpg, .jpeg" hidden #profilePic
+                        type="file">
+                    </diV>
+
+
+                    <div class="right-inner-first">
+                        <div class="account-holder-name">{{userProfile?.fullName}}</div>
+                        <!-- <div class="join-date">Joined in 2020</div> -->
+                        <div class="fav-pic">
+                            <img src="../../../../assets/images/favorite.svg" alt="fav" title="fav">
+                            5.0 (47)
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="edit-btn"> <img src="../../../../assets/images/edit.svg"  alt="edit" title="edit"> </div> -->
+            </div>
+            <div class="personal-info-main">
+                <div class="left-col-info">
+                    <div class="inner-wrapper-main">
+                        <div class="heading-row-main">
+                            <div class="left-heading">Personal Info</div>
+                            <div class="edit-btn" *ngIf="!isEditMode">
+                                <img src="../../../../assets/images/edit.svg"
+                                 alt="edit" title="edit" 
+                                 (click)="editMode()">
+                            </div>
+                        </div>
+                        <div class="grid-inputs-main">
+                            <div class="inner-grid-main">
+                                <input  formControlName="fullName" readonly type="text" placeholder="Full Name" value="">
+                            </div>
+
+
+                            <div *ngIf="isEditMode" class="btn-group" dropdown>
+                                <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                                        aria-controls="dropdown-basic">
+                                  {{f.gender.value ? f.gender.value : 'Gender'}}<span class="caret"></span>
+                                </button>
+                                <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                                    role="menu" aria-labelledby="button-basic">
+                                  <li role="menuitem"><a class="dropdown-item" dropdownToggle (click)="f.gender.setValue('Male')">Male</a></li>
+                                  <li role="menuitem"><a class="dropdown-item" dropdownToggle (click)="f.gender.setValue('Female')">Female</a></li>
+                                  <li role="menuitem"><a class="dropdown-item" dropdownToggle (click)="f.gender.setValue('Other')">Other</a></li>
+                                </ul>
+                              </div>
+                            <div *ngIf="!isEditMode" class="inner-grid-main">
+                                <input formControlName="gender" [readonly]="!isEditMode" type="text" placeholder="Gender" value="">
+                            </div>
+                            
+                            
+                            
+                            <div class="inner-grid-main calender">
+                                <input formControlName="dob" readonly type="text" placeholder="DOB(MM/DD/YYYY)" value="">
+                            </div>
+                            <div class="inner-grid-main phone-number">
+                                <input formControlName="mobile" 
+                                [readonly]="!isEditMode || userProfile.signupType == SignupType.MOBILE" appNumbersOnly 
+                                maxlength="12" 
+                                minlength="10" type="text"
+                                    placeholder="Phone Number" value="">
+                                
+                            </div>
+                            <div class="inner-grid-main email">
+                                <input [readonly]="!isEditMode || userProfile.signupType == SignupType.EMAIL" 
+                                formControlName="email"  type="text" placeholder="example@example.com" value="">
+                            </div>
+                            <div class="inner-grid-main">
+                                <input formControlName="address" [readonly]="!isEditMode" type="text" placeholder="Street Address" value="">
+                            </div>
+                            <div class="inner-grid-main">
+                                <input formControlName="city" [readonly]="!isEditMode" type="text" placeholder="City" value="">
+                            </div>
+                            <div class="inner-grid-main">
+                                <input formControlName="state" [readonly]="!isEditMode" type="text" placeholder="State" value="">
+                            </div>
+                            <div class="inner-grid-main">
+                                <input formControlName="zip" appNumbersOnly
+                                maxlength="6"
+                                [readonly]="!isEditMode" type="text" placeholder="Zip Code" value="">
+                            </div>
+                            <div class="inner-grid-main phone-number">
+                                <input 
+                                appNumbersOnly 
+                                maxlength="12" 
+                                minlength="10"
+                                formControlName="emergencyContact"
+                                [readonly]="!isEditMode" type="text"
+                                placeholder="Emergency contact" value="">
+                            </div>
+    
+                            <!-- <div class="inner-grid-main">
+                                    <input [readonly]="!isEditMode" type="text" 
+                                    placeholder=""  
+                                    value="Government ID">
+                                </div> -->
+                            <!-- <div class="inner-grid-main">
+                                    <input type="text" 
+                                    placeholder=""  
+                                    value="Passport info for China travel">
+                                </div> -->
+                        </div>
+                        <div *ngIf="isEditMode"  class="btn-row" (click)="isSaving ? '' : save()">
+                            <a title="Done" class="cancel" (click)="cancel()">
+                                Cancel
+                            </a>
+                            <a title="Done" class="save">
+                                <i class="fa" [ngClass]="{'fa-spinner fa-spin' : isSaving }" aria-hidden="true"></i>
+                                Save
+                            </a>
+                        </div>
+    
+                    </div>
+    
+    
+                </div>
+    
+                <div class="right-col-info">
+                    <div class="right-inner-wrapper">
+                        <div class="inner-divs">
+                            <img src="../../../../assets/images/lock-vector.svg" alt="lock" title="lock">
+                            <div class="right-title">Which details can be edited?</div>
+                            <p>Details Twiwfy uses to verify your identity can’t be changed. Contact info and some personal
+                                details can be edited, but we may ask you to verify your identity the next time you book or
+                                create a listing.</p>
+    
+                        </div>
+                        <div class="inner-divs">
+                            <img src="../../../../assets/images/personal-info.svg" alt="lock" title="lock">
+                            <div class="right-title">What info is shared with others?</div>
+                            <p>Twiwfy only releases contact information for hosts and guests after a reservation is
+                                confirmed.</p>
+    
+                        </div>
+    
+    
+                    </div>
+    
+    
+                </div>
+    
+    
+            </div>
+
+        </ng-container>
+            
+            
+        
+
+
+
+    </div>
+
+
+
+</div>

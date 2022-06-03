@@ -1,0 +1,102 @@
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    @mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    // ----------------------------For Orientation-----------------------//
+    @mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+    @content;
+    }
+    }
+    
+    @mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+    @content;
+    }
+    }    
+// ------------END of Media Screen Mixing--------------//
+
+.what-you-would {
+    padding-top: 60px;
+    @include max-mq(767){
+        padding-top: 30px;
+    }
+}
+
+.heading {
+    font-size: 28px;
+    margin-bottom: 30px;
+    @include max-mq(1400){
+        font-size: 24px;
+        margin-bottom: 15px;
+        line-height: normal;
+    }
+    @include max-mq(767){
+        font-size: 18px;
+        line-height: normal;
+    }
+}
+
+p {
+    font-size: 15px;
+    color: rgba(0, 21, 52, 0.8);
+    margin-bottom: 30px;
+    @include max-mq(767){
+        font-size: 12px;
+        margin-bottom: 20px;
+    }
+}
+
+.grid-main-change {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    margin-bottom: 300px;
+    margin-top: 50px;
+    grid-column-gap: 30px;
+    @include max-mq(1660){
+        grid-column-gap: 20px;
+    }
+    @include max-mq(1500){
+        grid-template-columns: repeat(2, 1fr);
+        grid-row-gap: 20px;
+    }
+    @include max-mq(767){
+        grid-template-columns: repeat(1, 1fr);
+        margin-bottom: 50px;
+    }
+    .inner-grid{
+        border: 1px solid #E5E5E5;
+        padding: 30px;
+        border-radius: 10px;
+        @include max-mq(567){
+            padding: 20px;
+        }
+        img {
+            margin-bottom: 20px;
+            width: 26px;
+        }
+        .change-text {
+            font-size: 16px;
+        }
+        .next-btn {
+            margin-top: 20px;
+            font-size: 15px;
+            text-decoration: underline;
+            font-weight: 500;
+            cursor: pointer;
+        }
+    }
+}

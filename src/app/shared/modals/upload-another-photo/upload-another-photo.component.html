@@ -1,0 +1,24 @@
+
+<div class="heading-row-main">
+    <button class="close-btn" (click)="close()"><img src="../../../../assets/images/close-icon.svg" alt="close" title="close"/></button>
+    <div class="small-heading">Upload a photo with higher resolution</div>
+</div>
+
+
+<div class="content-area-main">
+    <h6>{{this.fileName}}</h6>
+    <p>{{this.errorText}}</p>
+
+    <div class="btn-row">
+        <a title="cancel" class="cancel" matRipple (click)="close()">Cancel</a>
+        <a title="Done" class="done" (click)="file.click()"> 
+            Choose another photo
+        </a>
+        <input hidden #file type="file" (change)="onFileSelect($event.target.files[0])">
+    </div>
+    
+
+</div>
+
+
+

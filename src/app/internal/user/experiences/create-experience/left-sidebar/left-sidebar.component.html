@@ -1,0 +1,238 @@
+<div class="left-side-status">
+    <mat-accordion>
+        <!-----first-accordian--- -->
+        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Your Idea
+                    <img *ngIf="!activeIndices.includes(3)"
+                        src="../../../../../assets/images/lock-icon.svg" alt="lock" title="lock"
+                        class="lock">
+                    <div *ngIf="activeIndices.includes(3)" class="after-completed">
+                        <img src="../../../../../assets/images/check-white.svg" alt="check"
+                            title="check">
+                    </div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul class="listing-type">
+                <li class="inner-list" 
+                    [ngClass]="{'active':activeIndices.includes(0), 'outer-active': currentComponentIndex==1}"
+                >
+                    Experience Type</li>
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(1),'outer-active':currentComponentIndex==2}">
+                    Location</li>
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(2), 'outer-active':currentComponentIndex==3}">Your Theme</li>
+            </ul>
+        </mat-expansion-panel>
+        <!-----second-accordian--- -->
+        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    What we’re looking for
+                    <img *ngIf="!activeIndices.includes(8)"
+                        src="../../../../../assets/images/lock-icon.svg" alt="lock" title="lock"
+                        class="lock">
+                    <div *ngIf="activeIndices.includes(8)" class="after-completed">
+                        <img src="../../../../../assets/images/check-white.svg" alt="check"
+                            title="check">
+                    </div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul class="listing-type">
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(3), 'outer-active':currentComponentIndex==4}">Overview</li>
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(4), 'outer-active':currentComponentIndex==5}">Expertise</li>
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(5), 'outer-active':currentComponentIndex==6}">Participation
+                </li>
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(6), 'outer-active':currentComponentIndex==7}">Easy To Do</li>
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(7), 'outer-active':currentComponentIndex==8}">Technical
+                    Quality</li>
+            </ul>
+        </mat-expansion-panel>
+        <!-----third-accordian--- -->
+        <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Basic information
+                    <img *ngIf="!activeIndices.includes(11)"
+                        src="../../../../../assets/images/lock-icon.svg" alt="lock" title="lock"
+                        class="lock">
+                    <div *ngIf="activeIndices.includes(11)" class="after-completed">
+                        <img src="../../../../../assets/images/check-white.svg" alt="check"
+                            title="check">
+                    </div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul class="listing-type">
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(8), 'outer-active':currentComponentIndex==9}">Language</li>
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(9), 'outer-active':currentComponentIndex==10}">Audience</li>
+                <li class="inner-list" *ngIf="modal.basicInformation.isNonprofitOrg" [ngClass]="{'active':activeIndices.includes(10), 'outer-active':currentComponentIndex==11}">Organization
+                </li>
+            </ul>
+        </mat-expansion-panel>
+        <!-----fourth-accordian--- -->
+        <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Experience page
+                    <img *ngIf="!activeIndices.includes(17)"
+                        src="../../../../../assets/images/lock-icon.svg" alt="lock" title="lock"
+                        class="lock">
+                    <div *ngIf="activeIndices.includes(17)" class="after-completed">
+                        <img src="../../../../../assets/images/check-white.svg" alt="check"
+                            title="check">
+                    </div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul class="listing-type">
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(11), 'outer-active':currentComponentIndex==12}">What we'll do
+                </li>
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(12), 'outer-active':currentComponentIndex==13}">About you</li>
+                <li class="inner-list" *ngIf="modal.basicInformation.isNonprofitOrg" [ngClass]="{'active':activeIndices.includes(13), 'outer-active':currentComponentIndex==14}">Organization
+                </li>
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(14), 'outer-active':currentComponentIndex==15}">What guests
+                    should bring</li>
+
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(15), 'outer-active':currentComponentIndex==16}">Title</li>
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(16), 'outer-active':currentComponentIndex==17}">Photos</li>
+            </ul>
+        </mat-expansion-panel>
+        <!-----fifth-accordian--- -->
+        <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Video Demonstration
+                    <img *ngIf="!activeIndices.includes(18)"
+                        src="../../../../../assets/images/lock-icon.svg" alt="lock" title="lock"
+                        class="lock">
+                    <div *ngIf="activeIndices.includes(18)" class="after-completed">
+                        <img src="../../../../../assets/images/check-white.svg" alt="check"
+                            title="check">
+                    </div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul class="listing-type">
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(17), 'outer-active':currentComponentIndex==18}">Video
+                    Demonstration</li>
+            </ul>
+        </mat-expansion-panel>
+        <!-----sixth-accordian--- -->
+        <mat-expansion-panel [expanded]="step === 5" (opened)="setStep(5)">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Settings
+                    <ng-container *ngIf="modal.yourIdea.type=='OFFLINE'">
+                        <img *ngIf="!activeIndices.includes(27)"
+                        src="../../../../../assets/images/lock-icon.svg" alt="lock" title="lock"
+                        class="lock">
+                        <div *ngIf="activeIndices.includes(27)" class="after-completed">
+                            <img src="../../../../../assets/images/check-white.svg" alt="check"
+                            title="check">
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="modal.yourIdea.type=='ONLINE'">
+                        <img *ngIf="!activeIndices.includes(25)"
+                        src="../../../../../assets/images/lock-icon.svg" alt="lock" title="lock"
+                        class="lock">
+                        <div *ngIf="activeIndices.includes(25)" class="after-completed">
+                            <img src="../../../../../assets/images/check-white.svg" alt="check"
+                            title="check">
+                        </div>
+                    </ng-container>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul class="listing-type">
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(18), 'outer-active':currentComponentIndex==19}">Guest
+                    Requirments</li>
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(19), 'outer-active':currentComponentIndex==20}">Group Size</li>
+                <!-- <li class="inner-list" [ngClass]="{'active':activeIndices.includes(20), 'outer-active':currentComponentIndex==21}">Contribution
+                </li> -->
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(21), 'outer-active':currentComponentIndex==22}">Duration</li>
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(22), 'outer-active':currentComponentIndex==23}">Guest Pricing
+                </li>
+                <!-- <li class="inner-list" [ngClass]="{'active':activeIndices.includes(23), 'outer-active':currentComponentIndex==24}">Private Groups
+                </li>
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(24), 'outer-active':currentComponentIndex==25}">
+                    Booking Settings</li> -->
+                <!-- <li class="inner-list" *ngIf="modal.yourIdea.type==='ONLINE'" [ngClass]="{'active':activeIndices.includes(24), 'outer-active':currentComponentIndex==25}">
+                    Booking Settings</li> -->
+                <!-- <li class="inner-list" *ngIf="modal.yourIdea.type==='OFFLINE'" [ngClass]="{'active':activeIndices.includes(26), 'outer-active':currentComponentIndex==25}">
+                    Booking Settings</li> -->
+            </ul>
+        </mat-expansion-panel>
+        <!-----seventh-accordian--- -->
+        <mat-expansion-panel [expanded]="step === 6" (opened)="setStep(6)" *ngIf="modal.yourIdea.type=='OFFLINE'">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Safety Guidelines
+                    <img *ngIf="!activeIndices.includes(25)"
+                        src="../../../../../assets/images/lock-icon.svg" alt="lock" title="lock"
+                        class="lock">
+                    <div *ngIf="activeIndices.includes(25)" class="after-completed">
+                        <img src="../../../../../assets/images/check-white.svg" alt="check"
+                            title="check">
+                    </div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul class="listing-type">
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(27), 'outer-active':currentComponentIndex==28}">Overview
+                </li>
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(28), 'outer-active':currentComponentIndex==29}">Practice
+                    Good Hygiene</li>
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(29), 'outer-active':currentComponentIndex==30}">Avoid
+                    Physical Contact</li>
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(30), 'outer-active':currentComponentIndex==31}">Make
+                    Location Adjustments</li>
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(31), 'outer-active':currentComponentIndex==32}">Follow
+                    Cleaning Protocols
+                </li>
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(32), 'outer-active':currentComponentIndex==33}">Check Your
+                    Understanding</li>
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(33), 'outer-active':currentComponentIndex==34}">Your
+                    Commitment</li>
+                <!-- <li class="inner-list" [ngClass]="{'active':activeIndices.includes(24), 'outer-active':currentComponentIndex==34}">Your
+                    Commitment</li> -->
+
+            </ul>
+        </mat-expansion-panel>
+        <mat-expansion-panel [expanded]="step === 7" (opened)="setStep(7)">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Your submission
+                    <img *ngIf="modal.yourIdea.type==='ONLINE' && !activeIndices.includes(26)"
+                        src="../../../../../assets/images/lock-icon.svg" alt="lock" title="lock"
+                        class="lock">
+                    <div *ngIf="modal.yourIdea.type==='ONLINE' && activeIndices.includes(26)" class="after-completed">
+                        <img src="../../../../../assets/images/check-white.svg" alt="check"
+                            title="check">
+                    </div>
+
+                    <img *ngIf="modal.yourIdea.type==='OFFLINE' && !activeIndices.includes(34)"
+                        src="../../../../../assets/images/lock-icon.svg" alt="lock" title="lock"
+                        class="lock">
+                    <div *ngIf="modal.yourIdea.type==='OFFLINE' && activeIndices.includes(34)" class="after-completed">
+                        <img src="../../../../../assets/images/check-white.svg" alt="check"
+                            title="check">
+                    </div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul class="listing-type">
+                <!-- <li class="inner-list" [ngClass]="{'active':activeIndices.includes(25), 'outer-active':currentComponentIndex==26}">Your
+                    Information</li> -->
+                <li class="inner-list" [ngClass]="{'active':activeIndices.includes(26), 'outer-active':currentComponentIndex==27}">Review & Submit
+                </li>
+                <!-- <li class="inner-list" *ngIf="modal.yourIdea.type==='ONLINE'" [ngClass]="{'active':activeIndices.includes(25), 'outer-active':currentComponentIndex==26}">Your
+                    Information</li>
+                <li class="inner-list" *ngIf="modal.yourIdea.type==='ONLINE'" [ngClass]="{'active':activeIndices.includes(26), 'outer-active':currentComponentIndex==27}">Review & Submit
+                </li>
+
+                <li class="inner-list" *ngIf="modal.yourIdea.type==='OFFLINE'" [ngClass]="{'active':activeIndices.includes(25), 'outer-active':currentComponentIndex==26}">Your
+                    Information</li>
+                <li class="inner-list" *ngIf="modal.yourIdea.type==='OFFLINE'" [ngClass]="{'active':activeIndices.includes(35), 'outer-active':currentComponentIndex==27}">Review & Submit
+                </li> -->
+            </ul>
+        </mat-expansion-panel>
+
+    </mat-accordion>
+
+
+</div>

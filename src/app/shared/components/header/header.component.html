@@ -1,0 +1,74 @@
+<header class="header-main">
+  <div class="inner-header-wrapper">
+    <div class="left-logo-section" [routerLink]="['/home']">
+      <h1>TWIWFY</h1>
+      <!--<label>
+        {{ "HEADER.LANGUAGE_LABEL" | translate }}
+        <select #langSelect (change)="translate.use(langSelect.value)">
+          <option
+            *ngFor="let lang of translate.getLangs()"
+            [value]="lang"
+            [selected]="lang === translate.currentLang"
+          >
+            {{ lang }}
+          </option>
+        </select>
+      </label>-->
+    </div>
+    <div class="right-col-main">
+      <div class="header-btn" *ngIf="!isLogin">
+        <button class="primary-btn" matRipple (click)="onBecomeHost()">Become a Host</button>
+      </div>
+      <div class="global-btn" (click)="openDialog()">
+        <img src="../../../../assets/images/global.svg" title="global" alt="global" />
+      </div>
+      <!-- <div class="togle-btn" (click)="openSidemenu()">
+        <img
+          src="../../../../assets/images/toggle-btn.svg"
+          title="global"
+          alt="global"
+        />
+      </div> -->
+      <div class="toogle-btn-new-main">
+        <div class="btn-group" dropdown>
+          <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+            aria-controls="dropdown-basic">
+            <div class="left-toggle-btn-line">
+              <span class="first-line comman-line"></span>
+              <span class="second-line comman-line"></span>
+              <span class="third-line comman-line"></span>
+            </div>
+            <div class="img-vector">
+              <img src="../../../../assets/images/user.svg" alt="user-icon" title="user-icon">
+            </div>
+          </button>
+          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic" (click)="closeDropDown()">
+            <ng-container *ngIf="!isLogin">
+              <li role="menuitem"><a class="dropdown-item" (click)="loginDialog('Signup')">Signup</a></li>
+              <li role="menuitem"><a class="dropdown-item" (click)="loginDialog('Login')">Login</a></li>
+              <li class="divider dropdown-divider"></li>
+              <li role="menuitem"><a class="dropdown-item" (click)="loginDialog('Signup')">Host an online experience</a></li>
+            </ng-container>
+            <ng-container *ngIf="isLogin">
+              <!-- <li role="menuitem"><a class="dropdown-item" >Profile</a></li>
+              <li class="divider dropdown-divider"></li> -->
+              <li role="menuitem"><a class="dropdown-item" >Message</a></li>
+              <li role="menuitem"><a class="dropdown-item" [routerLink]="['/notifications']">Notification</a></li>
+              <!-- <li role="menuitem"><a class="dropdown-item" >Trips</a></li> -->
+              <li role="menuitem"><a class="dropdown-item" [routerLink]="['/saved']">Saved</a></li>              
+              <li class="divider dropdown-divider"></li>
+              <li role="menuitem"><a class="dropdown-item" routerLink="/manage-experience">Manage experiences</a></li>
+              <!-- <li role="menuitem"><a class="dropdown-item" >Manage Accounts</a></li> -->
+              <li role="menuitem"><a class="dropdown-item" [routerLink]="['/account']">Account</a></li>
+              <li class="divider dropdown-divider"></li>
+              <li role="menuitem"><a class="dropdown-item" (click)="logout()">Logout</a></li>
+            </ng-container>
+          </ul>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+</header>

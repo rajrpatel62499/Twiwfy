@@ -1,0 +1,45 @@
+<div class="main-first-step-form">
+    <div class="inner-main-first-step">
+        <div class="heading">What type of experience will you host?</div>
+        <p>Online Experiences can be hosted from anywhere through video, and in-person experiences are hosted on
+            location. <a href="#" title="Learn More">Learn more</a></p>
+        <div class="grid-main-system">
+            <div class="inner-grid-system" (click)="setType(1)" [ngClass]="{'active':activeIndex === 1}">
+                <img src="../../../../../../../assets/images/people-desktop.svg" alt="people" title="people" />
+                <h3 class="small-heading">Online Experience</h3>
+                <p>Guests will join you virtually, using Zoom video conferencing software.</p>
+
+            </div>
+            <div class="inner-grid-system" (click)="setType(2)" [ngClass]="{'active':activeIndex === 2}">
+                <img src="../../../../../../../assets/images/in-peroson-exp.svg" alt="people" title="people" />
+                <h3 class="small-heading">In-person experience</h3>
+                <p>Guests will join you in the real world, for hands-on participation.</p>
+            </div>
+        </div>
+        <!-- <div class="alert-box-main">
+            <div class="left-col-icon">
+                <img src="../../../../../../../assets/images/alert-icon.svg" alt="alert" title="alert">
+            </div>
+            <div class="right-col-main">
+                <span class="review-heading">Review of new submissions is paused, but you can still submit</span>
+                <p>We’re taking some time to carefully review the high volume of Online
+                    Experiences that have already been submitted. Your submission will be
+                    added to the waiting list until more openings become available.
+                </p>
+            </div>
+        </div> -->
+    </div>
+</div>
+<!-- <div class="last-row-fixed">
+    <mat-progress-bar mode="determinate" value="5"></mat-progress-bar>
+    <div class="next-back-row-main">
+        <div class="left-text">
+            22 items to submit
+        </div>
+        <div class="button-row">
+            <button type="button" class="btn-next" (click)="next()" matRipple>Next</button>
+
+        </div>
+
+    </div>
+</div> -->

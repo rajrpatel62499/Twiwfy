@@ -1,0 +1,113 @@
+<ng-container *ngIf="step === 1">
+    <div class="main-container-area">
+    <div class="left-wrapper">
+        <div class="inner-width-wrapper">
+            <div class="heading">What's your primary language?</div>
+            <p>You should be able to read, write, and speak in this language. You’ll be able to add additional languages
+                next.</p>
+            <div class="language-accordian">
+                <!-- <mat-accordion>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Choose your language
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p>I'm visible because I am open</p>
+                    </mat-expansion-panel>
+                </mat-accordion> -->
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{name}}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a *ngFor="let l of languages" class="dropdown-item" (click)="setLanguage(l)">{{l.name}}</a>
+                        <a *ngIf="languages.length == 0" class="dropdown-item">No data found</a>
+                        <!-- <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a> -->
+                    </div>
+                </div>
+
+                <div class="error-block"
+                    *ngIf="isLanguageRequires">
+                    <div class="required-text">
+                        <p class="error text-danger">Please select language</p>
+                    </div>
+                </div>
+            </div>
+            <ng-container *ngIf="experienceData.basicInformation.language">
+                <div @fade>
+                    
+                    <div class="heading">What other languages do you speak fluently?</div>
+                    <p>Only add languages you'd be comfortable hosting in.</p>
+    
+                    <div class="language-adding-main">
+                        <ng-container>
+                            <div class="inner-gird-lan" *ngFor="let sl of selectedLanguageArr;let s = index">
+                                <div class="in-lan-left">{{sl.name}}</div>
+                                <img (click)="deleteLanguage(s)" src="../../../../../../../assets/images/delete-icon.svg" class="delete" alt="Delete"
+                                title="Delete">
+                            </div>
+                        </ng-container>
+                        <!-- <div class="inner-gird-lan">
+                            <div class="in-lan-left">Português</div>
+                            <img src="../../../../../../../assets/images/delete-icon.svg" class="delete" alt="Delete"
+                                title="Delete">
+                        </div> -->
+                        <div class="inner-gird-lan" (click)="changeStep(2)">
+                            <div class="in-lan-left add-lan-head">
+                                Add Language
+                            </div>
+                            <img src="../../../../../../../assets/images/black-add.svg" class="add" alt="Add" title="Add">
+                        </div>
+    
+                    </div>
+                </div>
+            </ng-container>
+
+
+            
+        </div>
+
+    </div>
+    <!-- <div class="right-wrapper">
+        <div class="small-heading">Tips</div>
+        <ul class="custom-ul">
+            <li>You should be able to read, write and speak in your primary language</li>
+            <li>If you speak more languages, you can always add them to your experience page in the future</li>
+        </ul>
+    </div> -->
+
+
+</div>
+</ng-container>
+<!---------------------------------------- what-lan-host-in------------------------------------------->
+<ng-container *ngIf="step === 2">
+    <div class="heading lan-heading"> <img src="../../../../../../../assets/images/back-arrow.svg" alt="back-arrow" (click)="changeStep(1)" />
+        What languages would you like to host in?
+    </div>
+
+    <div class="language-grid-main">
+        <ng-container *ngFor="let l of languages;let i = index">
+            
+            <div *ngIf="l.name !== this.experienceData.basicInformation.language" class="inner-grid-main" >
+                <mat-checkbox  name="{{l.name}}" class="example-margin" [(ngModel)]="l.check" (change)="selectedLanguage($event,i)">{{l.name}}</mat-checkbox>
+            </div>
+        </ng-container>
+        
+       
+    </div>
+</ng-container>
+<!-- <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+<div class="next-back-row-main">
+    <div class="left-text">
+        15 items to submit
+    </div>
+    <div class="button-row">
+        <button class="btn-back" (click)="next(8)" matRipple>Back</button>
+        <button class="btn-next" (click)="next(10)" matRipple>Next</button>
+
+    </div>
+
+</div> -->

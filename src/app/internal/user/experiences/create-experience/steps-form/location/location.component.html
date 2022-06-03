@@ -1,0 +1,49 @@
+<form #step2='ngForm' (ngSubmit)="step2.form.valid && next(3)">
+    <div class="main-first-step-form">
+        <div class="inner-main-first-step">
+            <div class="heading">Location</div>
+            <p>Which city will you host your experience in?</p>
+            <div class="search-loaction-input">
+                <!-- <input type="text" /> -->
+                <input type="text" 
+                required
+                (keydown.enter)="$event.preventDefault()" 
+                [(ngModel)]="experienceData.yourIdea.location" 
+                (change)="locationChanged($event)"
+                #lValue
+                
+                autocorrect="off" autocapitalize="off" spellcheck="off"
+                name="location" placeholder="Enter Location" maxlength="155"/>
+                <!-- [ngStyle]="{ 'border': (step2.controls?.location?.touched && step2.invalid) ? '3px solid red': ''}"
+                [ngClass]=" {'red-outline': step2.controls?.location?.touched && step2.invalid} " -->
+                <!-- <div class="error-block"
+                    *ngIf="lValue.invalid && (lValue.dirty || lValue.touched || step2.submitted)">
+                    <div class="required-text" *ngIf="lValue.errors.required">
+                        <p class="error text-danger">Location is required.</p>
+                    </div>
+                </div> -->
+                <!-- <div class="error-block" *ngIf="step2.form.get('location')?.touched"> -->
+                <div class="error-block" >
+                    <!-- <div class="required-text" *ngIf="step2.form.get('location').invalid" > -->
+                    <div class="required-text" *ngIf="step2.touched && step2.invalid" >
+                        <p class="error text-danger">Location is required.</p>
+                    </div>
+                </div>
+                <button type="button" class="search-btn">
+                    <img src="../../../../../../../assets/images/locatiion-pin-black.svg" alt="Location"
+                        title="Location">
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- <mat-progress-bar mode="determinate" value="10"></mat-progress-bar>
+    <div class="next-back-row-main">
+        <div class="left-text">
+            21 items to submit
+        </div>
+        <div class="button-row">
+            <button class="btn-back" type="button" (click)="next(1)" matRipple>Back</button>
+            <button class="btn-next" type="submit" matRipple>Next</button>
+        </div>
+    </div> -->
+</form>

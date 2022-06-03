@@ -1,0 +1,309 @@
+<form #whatWillDo="ngForm" (ngSubmit)="next(13)">
+  <div *ngIf="step == 1" class="main-container-area">
+    <div class="left-wrapper">
+      <div class="inner-width-wrapper">
+        <div class="heading">What we’ll do</div>
+        <p>
+          Your activity description is a chance to inspire guests to take your
+          experience. Think about it like a story, with a beginning, middle, and
+          end.
+        </p>
+
+        <!-- ------------------Describe-experience---------------------- -->
+        <div class="question-head">Describe your experience</div>
+        <p>
+          1. First, briefly describe what you’ll do with your guests. What
+          unique details set it apart from other similar experiences?
+        </p>
+        <p>
+          2. Then, get more specific. How will you kick things off? How will you
+          make guests feel included and engaged during your time together?
+        </p>
+        <p>
+          3. Finally, say what you want guests to leave with. Friends?
+          Knowledge? A greater appreciation for your culture? End with a strong
+          selling point.
+        </p>
+
+        <div class="text-area-main">
+          <textarea
+            [(ngModel)]="experienceData.experiencePage.experienceDescription"
+            name="desc"
+            #desc="ngModel"
+            placeholder="What are you hosting? Be specific!"
+            minlength="200"
+            maxlength="1400"
+            (ngModelChange)="isNextButtonClicked = false"
+           required></textarea>
+          <div
+            class="error-block"
+            *ngIf="
+            desc.invalid &&
+              (desc.dirty || desc.touched || whatWillDo.submitted)
+            "
+          >
+            <div class="required-text" >
+              <p *ngIf="desc.errors.required" class="text-danger">Descripition is required.</p>
+              <p *ngIf="desc.errors.minlength && isNextButtonClicked" class="text-danger">{{desc.errors.minlength.requiredLength}} characters needed</p>
+            </div>
+          </div>
+          <p *ngIf="!isNextButtonClicked && !desc.errors?.required" class="">{{experienceData.experiencePage.experienceDescription?.length}} /1400</p>
+        </div>
+
+        <!-- <div class="main-expert-mind mb-4">
+          <div class="left-col-wrapper">
+            <img
+              src="../../../../../../../assets/images/energy.svg"
+              alt="Energy"
+              title="Energy"
+            />
+          </div>
+          <div class="right-col-wrapper">
+            <p>
+              <span>Keep in mind:</span> Make sure you have a clearly defined
+              itinerary. We can’t accept “open-ended” plans where guests are
+              asked to pick from a list of activities.
+            </p>
+          </div>
+        </div> -->
+        <div class="question-head mb-2">Where will you broadcast from?</div>
+        <div class="radio-group-custom">
+          <input
+            type="radio"
+            id="Indoor"
+            [(ngModel)]="experienceData.experiencePage.fromWhere"
+            value="Indoor"
+            name="radio-group"
+          />
+          <label for="Indoor"
+            >Indoors or on my personal property (e.g. my living room or
+            garden)</label
+          >
+        </div>
+        <div class="radio-group-custom">
+          <input
+            type="radio"
+            id="Outdoor"
+            [(ngModel)]="experienceData.experiencePage.fromWhere"
+            value="Outdoor"
+            name="radio-group"
+          />
+          <label for="Outdoor"
+            >Outdoors and not on my personal property (e.g. at a local park or
+            tourist attraction)</label
+          >
+        </div>
+
+        <!-- <div class="question-head mb-2 mt-3">
+          Which animal species does your experience focus on?
+        </div>
+        <p>Choose up to 3 options.</p>
+        <div class="add-animals-input">
+          <input type="text" placeholder="Add Animal Species" />
+          <button class="btn-add">
+            <img
+              src="../../../../../../../assets/images/black-add.svg"
+              alt="black-add"
+              title="black-add"
+            />
+          </button>
+        </div> -->
+        <div @fade *ngIf="experienceData.experiencePage.fromWhere == 'Outdoor' " >
+          
+          <div class="small-heading mt-2">Where will everything take place?</div>
+          <p>Choose up to three locations for your experience.</p>
+  
+          <div class="language-adding-main">
+            <div
+              class="inner-gird-lan"
+              *ngFor="let c of selectedLocation; let si = index"
+            >
+              <div class="in-lan-left">{{ c.name }}</div>
+              <img
+                src="../../../../../../../assets/images/delete-icon.svg"
+                (click)="deleteSelected(si)"
+                class="delete"
+                alt="Delete"
+                title="Delete"
+              />
+            </div>
+  
+            <div class="inner-gird-lan" (click)="setStep(3)">
+              <div class="in-lan-left add-lan-head">
+                <input type="text" placeholder="Add Another Location" />
+              </div>
+              <img
+                src="../../../../../../../assets/images/black-add.svg"
+                class="add"
+                alt="Add"
+                title="Add"
+              />
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <!-- <div class="right-wrapper">
+      <div class="small-heading">Tips</div>
+      <div class="do-main">
+        <div class="small-heading">Do</div>
+        <ul class="say-yes">
+          <li>
+            Reinforce that your experience is hosted online and internet access
+            is required
+          </li>
+          <li>
+            Give people specifics and a detailed itinerary so they know what to
+            expect
+          </li>
+          <li>
+            Tell guests what they need to bring and do to prepare and
+            participate
+          </li>
+          <li>
+            Include links to your other experiences and invite guests to read
+            the reviews
+          </li>
+        </ul>
+      </div>
+      <div class="do-main">
+        <div class="small-heading">DON’T</div>
+        <ul class="say-no">
+          <li>Ask guests to get supplies that are expensive or hard to find</li>
+          <li>Offer a loose, unorganised itinerary with vague information</li>
+          <li>Plan generic activities people are already doing on their own</li>
+        </ul>
+      </div>
+
+      <div class="small-slider-main">
+        <div class="small-heading">Example</div>
+        <p>
+          Witness the fun of foraging for mushrooms with none of the mess!
+          Follow along from the comfort of your couch, as my trusty pig, Pork
+          Chop, sniffs and snorts her way to the nearest truffles. First, you’ll
+          see her pen, where she hangs out and snores when she’s not on the
+          hunt. Then, we’ll follow her through my private property as she looks
+          for the aromatic delicacy.
+        </p>
+      </div>
+    </div> -->
+  </div>
+
+  <!---------------------------------------- what-lan-host-in------------------------------------------->
+  <ng-container *ngIf="step == 2">
+    <div class="heading lan-heading">
+      <img
+        src="../../../../../../../assets/images/back-arrow.svg"
+        alt="back-arrow"
+      />
+      Add Animal Species
+      <span class="blue-color">(Choose up to 3 options.)</span>
+    </div>
+
+    <div class="search-input-main">
+      <input type="text" placeholder="Search" />
+      <button class="search-btn">
+        <img
+          src="../../../../../../../assets/images/search-icon.svg"
+          alt="search"
+          title="search"
+        />
+      </button>
+    </div>
+
+    <div class="language-grid-main">
+      <div class="inner-grid-main">
+        <mat-checkbox class="example-margin">Aardvark</mat-checkbox>
+      </div>
+      <div class="inner-grid-main">
+        <mat-checkbox class="example-margin">Alligator</mat-checkbox>
+      </div>
+      <div class="inner-grid-main">
+        <mat-checkbox class="example-margin">Alpaca</mat-checkbox>
+      </div>
+      <div class="inner-grid-main">
+        <mat-checkbox class="example-margin">Amphibian</mat-checkbox>
+      </div>
+      <div class="inner-grid-main">
+        <mat-checkbox class="example-margin">Ant</mat-checkbox>
+      </div>
+      <div class="inner-grid-main">
+        <mat-checkbox class="example-margin">Anteater</mat-checkbox>
+      </div>
+      <div class="inner-grid-main">
+        <mat-checkbox class="example-margin">Arachnid</mat-checkbox>
+      </div>
+      <div class="inner-grid-main">
+        <mat-checkbox class="example-margin">Armadillos</mat-checkbox>
+      </div>
+      <div class="inner-grid-main">
+        <mat-checkbox class="example-margin">Baboon</mat-checkbox>
+      </div>
+      <div class="inner-grid-main">
+        <mat-checkbox class="example-margin">Badger</mat-checkbox>
+      </div>
+      <div class="inner-grid-main">
+        <mat-checkbox class="example-margin">Bear</mat-checkbox>
+      </div>
+      <div class="inner-grid-main">
+        <mat-checkbox class="example-margin">Beaver</mat-checkbox>
+      </div>
+      <div class="inner-grid-main">
+        <mat-checkbox class="example-margin">Bee</mat-checkbox>
+      </div>
+      <div class="inner-grid-main">
+        <mat-checkbox class="example-margin">Beetle</mat-checkbox>
+      </div>
+      <div class="inner-grid-main">
+        <mat-checkbox class="example-margin">Beluga</mat-checkbox>
+      </div>
+      <div class="inner-grid-main">
+        <mat-checkbox class="example-margin">Bison</mat-checkbox>
+      </div>
+    </div>
+  </ng-container>
+
+  <!---------------------------------------- what-lan-host-in------------------------------------------->
+  <ng-container *ngIf="step == 3">
+    <div class="heading lan-heading">
+      <img
+        (click)="setStep(1)"
+        src="../../../../../../../assets/images/back-arrow.svg"
+        alt="back-arrow"
+      />
+      Select a Location
+    </div>
+
+    <div class="main-worships">
+      <div class="comman-grid-main" *ngFor="let l of locations; let i = index">
+        <div class="sub-heading">{{ l.name }}</div>
+        <div class="grid-system-for-radio">
+          <div
+            class="inner-grid-main"
+            *ngFor="let sub of l.children; let sl = index"
+          >
+            <div class="radio-group-custom">
+              <input
+                type="radio"
+                id="test6_{{ i }}_{{ sl }}"
+                (change)="locationChange($event, i, sl)"
+                name="radio-group_{{ i }}"
+              />
+              <label for="test6_{{ i }}_{{ sl }}">{{ sub.name }}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <!-- <mat-progress-bar mode="determinate" value="55"></mat-progress-bar>
+  <div class="next-back-row-main">
+    <div class="left-text">12 items to submit</div>
+    <div class="button-row">
+      <button class="btn-back" (click)="next(11)" matRipple>Back</button>
+      <button class="btn-next" type="submit" matRipple>Next</button>
+    </div>
+  </div> -->
+</form>

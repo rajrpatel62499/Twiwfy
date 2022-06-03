@@ -1,0 +1,224 @@
+<form #reviewForm="ngForm" (ngSubmit)="reviewForm.form.valid && next(35)">
+  <div class="main-container-area">
+    <div class="heading">Last steps to review</div>
+
+    <div class="form-name-main">
+      <div class="small-heading">
+        Review our policies before you submit to TWIWFY
+      </div>
+      <p>
+        TWIFY will review the version you’re about to submit, so make sure
+        you’re happy with it. You can still go back and fine-tune your
+        descriptions at any time.
+      </p>
+    </div>
+    <div class="form-title-main mt-5">Minimum guests</div>
+    <p>
+      Experiences on TWIWFY have a 1 guest minimum. That means if one person
+      books your experience, you’ll still be expected to host them.
+    </p>
+
+    <div class="form-title-main mt-5">Service fees</div>
+    <p>
+      Twiwfy takes 20% of each booking. TWIWFY handles payment processing,
+      provides 24-hour customer service, and maintains liability insurance for
+      most experiences. Read more about our service fee.
+    </p>
+
+    <div class="form-title-main mt-5">Exclusivity</div>
+    <p>
+      Each experience date you schedule through Twiwfy must only be attended by
+      Twiwfy guests. Guests who book and pay through other platforms must be
+      hosted at separate times.
+    </p>
+    <div class="form-title-main mt-5">
+      By submitting, I confirm the following is true:
+    </div>
+    <div class="mb-3 checkbox-main">
+      <mat-checkbox
+        class="example-margin"
+        name="myExeperience"
+        #myExeperience="ngModel"
+        ngModel
+        required
+      ></mat-checkbox>
+      <p>
+        My experience complies with local laws. <span>Learn more</span> about
+        other laws (such as business licensing) that may apply.
+      </p>
+    </div>
+    <div
+      class="error-block"
+      *ngIf="
+        myExeperience.invalid &&
+        (myExeperience.dirty || myExeperience.touched || reviewForm.submitted)
+      "
+    >
+      <div class="required-text" *ngIf="myExeperience.errors.required">
+        <p class="error text-danger">This option is required.</p>
+      </div>
+    </div>
+
+    <div class="mb-3 checkbox-main">
+      <mat-checkbox
+        class="example-margin"
+        name="confirmExperience"
+        #confirmExperience="ngModel"
+        ngModel
+        required
+      ></mat-checkbox>
+      <p>
+        I confirm that my descriptions and photos are my own, and accurately
+        reflect my experience.
+      </p>
+    </div>
+    <div
+      class="error-block"
+      *ngIf="
+        confirmExperience.invalid &&
+        (confirmExperience.dirty ||
+          confirmExperience.touched ||
+          reviewForm.submitted)
+      "
+    >
+      <div class="required-text" *ngIf="confirmExperience.errors.required">
+        <p class="error text-danger">This option is required.</p>
+      </div>
+    </div>
+    <div class="mb-3 checkbox-main">
+      <mat-checkbox
+        class="example-margin"
+        name="twiffyExperince"
+        #twiffyExperince="ngModel"
+        ngModel
+        required
+      ></mat-checkbox>
+      <p>
+        I agree to the
+        <span
+          >TWIWFY Experiences Additional Terms of Service and Guest Refund
+          Policy.</span
+        >
+      </p>
+    </div>
+    <div
+      class="error-block"
+      *ngIf="
+        twiffyExperince.invalid &&
+        (twiffyExperince.dirty ||
+          twiffyExperince.touched ||
+          reviewForm.submitted)
+      "
+    >
+      <div class="required-text" *ngIf="twiffyExperince.errors.required">
+        <p class="error text-danger">This option is required.</p>
+      </div>
+    </div>
+
+    <div class="mb-3 checkbox-main">
+      <mat-checkbox
+        class="example-margin"
+        name="licencePermission"
+        #licencePermission="ngModel"
+        ngModel
+        required
+      ></mat-checkbox>
+      <p>
+        My experience contains no copyrighted works (e.g. music, video, literary
+        works), unless I own them, they are in the public domain, or I have
+        secured the necessary rights, licences and permissions to use them.
+      </p>
+    </div>
+
+    <div
+      class="error-block"
+      *ngIf="
+      licencePermission.invalid &&
+        (licencePermission.dirty ||
+        licencePermission.touched ||
+          reviewForm.submitted)
+      "
+    >
+      <div class="required-text" *ngIf="licencePermission.errors.required">
+        <p class="error text-danger">This option is required.</p>
+      </div>
+    </div>
+
+    <div class="mb-3 checkbox-main">
+      <mat-checkbox
+        class="example-margin"
+        name="saftyRequirment"
+        #saftyRequirment="ngModel"
+        ngModel
+        required
+      ></mat-checkbox>
+      <p>
+        I agree to comply with all applicable local food safety requirements. I
+        understand that if TWIWFY is made aware that my experience does not
+        comply with these guidelines and/or local food safety requirements, it
+        may be removed from TWIWFY.
+      </p>
+    </div>
+
+    <div
+      class="error-block"
+      *ngIf="
+      saftyRequirment.invalid &&
+        (saftyRequirment.dirty ||
+        saftyRequirment.touched ||
+          reviewForm.submitted)
+      "
+    >
+      <div class="required-text" *ngIf="saftyRequirment.errors.required">
+        <p class="error text-danger">This option is required.</p>
+      </div>
+    </div>
+
+    <div class="mb-3 checkbox-main">
+      <mat-checkbox
+        class="example-margin"
+        name="readUnderstand"
+        #readUnderstand="ngModel"
+        ngModel
+        required
+      ></mat-checkbox>
+      <p>
+        I have read and understand
+        <span>TWIWFY’s Food Safety Guidelines,</span> and I confirm that my
+        experience complies with them. When hosting, I agree to:
+      </p>
+    </div>
+
+    <div
+      class="error-block"
+      *ngIf="
+      readUnderstand.invalid &&
+        (readUnderstand.dirty ||
+        readUnderstand.touched ||
+          reviewForm.submitted)
+      "
+    >
+      <div class="required-text" *ngIf="readUnderstand.errors.required">
+        <p class="error text-danger">This option is required.</p>
+      </div>
+    </div>
+
+    <div class="listing-main">
+      <ul>
+        <li>Keep myself, my work area, and equipment clean</li>
+        <li>Separate raw and cooked food</li>
+        <li>Cook meat and poultry to the appropriate temperature</li>
+        <li>Keep food at safe temperatures</li>
+        <li>Use safe water and raw materials</li>
+      </ul>
+    </div>
+  </div>
+  <!-- <mat-progress-bar mode="determinate" value="95"></mat-progress-bar>
+  <div class="next-back-row-main">
+    <div class="left-text">02 items to submit</div>
+    <div class="button-row">
+      <button class="btn-back" (click)="next(27)" matRipple>Back</button>
+      <button class="btn-next" type="submit" matRipple>Submit</button>
+    </div>
+  </div> -->
+</form>

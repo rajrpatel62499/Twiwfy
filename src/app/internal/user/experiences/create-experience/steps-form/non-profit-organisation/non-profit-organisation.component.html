@@ -1,0 +1,46 @@
+<form #nonProfit="ngForm" (ngSubmit)="nonProfit.form.valid && next(15)">
+  <div class="main-continer-area">
+    <div class="heading">Describe the Nonprofit Organisation</div>
+    <p>
+      Tell people about the nonprofit organisation that you're partnering with.
+      What cause does it support? What is its mission?
+    </p>
+
+    <div class="text-area">
+      <textarea
+        [(ngModel)]="experienceData.experiencePage.organisationDescription"
+        name="organizationDesc"
+        #organizationDesc="ngModel"
+        placeholder="Tell your organisation description here"
+       required></textarea>
+
+      <div
+        class="error-block"
+        *ngIf="
+        organizationDesc.invalid && (organizationDesc.dirty || organizationDesc.touched || nonProfit.submitted)
+        "
+      >
+        <div class="required-text" *ngIf="organizationDesc.errors.required">
+          <p class="error text-danger">Description is required.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="radio-group-custom">
+      <input
+        type="radio"        
+        id="helpHost"
+        name="helpsHost" #helpsHost="ngModel" ngModel value="Team"
+      />
+      <label for="helpHost">I have a team that helps me host</label>
+    </div>
+  </div>
+  <!-- <mat-progress-bar mode="determinate" value="65"></mat-progress-bar>
+  <div class="next-back-row-main">
+    <div class="left-text">10 items to submit</div>
+    <div class="button-row">
+      <button class="btn-back" (click)="next(13)" matRipple>Back</button>
+      <button class="btn-next" type="submit" matRipple>Next</button>
+    </div>
+  </div> -->
+</form>

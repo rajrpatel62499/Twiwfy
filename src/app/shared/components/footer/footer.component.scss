@@ -1,0 +1,330 @@
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+  @media (min-width: $min-screen-size +"px") {
+    @content;
+  }
+}
+
+@mixin max-mq($max-screen-size) {
+  @media (max-width: $max-screen-size +"px") {
+    @content;
+  }
+}
+
+// ----------------------------For Orientation-----------------------//
+@mixin landscape-orientation($max-screen-size, $orientation) {
+  @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+    @content;
+  }
+}
+
+@mixin btw-mq($min-screen-size, $max-screen-size, $pixel-ratio, $orientation) {
+  @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+    @content;
+  }
+}
+// ------------END of Media Screen Mixing--------------//
+
+footer.main-footer-section {
+  background-color: var(--ligth-blue-color);
+  padding-top: 90px;
+  position: relative;
+  @include max-mq(1500) {
+    padding-top: 70px;
+  }
+  @include max-mq(667){
+    padding-top: 50px;
+  }
+  @include max-mq(567){
+    margin-bottom: 40px;
+  }
+  &::before {
+    position: absolute;
+    content: "";
+    background: var(--footer-buble-pink);
+    border-radius: 0px 0px 220px 0px;
+    height: 123px;
+    width: 120px;
+    top: 0;
+    left: 0;
+    @include max-mq(1660) {
+      height: 70px;
+      width: 70px;
+    }
+    @include max-mq(1200){
+      height: 60px;
+      width: 60px;
+    }
+    @include max-mq(667){
+      width: 40px;
+      height: 40px;
+    }
+    @include max-mq(567){
+      width: 20px;
+      height: 20px;
+    }
+  }
+  &::after {
+    position: absolute;
+    content: "";
+    background: #01bef3;
+    border-radius: 220px 0px 0px 0px;
+    height: 123px;
+    width: 120px;
+    top: auto;
+    bottom: 0;
+    left: auto;
+    right: 0;
+    @include max-mq(1660) {
+      height: 70px;
+      width: 70px;
+    }
+    @include max-mq(1200){
+      height: 50px;
+      width: 50px;
+    }
+    @include max-mq(667){
+      width: 40px;
+      height: 40px;
+    }
+    @include max-mq(567){
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .inner-wrapper-main {
+    .first-row {
+      .logo-section {
+        padding-bottom: 40px;
+        @include max-mq(667){
+          padding-bottom: 20px;
+        }
+        h2 {
+          margin-bottom: 0;
+          display: inline-block;
+          cursor: pointer;
+          font-size: 36px;
+          text-transform: uppercase;
+          @include max-mq(1100){
+            font-size: 25px;
+          }
+        }
+      }
+    }
+    .second-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-column-gap: 50px;
+      @include max-mq(1660) {
+        grid-column-gap: 20px;
+      }
+      @include max-mq(1200){
+        grid-column-gap: 20px;
+        grid-row-gap: 30px;
+        grid-template-columns: repeat(3, 1fr);
+      }
+      @include max-mq(567){
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .first-col {
+        @include max-mq(991){
+          grid-column-start: 1;
+          grid-column-end: -1;
+        }
+        p {
+          font-size: 16px;
+          line-height: 22px;
+          margin-bottom: 50px;
+          @include max-mq(1660) {
+            font-size: 13px;
+            line-height: 21px;
+            margin-bottom: 40px;
+          }
+          @include max-mq(667){
+            margin-bottom: 20px;
+          }
+        }
+        span {
+          display: block;
+          font-size: 13px;
+        }
+      }
+      .comman-col {
+        .label-text {
+          display: block;
+          margin-bottom: 20px;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 25px;
+          text-transform: uppercase;
+          @include max-mq(1660) {
+            margin-bottom: 15px;
+            font-weight: 500;
+            font-size: 13px;
+            line-height: 23px;
+          }
+        }
+        a {
+          display: block;
+          margin-bottom: 7px;
+          font-size: 15px;
+          line-height: 25px;
+          @include max-mq(1660) {
+            margin-bottom: 5px;
+            font-size: 13px;
+            line-height: 23px;
+          }
+          @include max-mq(667){
+            font-size: 12px;
+            line-height: 21px;
+          }
+          @include max-mq(567){
+            font-size: 10px;
+            line-height: 20px;
+          }
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    .third-row {
+      padding-bottom: 22px;
+      padding-top: 22px;
+      border-top: 0.5px solid #dadada;
+      margin-top: 80px;
+      @include max-mq(667){
+        margin-top: 20px;
+      }
+      .inner-third-wraper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @include max-mq(350){
+          flex-direction: column;
+        }
+        .btn-group {
+          @include max-mq(567){
+            display: none;
+          }
+          .btn {
+            background: transparent;
+            color: var(--black-color);
+            padding: 0px;
+            border: none;
+            font-size: 14px;
+            line-height: 16px;
+            font-family: "Sul Sans";
+            padding-left: 28px;
+            position: relative;
+            @include max-mq(667){
+              font-size: 10px;
+              padding-left: 18px;
+            }
+            &:focus {
+              outline: none !important;
+              box-shadow: none;
+            }
+            &::before {
+              position: absolute;
+              content: "";
+              background: url(../../../../assets/images/global.svg) no-repeat;
+              background-size: 17px;
+              width: 20px;
+              height: 17px;
+              left: 0px;
+              top: 2px;
+              bottom: 0;
+              margin: auto;
+              filter: brightness(0);
+              transform: inherit !important;
+              right: auto;
+              border: none !important;
+              @include max-mq(667){
+                background-size: 10px;
+                width: 10px;
+                height: 17px;
+                background-position: center;
+              }
+            }
+            &::after {
+              position: absolute;
+              content: "";
+              border: none;
+              background: url(../../../../assets/images/black-down-arrow.svg) no-repeat;
+              background-size: 10px;
+              width: 10px;
+              height:11px;
+              top: 6px;
+              bottom: 0;
+              margin: auto;
+              right: -21px;
+              display: block !important;
+            }
+          }
+
+          .dropdown-menu {
+            box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.16);
+            border: none;
+            width: 170px !important;
+            min-width: auto !important;
+            padding: 10px 0px;
+            li {
+              a {
+                display: inline-block;
+                width: 100%;
+                padding: 5px 11px;
+                clear: both;
+                font-weight: 400;
+                border: 0;
+                font-size: 14px;
+              }
+            }
+          }
+        }
+        .show {
+          .btn {
+            border: none !important;
+          }
+        }
+        .centered-links {
+          display: flex;
+          align-items: center;
+          a {
+            display: block;
+            font-size: 16px;
+            margin-left: 43px;
+            text-decoration: underline;
+            @include max-mq(1660) {
+              font-size: 13px;
+              margin-left: 33px;
+            }
+            @include max-mq(667){
+              font-size: 10px;
+              margin-left: 14px;
+            }
+            &:first-child {
+              margin-left: 0px;
+            }
+          }
+        }
+        .social-media {
+          a {
+            display: inline-block;
+            margin-left: 15px;
+            @include max-mq(667){
+              margin-left: 10px;
+            }
+            img {
+              width: 22px;
+              @include max-mq(667){
+                width: 15px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

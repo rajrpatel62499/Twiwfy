@@ -1,0 +1,290 @@
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+        @content;
+    }
+}
+
+@mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+        @content;
+    }
+}
+
+// ----------------------------For Orientation-----------------------//
+@mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+        @content;
+    }
+}
+
+@mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+        @content;
+    }
+}
+
+// ------------END of Media Screen Mixing--------------//
+
+.heading {
+    font-size      : 28px;
+    text-decoration: none;
+    line-height    : 40px;
+    margin-bottom  : 15px;
+
+    @include max-mq(1660) {
+        font-size      : 23px;
+        text-decoration: none;
+        line-height    : 33px;
+    }
+
+    @include max-mq(1500) {
+        font-size: 22px;
+    }
+    @include max-mq(767){
+        font-size: 18px;
+    }
+}
+
+p {
+    color      : #878787;
+    font-size  : 15px;
+    line-height: 23px;
+}
+
+.small-heading {
+    margin-bottom: 20px;
+    font-size    : 20px;
+    line-height  : 25px;
+    font-weight  : 500;
+    @include max-mq(767){
+        font-size: 18px;
+        line-height: 22px;
+    }
+}
+
+
+.main-container-area {
+    display      : flex;
+    margin-bottom: 140px;
+    @include max-mq(991){
+        margin-bottom: 30px;
+        flex-direction: column;
+    }
+
+    .left-wrapper {
+        width: 72%;
+
+        @include max-mq(1660) {
+            width: 65%;
+        }
+        @include max-mq(991){
+            width: 100%;
+        }
+
+        .btn-group {
+            width: 40%;
+
+            button {
+                text-align   : left;
+                padding      : 10px 20px !important;
+                background   : #FFFFFF;
+                border       : 1px solid #D1D1D1 !important;
+                box-shadow   : 0px 6px 3px rgb(0 0 0 / 16%);
+                border-radius: 5px;
+            }
+        }
+
+        .inner-width-wrapper {
+            width : 600px;
+            margin: auto;
+
+            @include max-mq(1660) {
+                width        : 100%;
+                padding-right: 40px;
+            }
+            @include max-mq(991){
+                padding-right: 0px;
+            }
+
+            p {
+                font-size  : 16px;
+                line-height: 26px;
+                color      : #8c8c8c;
+
+                @include max-mq(1660) {
+                    font-size  : 14px;
+                    line-height: 24px;
+                }
+                @include max-mq(767){
+                    font-size: 12px;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+
+    .right-wrapper {
+        width        : 28%;
+        background   : #F9F9F9;
+        border-radius: 5px;
+        padding      : 20px 10px;
+
+        @include max-mq(1660) {
+            width: 35%;
+        }
+        @include max-mq(991){
+            width: 100%;
+            margin-top: 30px;
+        }
+    }
+}
+
+.add-title {
+    width          : 100%;
+    border         : 1px solid #e8e8e8;
+    padding        : 18px 30px;
+    display        : flex;
+    align-items    : center;
+    justify-content: space-between;
+    margin-top     : 20px;
+    border-radius  : 5px;
+    font-size      : 15px;
+    color          : #8C8C8C;
+}
+
+span.txt {
+    color    : #8C8C8C;
+    font-size: 15px;
+}
+
+.del {
+    cursor: pointer;
+}
+
+span.txt-add {
+    color      : #111;
+    font-size  : 15px;
+    font-weight: 500;
+}
+
+.error-block{
+    .text-danger{
+        font-weight: 400;
+        font-size: 15px;
+    }
+}
+
+
+
+.drop-down-min-age {
+    margin-bottom: 30px;
+
+    .btn {
+        width        : 40%;
+        text-align   : left !important;
+        padding      : 10px 20px !important;
+        background   : #FFFFFF;
+        border       : 1px solid #D1D1D1 !important;
+        box-shadow   : 0px 6px 3px rgb(0 0 0 / 16%);
+        border-radius: 5px;
+        position     : relative;
+        color        : #111 !important;
+
+        &::after {
+            right   : 13px;
+            left    : auto;
+            position: absolute;
+            top     : 0;
+            bottom  : 0;
+            margin  : auto;
+        }
+    }
+}
+
+.form-title {
+    font-size    : 16px;
+    line-height  : 25px;
+    font-weight  : 500;
+    margin-bottom: 10px;
+    @include max-mq(767){
+        font-size: 14px;
+        line-height: 23px;
+    }
+}
+
+.pop {
+    display      : block;
+    font-size    : 16px;
+    line-height  : 28px;
+    margin-bottom: 30px;
+    @include max-mq(767){
+        font-size: 14px;
+        line-height: 24px;
+        margin-bottom: 20px;
+    }
+}
+
+
+.white-card-right {
+    background   : #FFFFFF;
+    border       : 1px solid #F1F1F1;
+    box-sizing   : border-box;
+    border-radius: 8px;
+    padding      : 15px;
+    margin-bottom: 20px;
+    font-size    : 14px;
+    line-height  : 20px;
+    @include max-mq(767){
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+}
+
+.comman-row {
+    display       : flex;
+    border-bottom : 1px solid #F1F1F1;
+    margin-bottom : 10px;
+    padding-bottom: 10px;
+
+    .left-watch {
+        margin-right: 10px;
+    }
+
+    .right-watch {
+        span.uper-time {
+            display      : block;
+            margin-bottom: 1px;
+            font-size    : 14px;
+            line-height  : 20px;
+            color        : #5A5A5A;
+        }
+
+        span.lowe-time {
+            display    : block;
+            font-size  : 14px;
+            line-height: 22px;
+            font-weight: 500;
+        }
+    }
+}
+
+// .dropdown-menu.show {
+//     width: 40% !important;
+//     height: 300px !important;
+//     overflow: auto !important;
+// }
+.experience-start-time-dropdown.show {
+    width: 40% !important;
+    height: 300px !important;
+    overflow: auto !important;
+}
+.duration-dropdown.show {
+    width: 100% !important;
+    height: 300px !important;
+    overflow: auto !important;
+}

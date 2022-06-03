@@ -1,0 +1,85 @@
+<div class="main-container-area max-group-size">
+  <div class="left-wrapper">
+    <div class="inner-width-wrapper">
+      <div class="heading">Maximum Group Size</div>
+      <p>
+        Consider what works best for your online format. Is it more interactive
+        with fewer people or more fun with a larger group? Remember: Twiwfy has
+        a one-guest minimum, so if only one person books, you'll still be
+        expected to host.
+      </p>
+      <div class="drop-down-min-age">
+        <div class="btn-group" dropdown>
+          <button
+            class="btn btn-primary dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            {{ name }}
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a
+              *ngFor="
+                let l of maxArray"
+              class="dropdown-item"
+              (click)="setMaxGroupSize(l)"
+              >{{ l }}</a
+            >
+            <!-- <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a> -->
+          </div>
+        </div>
+
+        <div
+            class="error-block"
+            *ngIf="isGroupSizeValid">
+            <div class="required-text">
+              <p class="error text-danger">Please select group size.</p>
+            </div>
+          </div>
+
+        <!-- <div class="btn-group" dropdown>
+                    <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                        aria-controls="dropdown-animated">
+                        13 <span class="caret"></span>
+                    </button>
+                    <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu" role="menu"
+                        aria-labelledby="button-animated">
+                        <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+                        <li role="menuitem"><a class="dropdown-item" href="#">Another action</a>
+                        </li>
+                        <li role="menuitem"><a class="dropdown-item" href="#">Something else
+                                here</a></li>
+                    </ul>
+                </div> -->
+      </div>
+    </div>
+  </div>
+  <!-- <div class="right-wrapper">
+    <div class="small-heading">Tips</div>
+    <div class="do-main">
+      <ul class="say-yes">
+        <li>
+          Make it easier for guests to interact with you and each other with a
+          small group
+        </li>
+        <li>
+          Keep in mind that smaller group sizes are one way to establish
+          connection
+        </li>
+      </ul>
+    </div>
+  </div> -->
+</div>
+
+<!-- <mat-progress-bar mode="determinate" value="95"></mat-progress-bar>
+<div class="next-back-row-main">
+  <div class="left-text">04 items to submit</div>
+  <div class="button-row">
+    <button class="btn-back" (click)="next(19)" matRipple>Back</button>
+    <button class="btn-next" (click)="next(21)" matRipple>Next</button>
+  </div>
+</div> -->
